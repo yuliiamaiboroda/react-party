@@ -48,6 +48,9 @@ export const theme = Object.freeze({
   opacities: { none: 0, half: 0.6, full: 1 },
   sizes: {
     containerWidth: { mobile: 480, tablet: 768, desktop: 1280 },
+    mobileContainer: 480,
+    tabletContainer: 768,
+    desktopContainer: 1280,
   },
   transitions: {
     regularColor: 'color 250ms linear',

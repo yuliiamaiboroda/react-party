@@ -1,5 +1,3 @@
-export default function DashBoardPage (){
-    return(
-        <div>DashBoardPage</div>
-    )
+export default function DashBoardPage() {
+  return <div>DashBoardPage</div>;
 }
