@@ -1,13 +1,14 @@
-import { lazy } from "react";
+import { lazy , Suspense} from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 const DashBoardPage = lazy(()=>import("../pages/DashboardPage/DashBoardPage"));
 const LoginPage = lazy(()=>import("../pages/LoginPage/LoginPage"));
 const RegistrationPage = lazy(()=>import("../pages/RegistrationPage/RegistrationPage"));
-const PageNotFound = lazy(()=>import("../pages/PageNotFound/PageNotFound"))
+const PageNotFound = lazy(()=>import("../pages/PageNotFound/PageNotFound"));
 
 export const App = () => {
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <Routes>
       <Route path="/">
         <Route path="/" element={<DashBoardPage/>}/>
@@ -17,5 +18,6 @@ export const App = () => {
         <Route path='*' element={<Navigate to='/404' />} />
       </Route>
     </Routes>
+    </Suspense>
   );
 };
