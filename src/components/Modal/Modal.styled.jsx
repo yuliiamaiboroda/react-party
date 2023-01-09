@@ -16,8 +16,8 @@ export const CloseModalBtn = styled.button`
   border: transparent;
 
   font-family: ${p => p.theme.fonts.body};
-  font-size: ${p => p.theme.fontSizes.xs}px;
-  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.m}px;
+  font-weight: ${p => p.theme.fontWeights.normal};
 
   transition: ${p => p.theme.transitions.regularColor};
 

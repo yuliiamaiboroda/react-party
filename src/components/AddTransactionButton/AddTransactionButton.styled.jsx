@@ -9,8 +9,8 @@ export const AddButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  min-width: 50px;
-  min-height: 50px;
+  min-width: 44px;
+  min-height: 44px;
 
   padding: ${p => p.theme.space[2]}px;
 
