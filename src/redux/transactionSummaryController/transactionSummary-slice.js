@@ -10,8 +10,8 @@ const initialState = {
 const transactionSummary = createSlice({
     name:'summary',
     initialState,
-    extraReducers: (bulder) => {
-        bulder.addCase(getTransactionSummary.pending,
+    extraReducers: (builder) => {
+        builder.addCase(getTransactionSummary.pending,
             (state)=>{
                 state.error= null;
                 state.isLoading = true;
