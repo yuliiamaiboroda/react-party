@@ -42,15 +42,17 @@ export const theme = Object.freeze({
   radii: { none: 'none', normal: 30, light: 20, circle: '50%' },
   shadows: {
     table: '0px 1px 0px rgba(255, 255, 255, 0.6)',
-    buttonAdd: '0px 6px 15px rgba(36, 204, 167, 0.5)',
+    addButton: '0px 6px 15px rgba(36, 204, 167, 0.5)',
     dropdown: '0px 6px 15px rgba(0, 0, 0, 0.1)',
   },
   opacities: { none: 0, half: 0.6, full: 1 },
   sizes: {
     containerWidth: { mobile: 480, tablet: 768, desktop: 1280 },
+    scale: { up: 1.1, down: 0.9 },
   },
   transitions: {
     regularColor: 'color 250ms linear',
     regularBgColor: 'background-color 250ms linear',
+    regularScale: 'scale 250ms linear',
   },
 });
