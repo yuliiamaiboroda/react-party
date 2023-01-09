@@ -1,0 +1,12 @@
+.currency_text{
+    font-weight: 700;
+font-size: 18px;
+line-height: 1.5;
+color: #FFFFFF;
+}
+.currency{
+    width: 393px;
+    height: 331px;
+    background-color: #4A56E2;
+    border-radius: 30px;
+}

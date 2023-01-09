@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import Currency from "./Currency/Currency";
 
 const DashBoardPage = lazy(()=>import("../pages/DashboardPage/DashBoardPage"));
 const LoginPage = lazy(()=>import("../pages/LoginPage/LoginPage"));
@@ -8,6 +9,8 @@ const PageNotFound = lazy(()=>import("../pages/PageNotFound/PageNotFound"))
 
 export const App = () => {
   return (
+    <>
+    <Currency />
     <Routes>
       <Route path="/">
         <Route path="/" element={<DashBoardPage/>}/>
@@ -17,5 +20,7 @@ export const App = () => {
         <Route path='*' element={<Navigate to='/404' />} />
       </Route>
     </Routes>
+    </>
+    
   );
 };
