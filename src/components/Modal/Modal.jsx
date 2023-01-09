@@ -1,6 +1,7 @@
 import { PropTypes } from 'prop-types';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
+import { HiX } from 'react-icons/hi';
 import Box from 'components/Box';
 import { CloseModalBtn } from './Modal.styled';
 
@@ -48,13 +49,13 @@ export default function Modal({ onClose, children }) {
         position="relative"
         minWidth="200px"
         minHeight="200px"
-        p={3}
+        p={4}
         backgroundColor="lightBg"
         borderRadius="light"
         m="auto"
       >
         <CloseModalBtn type="button" onClick={handleClose}>
-          X
+          <HiX style={{ pointerEvents: 'none' }} />
         </CloseModalBtn>
         {children}
       </Box>
