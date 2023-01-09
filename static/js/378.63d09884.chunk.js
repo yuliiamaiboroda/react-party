@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[378],{378:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});var a=r(184);function n(){return(0,a.jsx)("div",{children:"DashBoardPage"})}}}]);
+//# sourceMappingURL=378.63d09884.chunk.js.map
