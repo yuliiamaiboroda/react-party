@@ -24,3 +24,5 @@ const Box = styled('div')(
   position,
   shadow
 );
+
+export default Box;
