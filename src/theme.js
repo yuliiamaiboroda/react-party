@@ -22,7 +22,7 @@ export const theme = Object.freeze({
     text: '#000',
     textLight: '#fff',
     background: 'rgba(255, 255, 255, 0.4)',
-    hederBg: '#fff',
+    lightBg: '#fff',
     dropdownBg: 'rgba(255, 255, 255, 0.7)',
     backdropBg: 'rgba(0, 0, 0, 0.25)',
     primary: '#24CCA7',
@@ -39,7 +39,7 @@ export const theme = Object.freeze({
     table: '1px solid #DCDCDF',
     formField: '1px solid #E0E0E0',
   },
-  radii: { none: 'none', normal: 30, loght: 20, circle: '50%' },
+  radii: { none: 'none', normal: 30, light: 20, circle: '50%' },
   shadows: {
     table: '0px 1px 0px rgba(255, 255, 255, 0.6)',
     buttonAdd: '0px 6px 15px rgba(36, 204, 167, 0.5)',
@@ -48,9 +48,6 @@ export const theme = Object.freeze({
   opacities: { none: 0, half: 0.6, full: 1 },
   sizes: {
     containerWidth: { mobile: 480, tablet: 768, desktop: 1280 },
-    mobileContainer: 480,
-    tabletContainer: 768,
-    desktopContainer: 1280,
   },
   transitions: {
     regularColor: 'color 250ms linear',
