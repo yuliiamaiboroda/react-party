@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/react-party/static/css/main.00f7774c.css",
-    "main.js": "/react-party/static/js/main.fcebb587.js",
+    "main.css": "/react-party/static/css/main.b5489d01.css",
+    "main.js": "/react-party/static/js/main.6c0776f5.js",
     "static/js/378.63d09884.chunk.js": "/react-party/static/js/378.63d09884.chunk.js",
     "static/js/664.e054ce98.chunk.js": "/react-party/static/js/664.e054ce98.chunk.js",
     "static/js/974.f6986cdb.chunk.js": "/react-party/static/js/974.f6986cdb.chunk.js",
     "static/js/803.e748398e.chunk.js": "/react-party/static/js/803.e748398e.chunk.js",
     "index.html": "/react-party/index.html",
-    "main.00f7774c.css.map": "/react-party/static/css/main.00f7774c.css.map",
-    "main.fcebb587.js.map": "/react-party/static/js/main.fcebb587.js.map",
+    "main.b5489d01.css.map": "/react-party/static/css/main.b5489d01.css.map",
+    "main.6c0776f5.js.map": "/react-party/static/js/main.6c0776f5.js.map",
     "378.63d09884.chunk.js.map": "/react-party/static/js/378.63d09884.chunk.js.map",
     "664.e054ce98.chunk.js.map": "/react-party/static/js/664.e054ce98.chunk.js.map",
     "974.f6986cdb.chunk.js.map": "/react-party/static/js/974.f6986cdb.chunk.js.map",
     "803.e748398e.chunk.js.map": "/react-party/static/js/803.e748398e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.00f7774c.css",
-    "static/js/main.fcebb587.js"
+    "static/css/main.b5489d01.css",
+    "static/js/main.6c0776f5.js"
   ]
 }
