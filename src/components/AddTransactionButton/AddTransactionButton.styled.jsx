@@ -5,6 +5,10 @@ export const AddButton = styled.button`
   bottom: ${p => p.theme.space[5]}px;
   right: ${p => p.theme.space[5]}px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   min-width: 50px;
   min-height: 50px;
 
