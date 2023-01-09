@@ -11,8 +11,8 @@ import {
     REGISTER,
   } from 'redux-persist';
 import authReducer from "./authController/authController-slice";
-import transactionCategoriesReducer from "./transactionCategories/transactionCategories-slice";
-import transactionControllerReducer from "./transactionsController/transactionController-slice";
+import transactionCategoriesReducer from "./TransactionCategories/transactionCategories-slice";
+import transactionControllerReducer from "./TransactionsController/transactionController-slice";
 import transactionSummaryReducer from "./transactionSummaryController/transactionSummary-slice";
 
 const persistConfig = {
