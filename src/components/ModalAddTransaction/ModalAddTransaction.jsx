@@ -1,15 +1,15 @@
-import { PropTypes } from 'prop-types';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 // import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 // import { getTransactionCategories } from 'redux/transactionCategories/transactionCategories-operations';
 // import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
 import { createTransaction } from 'redux/transactionsController/transactionController-operations';
 import { useCloseModalAddTrans } from 'hooks';
 import Modal from 'components/Modal';
 
-export default function ModalAddTransaction({ onClose }) {
+export default function ModalAddTransaction() {
   // const transactionCategories = useSelector(selectTransactionCategories);
   const closeModal = useCloseModalAddTrans();
   const dispatch = useDispatch();
@@ -31,11 +31,13 @@ export default function ModalAddTransaction({ onClose }) {
   // }, []);
 
   const validationSchema = Yup.object({
-    sum: Yup.number().moreThan(0).required(),
-    date: Yup.string().required(),
-    comment: Yup.string(),
-    type: Yup.bool().required(),
-    colors: Yup.string(),
+    amount: Yup.number('not a number')
+      .moreThan(0, 'less than 0')
+      .required('Required field'),
+    date: Yup.string('not a string').required('Required field'),
+    comment: Yup.string('String'),
+    type: Yup.bool('not a bool').required('Required field'),
+    colors: Yup.string('String'),
   });
 
   return (
@@ -48,7 +50,7 @@ export default function ModalAddTransaction({ onClose }) {
           type: true,
           colors: '',
         }}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
         onSubmit={(values, action) => {
           console.log('values: ', values);
           console.log('this is submit');
@@ -63,17 +65,24 @@ export default function ModalAddTransaction({ onClose }) {
               <Field type="checkbox" name="type" />
               Expense
             </label>
+            <ErrorMessage name="type" />
             {formik.values.type && (
-              <Field name="colors" as="select">
-                <option value="">Chose color</option>
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-              </Field>
+              <>
+                <Field name="colors" as="select">
+                  <option value="">Chose color</option>
+                  <option value="red">Red</option>
+                  <option value="green">Green</option>
+                  <option value="blue">Blue</option>
+                </Field>
+                <ErrorMessage name="type" />
+              </>
             )}
             <Field type="number" name="amount" />
+            <ErrorMessage name="amount" />
             <Field type="date" name="date" />
+            <ErrorMessage name="date" />
             <Field type="text" name="comment" />
+            <ErrorMessage name="comment" />
             <button type="submit">Submit</button>
           </Form>
         )}
@@ -81,7 +90,3 @@ export default function ModalAddTransaction({ onClose }) {
     </Modal>
   );
 }
-
-ModalAddTransaction.propTypes = {
-  onClose: PropTypes.func,
-};
