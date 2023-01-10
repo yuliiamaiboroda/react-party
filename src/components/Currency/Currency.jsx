@@ -1,31 +1,35 @@
-
+import { DivTop, LI, MainDiv, PTop, UL } from './Currency.styled';
+import Loader from 'components/Loader';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import money from 'redux/currency/currency-options';
-import './currency.css';
 export default function Currency() {
   const dispatch = useDispatch();
 useEffect(()=>{
 dispatch(money())
 },[dispatch])
 const finance = useSelector(state=> state.currency.totalBalance);
-    return finance.length ? <table>
-      <tr>
-        <th>Currency</th>
-        <th>Purchase</th>
-        <th>Sale</th>
-      </tr>
-      <tr>
-        <td>USD</td>
-        <td>{finance[0].rateBuy}</td>
-        <td>{finance[0].rateSell}</td>
-      </tr>
-      <tr>
-        <td>EUR</td>
-        <td>{finance[1].rateBuy}</td>
-        <td>{finance[1].rateSell}</td>
-      </tr>
-    </table>:'Loader'
+const loader = useSelector(state=> state.currency.loader);
+    return <MainDiv >{
+    loader?finance.length ? <>
+      <DivTop>
+        <PTop style={{marginLeft:'26px'}}>Currency</PTop>
+        <PTop>Purchase</PTop>
+        <PTop style={{marginRight:'49px'}}>Sale</PTop>
+      </DivTop>
+      <UL>
+        <LI >USD</LI>
+        <LI>{finance[0].rateBuy.toFixed(2)}</LI>
+        <LI >{finance[0].rateSell.toFixed(2)}</LI>
+      </UL>
+      <UL>
+        <LI >EUR</LI>
+        <LI>{finance[1].rateBuy.toFixed(2)}</LI>
+        <LI>{finance[1].rateSell.toFixed(2)}</LI>
+      </UL>
+    </>:'':
+    <Loader />}</MainDiv>
+    
     
     // <div className='currency'>
     //   <div style={{
@@ -37,7 +41,7 @@ const finance = useSelector(state=> state.currency.totalBalance);
     //     <p className='currency_text'>Sale</p>
     //   </div>
     //   <div>
-    //     <p></p>
+    //     <PTop></p>
     //   </div>
     // </div>
     

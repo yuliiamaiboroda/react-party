@@ -8,11 +8,11 @@ const DashBoardPage = lazy(()=>import("../pages/DashboardPage/DashBoardPage"));
 const LoginPage = lazy(()=>import("../pages/LoginPage/LoginPage"));
 const RegistrationPage = lazy(()=>import("../pages/RegistrationPage/RegistrationPage"));
 const PageNotFound = lazy(()=>import("../pages/PageNotFound/PageNotFound"));
-
 export const App = () => {
 
   return (
-<><Currency />
+<>  
+  <Currency />
     <Suspense fallback={<Loader />}>
      
     <Routes>
