@@ -2,7 +2,7 @@ import React from 'react';
 import LoginForm from 'components/LoginForm/LoginForm';
 import css from './LoginPage.module.css';
 
-export const LoginPage = () => {
+export default function LoginPage() {
   return (
     <div>
       <div className={css.page_wrapper}>
@@ -11,4 +11,4 @@ export const LoginPage = () => {
       </div>
     </div>
   );
-};
+}

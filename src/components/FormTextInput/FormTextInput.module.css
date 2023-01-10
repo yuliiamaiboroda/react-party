@@ -1,0 +1,11 @@
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 25px;
+  border-bottom: 1px solid #e0e0e0;
+
+  color: #bdbdbd;
+  margin-bottom: 25px;
+}
