@@ -9,7 +9,7 @@ export const createTransaction = createAsyncThunk(
             const {data} = await axios.post('/api/transactions', transaction);
             return data;
         } catch (error) {
-            rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 );
@@ -22,7 +22,7 @@ export const getAllTransactions =  createAsyncThunk(
             const {data} = await axios.get('/api/transactions');
             return data;
         } catch (error) {
-            rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 );
@@ -35,7 +35,7 @@ export const updateTransaction = createAsyncThunk(
             const {data} = await axios.patch(`/api/transactions/${transaction.id}`, transaction);
             return data;
         } catch (error) {
-            rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 );
@@ -48,7 +48,7 @@ export const deleteTransaction = createAsyncThunk(
             await axios.delete(`/api/transactions/${id}`);
             return id;
         } catch (error) {
-            rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 )
