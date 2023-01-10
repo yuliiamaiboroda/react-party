@@ -1,17 +1,40 @@
 import { PropTypes } from 'prop-types';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import Modal from 'components/Modal';
+// import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+// import { getTransactionCategories } from 'redux/transactionCategories/transactionCategories-operations';
+// import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
+import { createTransaction } from 'redux/transactionsController/transactionController-operations';
 import { useCloseModalAddTrans } from 'hooks';
+import Modal from 'components/Modal';
 
 export default function ModalAddTransaction({ onClose }) {
+  // const transactionCategories = useSelector(selectTransactionCategories);
   const closeModal = useCloseModalAddTrans();
+  const dispatch = useDispatch();
 
-  const validationSchema = Yup.object().shape({
-    sum: Yup.number().required(),
+  const handleSubmit = values => {
+    dispatch(
+      createTransaction({
+        transactionDate: values.date,
+        type: 'INCOME',
+        categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
+        comment: values.comment,
+        amount: values.amount,
+      })
+    );
+  };
+
+  // useEffect(() => {
+  //   dispatch(getTransactionCategories());
+  // }, []);
+
+  const validationSchema = Yup.object({
+    sum: Yup.number().moreThan(0).required(),
     date: Yup.string().required(),
     comment: Yup.string(),
-    type: Yup.bool(),
+    type: Yup.bool().required(),
     colors: Yup.string(),
   });
 
@@ -19,15 +42,17 @@ export default function ModalAddTransaction({ onClose }) {
     <Modal onClose={closeModal}>
       <Formik
         initialValues={{
-          sum: '',
+          amount: '',
           date: '',
           comment: '',
           type: true,
           colors: '',
         }}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         onSubmit={(values, action) => {
           console.log('values: ', values);
+          console.log('this is submit');
+          handleSubmit(values);
           action.resetForm();
         }}
       >
@@ -46,7 +71,7 @@ export default function ModalAddTransaction({ onClose }) {
                 <option value="blue">Blue</option>
               </Field>
             )}
-            <Field type="number" name="sum" />
+            <Field type="number" name="amount" />
             <Field type="date" name="date" />
             <Field type="text" name="comment" />
             <button type="submit">Submit</button>

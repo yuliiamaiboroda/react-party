@@ -5,6 +5,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 export const createTransaction = createAsyncThunk(
   'transactions/createTransaction',
   async (transaction, { rejectWithValue }) => {
+    console.log('data: ', transaction);
     try {
       const { data } = await axios.post('/api/transactions', transaction);
       return data;

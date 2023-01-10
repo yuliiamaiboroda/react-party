@@ -18,11 +18,9 @@ const transactionController = createSlice({
   initialState,
   reducers: {
     openModalAddTransaction(state) {
-      console.log('open: ', state.isModalAddTransactionOpen);
       state.isModalAddTransactionOpen = true;
     },
     closeModalAddTransaction(state) {
-      console.log('close: ', state.isModalAddTransactionOpen);
       state.isModalAddTransactionOpen = false;
     },
   },
