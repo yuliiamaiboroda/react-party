@@ -1,10 +1,12 @@
 import { PropTypes } from 'prop-types';
-import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Modal from 'components/Modal';
+import { useCloseModalAddTrans } from 'hooks';
 
 export default function ModalAddTransaction({ onClose }) {
+  const closeModal = useCloseModalAddTrans();
+
   const validationSchema = Yup.object().shape({
     sum: Yup.number().required(),
     date: Yup.string().required(),
@@ -14,7 +16,7 @@ export default function ModalAddTransaction({ onClose }) {
   });
 
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={closeModal}>
       <Formik
         initialValues={{
           sum: '',
@@ -56,5 +58,5 @@ export default function ModalAddTransaction({ onClose }) {
 }
 
 ModalAddTransaction.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
 };
