@@ -1,8 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Loader from './Loader';
-// import DashBoardPage from '../pages/DashboardPage/DashBoardPage';
-// import { LoginPage } from 'pages/LoginPage/LoginPage';
 
 const DashBoardPage = lazy(() =>
   import('../pages/DashboardPage/DashBoardPage')

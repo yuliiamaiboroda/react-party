@@ -1,7 +1,7 @@
 import { React } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
@@ -11,10 +11,11 @@ import { ReactComponent as EmailIcon } from '../../icons/email.svg';
 import { ReactComponent as LockIcon } from '../../icons/lock.svg';
 import { ReactComponent as Logo } from '../../icons/wallet.svg';
 
+import { signIn } from 'redux/authController/authController-operations';
 import css from './LoginForm.module.css';
 
 function LoginForm() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const validationsSchema = Yup.object().shape({
     email: Yup.string('Введите e-mail')
@@ -28,7 +29,7 @@ function LoginForm() {
 
   const handleLogin = ({ email, password }) => {
     // evt.preventDefault();
-    // dispatch(authOperations.logIn({ email, password }));
+    dispatch(signIn({ email, password }));
   };
 
   return (
@@ -76,16 +77,15 @@ function LoginForm() {
               <button
                 className={css.logo_btn}
                 type="submit"
-                onClick={() => console.log('cliked')}
                 disabled={!isValid && !dirty}
               >
                 LOG IN
               </button>
 
               <div>
-                <NavLink to="/register" className={css.main_btn}>
+                <Link to="/registration" className={css.main_btn}>
                   REGISTER
-                </NavLink>
+                </Link>
               </div>
             </div>
           </Form>
