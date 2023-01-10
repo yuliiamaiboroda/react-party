@@ -40,7 +40,7 @@ const sortedArr= [...financeData].sort(
                     <tr key={id}>
                     <td>{transactionDate}</td>
                     <td>{type}</td>
-                    <td>{transactionCategArr.find(el=>el.id===categoryId)}</td>
+                    <td>{transactionCategArr.find(el=>el.id===categoryId).name}</td>
                     <td>{comment}</td>
                     <td style={
                         type==="INCOME" ? {color:"#24CCA7"} :
