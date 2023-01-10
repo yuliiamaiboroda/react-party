@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { fetchingCurrentUser } from 'redux/authController/authController-operations';
 import { selectIsFetchingCurrentUser } from 'redux/authController/authController-selectors';
-import Currency from "./Currency/Currency";
 import Loader from './Loader';
 
 const DashBoardPage = lazy(() =>
@@ -28,7 +27,6 @@ export const App = () => {
   return (
 
       <>
-       <Currency />
         {isFetchingCurrentUser 
           ? <Loader/>
           :<Suspense fallback={<Loader />}>

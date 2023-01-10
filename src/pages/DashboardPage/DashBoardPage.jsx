@@ -1,5 +1,6 @@
 import AddTransactionButton from 'components/AddTransactionButton';
 import Box from 'components/Box';
+import Currency from 'components/Currency/Currency';
 import Header from 'components/Header/Header';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/authController/authController-selectors';
@@ -12,6 +13,7 @@ export default function DashBoardPage() {
       {/*👇 Тимчасова інверсія , поки немає авторизації */}
       {!isLoggedIn && <Header />}
       <div>DashBoardPage</div>
+      <Currency />
       <AddTransactionButton />
     </Box>
   );
