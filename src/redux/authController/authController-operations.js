@@ -21,7 +21,7 @@ export const signUp = createAsyncThunk(
             token.set(data.token);
             return data;
         } catch (error) {
-            rejectWithValue(error.message);
+          return rejectWithValue(error.message);
         }
     }
 );
@@ -35,7 +35,7 @@ export const signIn = createAsyncThunk(
             token.set(data.token);
             return data;
         } catch (error) {
-           rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 );
@@ -48,7 +48,7 @@ export const signOut = createAsyncThunk(
             await axios.delete('/api/auth/sign-out');
             token.unset();
         } catch (error) {
-            rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 );
@@ -68,7 +68,7 @@ export const fetchingCurrentUser = createAsyncThunk(
             const {data} = await axios.get('/api/users/current');
             return data;
         } catch (error) {
-            rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 )
