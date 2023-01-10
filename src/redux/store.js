@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import currency from "./currency/currency";
 import storage from 'redux-persist/lib/storage';
 import {
     persistStore,
@@ -14,17 +15,23 @@ import authReducer from "./authController/authController-slice";
 import transactionCategoriesReducer from "./transactionCategories/transactionCategories-slice";
 import transactionControllerReducer from "./transactionsController/transactionController-slice";
 import transactionSummaryReducer from "./transactionSummaryController/transactionSummary-slice";
-
 const persistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
+const persistConfigCurrency = {
+  key: 'currency',
+  storage,
+  whitelist: ['totalBalance'],
+};
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedReducerCurrency = persistReducer(persistConfigCurrency, currency);
 
 export const store = configureStore({
   reducer:{
+  currency:persistedReducerCurrency,
   transactionCategories: transactionCategoriesReducer,
   transactionController:transactionControllerReducer,
   transactionSummary: transactionSummaryReducer,
@@ -39,3 +46,4 @@ export const store = configureStore({
   });
 
 export const persistor = persistStore(store);
+
