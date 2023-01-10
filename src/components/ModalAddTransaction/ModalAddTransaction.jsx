@@ -14,7 +14,9 @@ import {
   Title,
   RecordForm,
   Input,
+  Toggle,
   Switch,
+  Slider,
   Text,
   Checkbox,
   Selector,
@@ -84,11 +86,14 @@ export default function ModalAddTransaction() {
           >
             <Title>Add transaction</Title>
             <RecordForm>
-              <Switch>
+              <Toggle>
                 <Text>Income</Text>
-                <Checkbox type="checkbox" name="type" />
+                <Switch>
+                  <Checkbox type="checkbox" name="type" />
+                  <Slider checked={formik.values.type} />
+                </Switch>
                 <Text>Expense</Text>
-              </Switch>
+              </Toggle>
               <ErrorMessage component={Error} name="type" />
               {formik.values.type && (
                 <>
