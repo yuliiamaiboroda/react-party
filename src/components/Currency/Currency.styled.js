@@ -1,10 +1,25 @@
 import styled from 'styled-components';
-import img from './wave.png'
+import img from 'images/Current/wave.png';
+import imgBig from 'images/Current/wave2x.png';
 export const MainDiv = styled.div`
-width: 393px;
-height: 331px;
+width: 280px;
+height: 174px;
+@media (min-width: 768px){
+    width: 336px;
+    height: 182px;
+}
+@media (min-width: 1280px){
+    width: 393px;
+    height: 331px;
+}
 position: relative;
-background-image: url(${img});
+background-image:linear-gradient(180deg, rgba(255, 255, 255, 0.2) -7.46%, rgba(255, 255, 255, 0) 100%), url(${img});
+@media (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    background-image:linear-gradient(180deg, rgba(255, 255, 255, 0.2) -7.46%, rgba(255, 255, 255, 0) 100%), url(${imgBig});
+    background-size: 100%;
+}
+background-repeat: no-repeat;
+background-position: bottom;
 background-color: rgba(74, 86, 226, 1);
 border-radius: 30px;
 color: #FFFFFF;
