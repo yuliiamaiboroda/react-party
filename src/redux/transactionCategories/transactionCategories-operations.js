@@ -8,7 +8,7 @@ export const getTransactionCategories = createAsyncThunk(
             const {data} = await axios.get('/api/transaction-categories');
             return data;
         } catch (error) {
-            rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 )
