@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-party/static/css/main.b5489d01.css",
-    "main.js": "/react-party/static/js/main.7f1fad47.js",
+    "main.js": "/react-party/static/js/main.1c878198.js",
     "static/js/574.282f4e09.chunk.js": "/react-party/static/js/574.282f4e09.chunk.js",
     "static/css/115.b2bcfc11.chunk.css": "/react-party/static/css/115.b2bcfc11.chunk.css",
     "static/js/115.6e28a783.chunk.js": "/react-party/static/js/115.6e28a783.chunk.js",
@@ -21,7 +21,7 @@
     "static/media/email.svg": "/react-party/static/media/email.45f45e31938998f0163862f776a809a2.svg",
     "static/media/separator-icon.svg": "/react-party/static/media/separator-icon.4197971255a4c6a047f2d568d14b817e.svg",
     "main.b5489d01.css.map": "/react-party/static/css/main.b5489d01.css.map",
-    "main.7f1fad47.js.map": "/react-party/static/js/main.7f1fad47.js.map",
+    "main.1c878198.js.map": "/react-party/static/js/main.1c878198.js.map",
     "574.282f4e09.chunk.js.map": "/react-party/static/js/574.282f4e09.chunk.js.map",
     "115.b2bcfc11.chunk.css.map": "/react-party/static/css/115.b2bcfc11.chunk.css.map",
     "115.6e28a783.chunk.js.map": "/react-party/static/js/115.6e28a783.chunk.js.map",
@@ -32,6 +32,6 @@
   },
   "entrypoints": [
     "static/css/main.b5489d01.css",
-    "static/js/main.7f1fad47.js"
+    "static/js/main.1c878198.js"
   ]
 }
