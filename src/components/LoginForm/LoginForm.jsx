@@ -1,7 +1,7 @@
 import { React } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
@@ -83,9 +83,9 @@ function LoginForm() {
               </button>
 
               <div>
-                <NavLink to="/registration" className={css.main_btn}>
+                <Link to="/registration" className={css.main_btn}>
                   REGISTER
-                </NavLink>
+                </Link>
               </div>
             </div>
           </Form>
