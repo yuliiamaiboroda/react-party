@@ -1,20 +1,22 @@
-import { useState } from 'react';
 import { HiOutlinePlus } from 'react-icons/hi';
+import { useSelector } from 'react-redux';
+import { useOpenModalAddTrans } from 'hooks';
+import { selectIsModalAddTransactionOpen } from 'redux/transactionsController/transactionController-selectors';
 import ModalAddTransaction from 'components/ModalAddTransaction';
 import { AddButton } from './AddTransactionButton.styled';
 
 export default function AddTransactionButton() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isModalAddTransactionOpen = useSelector(
+    selectIsModalAddTransactionOpen
+  );
+  const openModal = useOpenModalAddTrans();
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
   return (
     <>
-      <AddButton type="button" onClick={toggleModal}>
-        <HiOutlinePlus style={{ pointerEvents: 'none' }} />
+      <AddButton type="button" onClick={openModal}>
+        <HiOutlinePlus size="2em" style={{ pointerEvents: 'none' }} />
       </AddButton>
-      {isModalOpen && <ModalAddTransaction onClose={toggleModal} />}
+      {isModalAddTransactionOpen && <ModalAddTransaction />}
     </>
   );
 }

@@ -12,7 +12,7 @@ export const AddButton = styled.button`
   min-width: 44px;
   min-height: 44px;
 
-  padding: ${p => p.theme.space[2]}px;
+  padding: 0;
 
   color: ${p => p.theme.colors.textLight};
   background-color: ${p => p.theme.colors.primary};
