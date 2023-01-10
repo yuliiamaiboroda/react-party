@@ -12,16 +12,20 @@ import LogoIcon from 'images/Header/logo-icon.svg';
 import SeparatorIcon from 'images/Header/separator-icon.svg';
 import ExitIcon from 'images/Header/exit-icon.svg';
 import Container from 'components/Container';
+import ModalLogout from 'components/ModalLogout';
+import { useOpenModalLogout } from 'hooks';
 import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/authController/authController-selectors';
+import {
+  selectUser,
+  selectIsModalLogoutOpen,
+} from 'redux/authController/authController-selectors';
 
 const Header = () => {
-  const {name} = useSelector(selectUser)
+  const { name } = useSelector(selectUser);
+  const isModalOpen = useSelector(selectIsModalLogoutOpen);
+  const openModal = useOpenModalLogout();
 
-  const handlerExitBtnClick = () => {
-    console.log('click to >>>', 'Exit button');
-  };
-
+  console.log('isModalOpen: ', isModalOpen);
   return (
     <Container>
       <HeaderLine>
@@ -31,9 +35,9 @@ const Header = () => {
         </LogoWrapper>
         <Wrapper>
           {/* Тимчасова умова 👇, поки немає авторизації */}
-          <Name>{name? name : 'unauthorized'}</Name>
+          <Name>{name ? name : 'unauthorized'}</Name>
           <ImgSep src={SeparatorIcon} alt="separator" />
-          <Button type="Button" onClick={handlerExitBtnClick}>
+          <Button type="Button" onClick={openModal}>
             <img
               src={ExitIcon}
               alt="exit icon"
@@ -41,6 +45,7 @@ const Header = () => {
             />
             Exit
           </Button>
+          {isModalOpen && <ModalLogout />}
         </Wrapper>
       </HeaderLine>
     </Container>

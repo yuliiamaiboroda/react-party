@@ -6,7 +6,7 @@ import { selectIsLoggedIn } from 'redux/authController/authController-selectors'
 
 export default function DashBoardPage() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  
+
   return (
     <Box p={5}>
       {/*👇 Тимчасова інверсія , поки немає авторизації */}
