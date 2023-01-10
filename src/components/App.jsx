@@ -1,5 +1,6 @@
 import { lazy , Suspense} from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import Currency from "./Currency/Currency";
 import Loader from "./Loader";
 
 
@@ -11,10 +12,9 @@ const PageNotFound = lazy(()=>import("../pages/PageNotFound/PageNotFound"));
 export const App = () => {
 
   return (
-
-
+<><Currency />
     <Suspense fallback={<Loader />}>
-
+     
     <Routes>
       <Route path="/">
         <Route path="/" element={<DashBoardPage/>}/>
@@ -26,6 +26,8 @@ export const App = () => {
     </Routes>
 
     </Suspense>
+</>
+    
 
   );
 };

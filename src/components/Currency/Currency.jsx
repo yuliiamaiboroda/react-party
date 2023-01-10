@@ -8,9 +8,8 @@ export default function Currency() {
 useEffect(()=>{
 dispatch(money())
 },[dispatch])
-const finance = useSelector(state=> state.currency.totalBalance)
-console.log(finance);
-    return <table>
+const finance = useSelector(state=> state.currency.totalBalance);
+    return finance.length ? <table>
       <tr>
         <th>Currency</th>
         <th>Purchase</th>
@@ -26,7 +25,8 @@ console.log(finance);
         <td>{finance[1].rateBuy}</td>
         <td>{finance[1].rateSell}</td>
       </tr>
-    </table>
+    </table>:'Loader'
+    
     // <div className='currency'>
     //   <div style={{
     //     display:'flex',
