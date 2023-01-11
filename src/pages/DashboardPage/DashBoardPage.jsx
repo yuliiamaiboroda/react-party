@@ -4,12 +4,13 @@ import Box from 'components/Box';
 import Currency from 'components/Currency/Currency';
 import Header from 'components/Header/Header';
 import { Outlet } from 'react-router-dom';
+import Navigation from 'components/Navigation';
 
 export default function DashBoardPage() {
   return (
     <Box p={5}>
       <Header />
-      <div>DashBoardPage</div>
+      <Navigation />
       <Balance/>
       <Currency />
       <AddTransactionButton />
@@ -17,3 +18,5 @@ export default function DashBoardPage() {
     </Box>
   );
 }
+
+
