@@ -30,7 +30,6 @@ function RegistrationForm() {
       .oneOf([Yup.ref('password')], 'Passwords do not match')
       .required('Required'),
     username: Yup.string()
-      .typeError()
       .min(1, 'Please enter a name more than 0 character')
       .max(12, 'Please enter a name less than 12 character')
       .required('Required'),
