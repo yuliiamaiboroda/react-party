@@ -6,6 +6,7 @@ const currency = createSlice({
     initialState:{
         Bank: [],
         loader:false,
+        
     },
     extraReducers:{
         [money.rejected](state,action){
@@ -13,7 +14,7 @@ const currency = createSlice({
         },
         [money.fulfilled](state,action){
             state.loader = true;
-            state.Bank = action.payload.slice(0,2)
+            state.Bank = action.payload;
         }
     }
 })

@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import money from 'redux/currency/currency-options';
 export default function Currency() {
   const dispatch = useDispatch();
-useEffect(()=>{
-dispatch(money())
-},[dispatch])
 const finance = useSelector(state=> state.currency.Bank);
 const loader = useSelector(state=> state.currency.loader);
+useEffect(()=>{
+  dispatch(money())
+  },[dispatch])
     return <MainDiv >{
     loader?finance.length ? <>
       <DivTop>
