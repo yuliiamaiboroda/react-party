@@ -7,6 +7,8 @@ import HomeTab from './HomeTab/HomeTab';
 import Loader from './Loader';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import DiagramTab from './DiagramTab/DiagramTab';
+import Currency from './Currency/Currency';
 
 const DashBoardPage = lazy(() =>
   import('../pages/DashboardPage/DashBoardPage')
@@ -33,7 +35,7 @@ export const App = () => {
       ) : (
         <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/" element={<Outlet/>}>
+            <Route path="/" element={<Outlet />}>
               <Route
                 path="/"
                 element={
@@ -43,9 +45,12 @@ export const App = () => {
                   />
                 }
               >
-                <Route index element={<HomeTab/>}/>
-                <Route path='currency' element={<h1>Stat</h1>}/>
-                </Route>
+                     <Route index element={<HomeTab />}/>
+                <Route path ="/diagram" element={<DiagramTab />} />
+                <Route path ="/currency" element={<Currency />}/>
+                {/* <Route index element={<HomeTab />} />
+                <Route path="currency" element={<h1>Stat</h1>} /> */}
+              </Route>
               <Route
                 path="login"
                 element={<PublicRoute component={<LoginPage />} />}

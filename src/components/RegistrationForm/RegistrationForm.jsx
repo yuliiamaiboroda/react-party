@@ -18,22 +18,21 @@ import css from './RegistrationForm.module.css';
 function RegistrationForm() {
   const dispatch = useDispatch();
 
-  const validationsSchema = Yup.object({
-    email: Yup.string()
-      .email('Введите корректный e-mail')
-      .required('Обязательное поле для заполнения!'),
-    password: Yup.string()
-      .min(6, 'Пароль должен состоять минимум из 6 символов')
-      .max(14, 'Пароль должен состоять максимум из 14 символов')
-      .required('Обязательное поле для заполнения!'),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password')], 'Пароли не совпадают')
-      .required('Требуется подтверждение пароля!'),
+  const validationsSchema = Yup.object().shape({
+    email: Yup.string('Enter e-mail')
+      .email('Invalid email')
+      .required('Required'),
+    password: Yup.string('Enter password')
+      .min(6, 'Too Short!')
+      .max(14, 'Too Long!')
+      .required('Required'),
+    confirmPassword: Yup.string('Confirm password')
+      .oneOf([Yup.ref('password')], 'Passwords do not match')
+      .required('Required'),
     username: Yup.string()
-      .typeError()
-      .min(1, 'Имя должно состоять минимум из 1 символа')
-      .max(12, 'Имя должно состоять максимум из 12 символов')
-      .required('Обязательное поле для заполнения!'),
+      .min(1, 'Please enter a name more than 0 character')
+      .max(12, 'Please enter a name less than 12 character')
+      .required('Required'),
   });
 
   const handleRegister = ({ username, email, password }) => {

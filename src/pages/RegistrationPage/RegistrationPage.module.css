@@ -1,0 +1,56 @@
+.page_reg {
+  position: relative;
+  background-color: #e7eaf2;
+
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 768px) {
+  .page_reg {
+    width: 768px;
+    height: 1024px;
+    background-repeat: no-repeat;
+    background-position: bottom 0 left 0, top 0 right 0, top 60px left 114px;
+
+    background-image: url(../../images/bg-tablet-login/ellipse-down.png),
+      url(../../images/bg-tablet-login/ellipse-up.png),
+      url(../../images/frame-registration/frame-tablet.png);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .page_reg {
+    width: 1280px;
+    height: 720px;
+    background-repeat: no-repeat;
+    background-position: top 153px left 66px, bottom 0 left 0, top 0 right 0;
+
+    background-image: url(../../images/frame-registration/frame-desctop.png),
+      url(../../images/bg-desktop-login/ellipse.png),
+      url(../../images/bg-desktop-login/rectangle.png);
+  }
+}
+
+.page_text_reg {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .page_text_reg {
+    position: absolute;
+    top: 163px;
+    right: 153px;
+
+    font-size: 30px;
+    line-height: 1.5;
+
+    display: inline-block;
+
+    color: #000;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .page_text_reg {
+    position: absolute;
+    top: 597px;
+    left: 200px;
+  }
+}
