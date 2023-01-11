@@ -21,11 +21,10 @@ import {
 } from 'redux/authController/authController-selectors';
 
 const Header = () => {
-  const { name } = useSelector(selectUser);
+  const { username } = useSelector(selectUser);
   const isModalOpen = useSelector(selectIsModalLogoutOpen);
   const openModal = useOpenModalLogout();
 
-  console.log('isModalOpen: ', isModalOpen);
   return (
     <Container>
       <HeaderLine>
@@ -35,7 +34,7 @@ const Header = () => {
         </LogoWrapper>
         <Wrapper>
           {/* Тимчасова умова 👇, поки немає авторизації */}
-          <Name>{name ? name : 'unauthorized'}</Name>
+          <Name>{username}</Name>
           <ImgSep src={SeparatorIcon} alt="separator" />
           <Button type="Button" onClick={openModal}>
             <img
