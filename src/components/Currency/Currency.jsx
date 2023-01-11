@@ -25,9 +25,9 @@ useEffect(()=>{
     loader?
     finance.length ? <>
       <DivTop>
-        <PTop style={{marginLeft:'26px'}}>Currency</PTop>
+        <PTop>Currency</PTop>
         <PTop>Purchase</PTop>
-        <PTop style={{marginRight:'49px'}}>Sale</PTop>
+        <PTop>Sale</PTop>
       </DivTop>
       <UL>
         <LI >USD</LI>

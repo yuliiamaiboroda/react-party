@@ -28,7 +28,7 @@ color: #FFFFFF;
 export const DivTop = styled.div`
 display: flex;
 height: 60px;
-justify-content:  space-between;
+justify-content:  space-around;
 align-items: center;
 background-color: rgba(110, 120, 232, 1);
 border-radius: 30px 30px 0 0;
@@ -44,6 +44,7 @@ margin-top:22px;
 justify-content:  space-around;
 `;
 export const LI = styled.li`
+margin-left: 25px;
 font-weight: ${theme.fontWeights.normal};
 font-size: ${theme.fontSizes.s}px;
 line-height: ${theme.lineHeights.heading};
