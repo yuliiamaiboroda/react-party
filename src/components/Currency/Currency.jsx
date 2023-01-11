@@ -12,8 +12,6 @@ const finance = useSelector(state=> state.currency.Bank);
 const loader = useSelector(state=> state.currency.loader);
 const date = new Date().getTime();
 const time = new Date(date - currencyDate).getUTCHours();
-console.log(currencyDate);
-console.log(time);
 useEffect(()=>{
   if (time >= 1) {
     dispatch(money())
