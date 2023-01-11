@@ -18,6 +18,7 @@ export const theme = Object.freeze({
     heading: 1.5,
     body: 1.18,
   },
+  letterSpacing: { button: '0.1em' },
   colors: {
     text: '#000',
     textLight: '#fff',
@@ -28,12 +29,13 @@ export const theme = Object.freeze({
     primary: '#24CCA7',
     secondary: '#4A56E2',
     income: '#24CCA7',
-    expence: '#FF6596',
+    expense: '#FF6596',
     muted: '#BDBDBD',
     blur: 25,
   },
   borders: {
     none: 'none',
+    transperent : '1px solid transperent',
     normal: '1px solid #000000',
     accented: '1px solid #4A56E2',
     table: '1px solid #DCDCDF',

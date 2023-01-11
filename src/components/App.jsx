@@ -1,10 +1,12 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { fetchingCurrentUser } from 'redux/authController/authController-operations';
 import { selectIsFetchingCurrentUser } from 'redux/authController/authController-selectors';
-import Currency from "./Currency/Currency";
+import HomeTab from './HomeTab/HomeTab';
 import Loader from './Loader';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const DashBoardPage = lazy(() =>
   import('../pages/DashboardPage/DashBoardPage')
@@ -16,32 +18,48 @@ const RegistrationPage = lazy(() =>
 const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 
 export const App = () => {
-
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(fetchingCurrentUser())
-  },[dispatch]);
+  useEffect(() => {
+    dispatch(fetchingCurrentUser());
+  }, [dispatch]);
 
   const isFetchingCurrentUser = useSelector(selectIsFetchingCurrentUser);
 
   return (
-
-      <>
-       <Currency />
-        {isFetchingCurrentUser 
-          ? <Loader/>
-          :<Suspense fallback={<Loader />}>
-            <Routes>
-              <Route path="/">
-                <Route path="/" element={<DashBoardPage />} />
-                <Route path="login" element={<LoginPage />} />
-                <Route path="registration" element={<RegistrationPage />} />
-                <Route path="404" element={<PageNotFound />} />
-                <Route path="*" element={<Navigate to="/404" />} />
-              </Route>
-            </Routes>
-          </Suspense>
-        }
-    </>);
+    <>
+      {isFetchingCurrentUser ? (
+        <Loader />
+      ) : (
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<Outlet/>}>
+              <Route
+                path="/"
+                element={
+                  <PrivateRoute
+                    component={<DashBoardPage />}
+                    redirectTo="/login"
+                  />
+                }
+              >
+                <Route index element={<HomeTab/>}/>
+                <Route path='currency' element={<h1>Stat</h1>}/>
+                </Route>
+              <Route
+                path="login"
+                element={<PublicRoute component={<LoginPage />} />}
+              />
+              <Route
+                path="registration"
+                element={<PublicRoute component={<RegistrationPage />} />}
+              />
+              <Route path="404" element={<PageNotFound />} />
+              <Route path="*" element={<Navigate to="/404" />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      )}
+    </>
+  );
 };

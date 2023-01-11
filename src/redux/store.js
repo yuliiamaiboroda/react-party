@@ -15,10 +15,11 @@ import authReducer from "./authController/authController-slice";
 import transactionCategoriesReducer from "./transactionCategories/transactionCategories-slice";
 import transactionControllerReducer from "./transactionsController/transactionController-slice";
 import transactionSummaryReducer from "./transactionSummaryController/transactionSummary-slice";
+import finance from "./finance/finance.js";
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isLoggedIn'],
 };
 const persistConfigCurrency = {
   key: 'currency',
@@ -31,6 +32,7 @@ const persistedReducerCurrency = persistReducer(persistConfigCurrency, currency)
 
 export const store = configureStore({
   reducer:{
+  finance,
   currency:persistedReducerCurrency,
   transactionCategories: transactionCategoriesReducer,
   transactionController:transactionControllerReducer,
