@@ -4,7 +4,7 @@ import  money  from './currency-options';
 const currency = createSlice({
     name:'currency',
     initialState:{
-        totalBalance: [],
+        Bank: [],
         loader:false,
     },
     extraReducers:{
@@ -13,7 +13,7 @@ const currency = createSlice({
         },
         [money.fulfilled](state,action){
             state.loader = true;
-            state.totalBalance = action.payload.slice(0,2)
+            state.Bank = action.payload.slice(0,2)
         }
     }
 })

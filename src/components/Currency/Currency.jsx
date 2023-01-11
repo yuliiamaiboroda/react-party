@@ -8,7 +8,7 @@ export default function Currency() {
 useEffect(()=>{
 dispatch(money())
 },[dispatch])
-const finance = useSelector(state=> state.currency.totalBalance);
+const finance = useSelector(state=> state.currency.Bank);
 const loader = useSelector(state=> state.currency.loader);
     return <MainDiv >{
     loader?finance.length ? <>
@@ -28,21 +28,5 @@ const loader = useSelector(state=> state.currency.loader);
         <LI>{finance[1].rateSell.toFixed(2)}</LI>
       </UL>
     </>:'':
-    <Loader />}</MainDiv>
-    
-    
-    // <div className='currency'>
-    //   <div style={{
-    //     display:'flex',
-    //     justifyContent: 'space-evenly',
-    //   }}>
-    //     <p className='currency_text'>Currency</p>
-    //     <p className='currency_text'>Purchase</p>
-    //     <p className='currency_text'>Sale</p>
-    //   </div>
-    //   <div>
-    //     <PTop></p>
-    //   </div>
-    // </div>
-    
+    <Loader />}</MainDiv>   
 }
