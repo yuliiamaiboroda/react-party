@@ -24,7 +24,7 @@ const persistConfig = {
 const persistConfigCurrency = {
   key: 'currency',
   storage,
-  whitelist: ['totalBalance'],
+  whitelist: ['Bank','dateCurrency'],
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);

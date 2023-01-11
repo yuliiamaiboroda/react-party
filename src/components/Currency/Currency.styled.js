@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import img from 'images/Current/wave.png';
 import imgBig from 'images/Current/wave2x.png';
+import { theme } from 'theme';
 export const MainDiv = styled.div`
 width: 280px;
 height: 174px;
@@ -33,9 +34,9 @@ background-color: rgba(110, 120, 232, 1);
 border-radius: 30px 30px 0 0;
 `;
 export const PTop = styled.p`
-font-weight: ${p => p.theme.fontWeights.bold};
-font-size: ${p=> p.theme.fontSizes.m}px;
-line-height: ${p => p.theme.lineHeights.heading};
+font-weight: ${theme.fontWeights.bold};
+font-size: ${theme.fontSizes.m}px;
+line-height: ${theme.lineHeights.heading};
 `;
 export const UL = styled.ul`
 display: flex;
@@ -43,7 +44,7 @@ margin-top:22px;
 justify-content:  space-around;
 `;
 export const LI = styled.li`
-font-weight: ${p => p.theme.fontWeights.normal};
-font-size: ${p=> p.theme.fontSizes.s}px;
-line-height: ${p => p.theme.lineHeights.heading};
+font-weight: ${theme.fontWeights.normal};
+font-size: ${theme.fontSizes.s}px;
+line-height: ${theme.lineHeights.heading};
 `;
