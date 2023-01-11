@@ -18,7 +18,7 @@ import transactionSummaryReducer from "./transactionSummaryController/transactio
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isLoggedIn'],
 };
 const persistConfigCurrency = {
   key: 'currency',
