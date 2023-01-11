@@ -36,15 +36,18 @@ export default function ModalAddTransaction() {
   }, [dispatch]);
 
   const validationSchema = Yup.object({
-    isExpense: Yup.bool().required('Required field'),
-    categoryId: Yup.string('string'),
+    isExpense: Yup.bool().required(),
+    categoryId: Yup.string(),
     amount: Yup.number('not a number')
-      .moreThan(0, 'less than 0')
+      .moreThan(0, 'The number must be greater than 0')
       .required('Required field'),
-    transactionDate: Yup.date('not a date')
-      .max(formatDate(), 'it is feature')
+    transactionDate: Yup.date('Wrong date standart')
+      .max(formatDate(), 'Please choose a date no later than today')
       .required('Required field'),
-    comment: Yup.string('String'),
+    comment: Yup.string().max(
+      200,
+      'The comment should not exceed 200 characters'
+    ),
   });
 
   const handleSubmit = ({
@@ -75,8 +78,6 @@ export default function ModalAddTransaction() {
     element => element.type === TRANSACTION_TYPE.EXPENSE
   );
 
-  console.log('this is render');
-
   return (
     <Modal onClose={closeModal}>
       <Formik
@@ -89,7 +90,6 @@ export default function ModalAddTransaction() {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, action) => {
-          console.log('values: ', values);
           handleSubmit(values);
           action.resetForm();
         }}
@@ -112,32 +112,28 @@ export default function ModalAddTransaction() {
                 </Switch>
                 <Text>Expense</Text>
               </Toggle>
-              <ErrorMessage component={Error} name="isExpense" />
               {formik.values.isExpense && (
-                <>
-                  <Selector
-                    name="categoryId"
-                    onChange={formik.handleChange}
-                    as="select"
-                    required
-                  >
-                    <option value="">Chose category</option>
-                    {expenseCategories.map(({ id, name }) => (
-                      <option key={id} value={id}>
-                        {name}
-                      </option>
-                    ))}
-                  </Selector>
-                  <ErrorMessage component={Error} name="categoryId" />
-                </>
+                <Selector
+                  name="categoryId"
+                  onChange={formik.handleChange}
+                  as="select"
+                  required
+                >
+                  <option value="">Chose category</option>
+                  {expenseCategories.map(({ id, name }) => (
+                    <option key={id} value={id}>
+                      {name}
+                    </option>
+                  ))}
+                </Selector>
               )}
               <Box display="flex" gridGap={4}>
                 <Box width="100%">
-                  <Input type="number" name="amount" />
+                  <Input type="number" name="amount" required />
                   <ErrorMessage component={Error} name="amount" />
                 </Box>
                 <Box width="100%">
-                  <Input type="date" name="transactionDate" />
+                  <Input type="date" name="transactionDate" required />
                   <ErrorMessage component={Error} name="transactionDate" />
                 </Box>
               </Box>

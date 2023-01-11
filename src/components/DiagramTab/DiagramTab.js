@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+// import React, { useState } from 'react';
 import Chart from 'components/Chart/Chart';
 import Table from 'components/Table/Table';
 import {
@@ -136,7 +136,7 @@ const colors = [
 ];
 
 const DiagramTab = () => {
-  const [selectedMounth, setSelectedMounth] = useState('january')
+  // const [selectedMounth, setSelectedMounth] = useState('january')
 
   const dataLabels = fakeData.map(el => el.comment);
   const dataAmount = fakeData.map(el => el.amount);
