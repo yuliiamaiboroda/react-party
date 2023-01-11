@@ -10,3 +10,5 @@ export const selectIsFetchingCurrentUser = state =>
   state.auth.isFetchingCurrentUser;
 
 export const selectIsModalLogoutOpen = state => state.auth.isModalLogoutOpen;
+
+export const selectToken = state => state.auth.token;

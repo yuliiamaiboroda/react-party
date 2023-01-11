@@ -17,13 +17,16 @@ export const createTransaction = createAsyncThunk(
 // Get all transactions for logged in user
 export const getAllTransactions = createAsyncThunk(
   'transactions/getAllTransiction',
-  async (_, { rejectWithValue }) => {
-    try {
+  async (_, { rejectWithValue , getState }) => {
+    const isToken = getState().auth.token;
+    if(isToken) { 
+      try {
       const { data } = await axios.get('/api/transactions');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
-    }
+    }}
+   
   }
 );
 
