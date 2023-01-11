@@ -89,9 +89,8 @@ export default function ModalAddTransaction() {
           comment: '',
         }}
         validationSchema={validationSchema}
-        onSubmit={(values, action) => {
+        onSubmit={values => {
           handleSubmit(values);
-          action.resetForm();
         }}
       >
         {formik => (
