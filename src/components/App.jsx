@@ -33,7 +33,7 @@ export const App = () => {
       ) : (
         <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/" element={<Outlet/>}>
+            <Route path="/" element={<Outlet />}>
               <Route
                 path="/"
                 element={
@@ -43,9 +43,9 @@ export const App = () => {
                   />
                 }
               >
-                <Route index element={<HomeTab/>}/>
-                <Route path='currency' element={<h1>Stat</h1>}/>
-                </Route>
+                <Route index element={<HomeTab />} />
+                <Route path="currency" element={<h1>Stat</h1>} />
+              </Route>
               <Route
                 path="login"
                 element={<PublicRoute component={<LoginPage />} />}
