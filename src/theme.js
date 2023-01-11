@@ -35,6 +35,7 @@ export const theme = Object.freeze({
   },
   borders: {
     none: 'none',
+    transperent : '1px solid transperent',
     normal: '1px solid #000000',
     accented: '1px solid #4A56E2',
     table: '1px solid #DCDCDF',

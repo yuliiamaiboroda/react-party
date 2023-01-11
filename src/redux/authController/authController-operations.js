@@ -53,7 +53,7 @@ export const signOut = createAsyncThunk(
   }
 );
 
-// Fetching current User
+// get info current User
 
 export const fetchingCurrentUser = createAsyncThunk(
   'auth/current',

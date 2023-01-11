@@ -1,8 +1,9 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { fetchingCurrentUser } from 'redux/authController/authController-operations';
 import { selectIsFetchingCurrentUser } from 'redux/authController/authController-selectors';
+import HomeTab from './HomeTab/HomeTab';
 import Loader from './Loader';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -32,7 +33,7 @@ export const App = () => {
       ) : (
         <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/">
+            <Route path="/" element={<Outlet />}>
               <Route
                 path="/"
                 element={
@@ -41,7 +42,10 @@ export const App = () => {
                     redirectTo="/login"
                   />
                 }
-              />
+              >
+                <Route index element={<HomeTab />} />
+                <Route path="currency" element={<h1>Stat</h1>} />
+              </Route>
               <Route
                 path="login"
                 element={<PublicRoute component={<LoginPage />} />}

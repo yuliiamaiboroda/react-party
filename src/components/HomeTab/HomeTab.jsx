@@ -6,20 +6,24 @@ import { getTransactionCategories } from "redux/transactionCategories/transactio
 import { selectTransactionCategories } from "redux/transactionCategories/transactionCategories-selectors";
 
 export default function HomeTab (){
-const dispatch = useDispatch();
+const dispatch = useDispatch(); 
+const financeData = useSelector(selectTransictions);
+const transactionCategArr = useSelector(selectTransactionCategories);
 
 useEffect(()=>{
     dispatch(getAllTransactions());
     dispatch(getTransactionCategories())},
 [dispatch]);
 
-const financeData = useSelector(selectTransictions);
-const transactionCategArr = useSelector(selectTransactionCategories);
-
 const sortedArr= [...financeData].sort(
     (firstTrans, secondTrans)=>Date.parse(secondTrans.transactionDate) - Date.parse(firstTrans.transactionDate)
     ) 
-
+    
+const currentTransCateg = categoryId => {
+    const currentTrans = transactionCategArr.find(el=>el.id===categoryId);
+    if (!currentTrans) return "other"
+    return currentTrans.name 
+}
     return(<>
         {sortedArr.length === 0
             ? <h3>No transaction yet</h3>
@@ -40,7 +44,7 @@ const sortedArr= [...financeData].sort(
                     <tr key={id}>
                     <td>{transactionDate}</td>
                     <td>{type}</td>
-                    <td>{transactionCategArr.find(el=>el.id===categoryId).name}</td>
+                    <td>{currentTransCateg(categoryId)}</td>
                     <td>{comment}</td>
                     <td style={
                         type==="INCOME" ? {color:"#24CCA7"} :
