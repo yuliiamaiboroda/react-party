@@ -1,8 +1,7 @@
 @media screen and (min-width: 320px) {
-  .form {
+  .form_reg {
     width: 320px;
-    height: auto;
-    padding-top: 110px;
+    padding-top: 50px;
     padding-bottom: 110px;
     margin: 0 auto;
     background-color: #fff;
@@ -10,32 +9,30 @@
   }
 }
 @media screen and (min-width: 768px) {
-  .form {
+  .form_reg {
     position: absolute;
-    bottom: 110px;
+    bottom: 100px;
     right: 50%;
     transform: translate(50%);
     width: 540px;
-    border-radius: 20px;
-    padding-top: 40px;
-    padding-bottom: 60px;
-    margin: auto;
+    border-radius: 50px;
+    padding-bottom: 50px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .form {
+  .form_reg {
     bottom: 50%;
     right: 85px;
     transform: translateY(50%);
-    margin: 0;
   }
 }
-.logo_wrapper {
+
+.logo_wrapper_reg {
   display: flex;
   gap: 20px;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .container_input {

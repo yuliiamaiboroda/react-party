@@ -10,11 +10,12 @@ import { FormTextInput } from 'components/FormTextInput/FormTextInput';
 import { ReactComponent as EmailIcon } from '../../icons/email.svg';
 import { ReactComponent as LockIcon } from '../../icons/lock.svg';
 import { ReactComponent as Logo } from '../../icons/wallet.svg';
+import { ReactComponent as NameIcon } from '../../icons/name.svg';
 
-import { signIn } from 'redux/authController/authController-operations';
-import css from './LoginForm.module.css';
+import { signUp } from 'redux/authController/authController-operations';
+import css from './RegistrationForm.module.css';
 
-function LoginForm() {
+function RegistrationForm() {
   const dispatch = useDispatch();
 
   const validationsSchema = Yup.object().shape({
@@ -25,10 +26,17 @@ function LoginForm() {
       .min(6, 'Too Short!')
       .max(14, 'Too Long!')
       .required('Required'),
+    confirmPassword: Yup.string('Confirm password')
+      .oneOf([Yup.ref('password')], 'Passwords do not match')
+      .required('Required'),
+    username: Yup.string()
+      .min(1, 'Please enter a name more than 0 character')
+      .max(12, 'Please enter a name less than 12 character')
+      .required('Required'),
   });
 
-  const handleLogin = ({ email, password }) => {
-    dispatch(signIn({ email, password }));
+  const handleRegister = ({ username, email, password }) => {
+    dispatch(signUp({ username, email, password }));
   };
 
   return (
@@ -37,14 +45,16 @@ function LoginForm() {
         initialValues={{
           email: '',
           password: '',
+          confirmPassword: '',
+          username: '',
         }}
         validateOnBlur
-        onSubmit={handleLogin}
+        onSubmit={handleRegister}
         validationSchema={validationsSchema}
       >
         {({ handleChange, handleBlur, values, isValid, dirty }) => (
-          <Form className={css.form}>
-            <div className={css.logo_wrapper}>
+          <Form className={css.form_reg}>
+            <div className={css.logo_wrapper_reg}>
               <Logo width={30} height={30} className={css.logo} />
               <h1 className={css.logo_text}>Wallet</h1>
             </div>
@@ -60,6 +70,7 @@ function LoginForm() {
                 placeholder="E-mail"
                 className={css.input}
               />
+
               <FormTextInput
                 label={<LockIcon width={16} height={21} />}
                 type="password"
@@ -70,6 +81,28 @@ function LoginForm() {
                 placeholder="Password"
                 className={css.input}
               />
+
+              <FormTextInput
+                label={<LockIcon width={16} height={21} />}
+                type="password"
+                name="confirmPassword"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.confirmPassword}
+                placeholder="Confirm password"
+                className={css.input}
+              />
+
+              <FormTextInput
+                label={<NameIcon width={18} height={18} />}
+                type="text"
+                name="username"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.username}
+                placeholder="Your name"
+                className={css.input}
+              />
             </div>
 
             <div className={css.button_container}>
@@ -78,12 +111,11 @@ function LoginForm() {
                 type="submit"
                 disabled={!isValid && !dirty}
               >
-                LOG IN
+                REGISTER
               </button>
-
               <div>
-                <Link to="/registration" className={css.main_btn}>
-                  REGISTER
+                <Link to="/login" className={css.main_btn}>
+                  LOG IN
                 </Link>
               </div>
             </div>
@@ -94,4 +126,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default RegistrationForm;

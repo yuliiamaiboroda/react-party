@@ -1,10 +1,9 @@
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-// import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { getTransactionCategories } from 'redux/transactionCategories/transactionCategories-operations';
-// import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getTransactionCategories } from 'redux/transactionCategories/transactionCategories-operations';
+import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
 import { createTransaction } from 'redux/transactionsController/transactionController-operations';
 import { useCloseModalAddTrans } from 'hooks';
 import { formatDate } from 'utils';
@@ -25,53 +24,72 @@ import {
   CancelButton,
 } from './ModalAddTransaction.styled';
 
+import { TRANSACTION_TYPE } from 'constantes';
+
 export default function ModalAddTransaction() {
-  // const transactionCategories = useSelector(selectTransactionCategories);
+  const transactionCategories = useSelector(selectTransactionCategories);
   const closeModal = useCloseModalAddTrans();
   const dispatch = useDispatch();
 
-  const handleSubmit = values => {
+  useEffect(() => {
+    dispatch(getTransactionCategories());
+  }, [dispatch]);
+
+  const validationSchema = Yup.object({
+    isExpense: Yup.bool().required(),
+    categoryId: Yup.string(),
+    amount: Yup.number('not a number')
+      .moreThan(0, 'The number must be greater than 0')
+      .required('Required field'),
+    transactionDate: Yup.date('Wrong date standart')
+      .max(formatDate(), 'Please choose a date no later than today')
+      .required('Required field'),
+    comment: Yup.string().max(
+      200,
+      'The comment should not exceed 200 characters'
+    ),
+  });
+
+  const handleSubmit = ({
+    transactionDate,
+    isExpense,
+    categoryId,
+    comment,
+    amount,
+  }) => {
+    const type = isExpense ? TRANSACTION_TYPE.EXPENSE : TRANSACTION_TYPE.INCOME;
+
+    const transaction = transactionCategories.find(element =>
+      isExpense ? element.id === categoryId : element.type === type
+    );
+
     dispatch(
       createTransaction({
-        type: 'INCOME',
-        categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
-        amount: values.amount,
-        transactionDate: values.date,
-        comment: values.comment,
+        transactionDate,
+        type: transaction.type,
+        categoryId: transaction.id,
+        comment,
+        amount: isExpense ? -Math.abs(amount) : amount,
       })
     );
   };
 
-  // useEffect(() => {
-  //   dispatch(getTransactionCategories());
-  // }, []);
-
-  const validationSchema = Yup.object({
-    type: Yup.bool('not a bool').required('Required field'),
-    colors: Yup.string('String'),
-    amount: Yup.number('not a number')
-      .moreThan(0, 'less than 0')
-      .required('Required field'),
-    date: Yup.date('not a date')
-      .max(formatDate(), 'it is feature')
-      .required('Required field'),
-    comment: Yup.string('String'),
-  });
+  const expenseCategories = transactionCategories.filter(
+    element => element.type === TRANSACTION_TYPE.EXPENSE
+  );
 
   return (
     <Modal onClose={closeModal}>
       <Formik
         initialValues={{
-          type: true,
-          colors: '',
+          isExpense: true,
+          categoryId: '',
           amount: '',
-          date: '',
+          transactionDate: '',
           comment: '',
         }}
         validationSchema={validationSchema}
         onSubmit={(values, action) => {
-          console.log('values: ', values);
-          console.log('this is submit');
           handleSubmit(values);
           action.resetForm();
         }}
@@ -89,31 +107,34 @@ export default function ModalAddTransaction() {
               <Toggle>
                 <Text>Income</Text>
                 <Switch>
-                  <Checkbox type="checkbox" name="type" />
-                  <Slider checked={formik.values.type} />
+                  <Checkbox type="checkbox" name="isExpense" />
+                  <Slider checked={formik.values.isExpense} />
                 </Switch>
                 <Text>Expense</Text>
               </Toggle>
-              <ErrorMessage component={Error} name="type" />
-              {formik.values.type && (
-                <>
-                  <Selector name="colors" as="select">
-                    <option value="">Chose color</option>
-                    <option value="red">Red</option>
-                    <option value="green">Green</option>
-                    <option value="blue">Blue</option>
-                  </Selector>
-                  <ErrorMessage component={Error} name="colors" />
-                </>
+              {formik.values.isExpense && (
+                <Selector
+                  name="categoryId"
+                  onChange={formik.handleChange}
+                  as="select"
+                  required
+                >
+                  <option value="">Chose category</option>
+                  {expenseCategories.map(({ id, name }) => (
+                    <option key={id} value={id}>
+                      {name}
+                    </option>
+                  ))}
+                </Selector>
               )}
               <Box display="flex" gridGap={4}>
                 <Box width="100%">
-                  <Input type="number" name="amount" />
+                  <Input type="number" name="amount" required />
                   <ErrorMessage component={Error} name="amount" />
                 </Box>
                 <Box width="100%">
-                  <Input type="date" name="date" />
-                  <ErrorMessage component={Error} name="date" />
+                  <Input type="date" name="transactionDate" required />
+                  <ErrorMessage component={Error} name="transactionDate" />
                 </Box>
               </Box>
               <Input type="text" name="comment" />
