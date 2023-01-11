@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import currentBalance from './finance-operations';
+import { fetchingCurrentUser } from 'redux/authController/authController-operations';
+
 const finance = createSlice({
     name:'finance',
     initialState:{
         totalBalance: 0,
     },
     extraReducers:{
-        [currentBalance.fulfilled](state,action){
+        [fetchingCurrentUser.fulfilled](state,action){
             state.totalBalance = action.payload.balance;
         }
     }

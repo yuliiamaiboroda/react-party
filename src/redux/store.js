@@ -15,7 +15,7 @@ import authReducer from "./authController/authController-slice";
 import transactionCategoriesReducer from "./transactionCategories/transactionCategories-slice";
 import transactionControllerReducer from "./transactionsController/transactionController-slice";
 import transactionSummaryReducer from "./transactionSummaryController/transactionSummary-slice";
-import finance from "./finance/finance";
+import finance from "./finance/finance.js";
 const persistConfig = {
   key: 'auth',
   storage,
