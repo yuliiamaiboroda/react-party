@@ -18,13 +18,13 @@ function LoginForm() {
   const dispatch = useDispatch();
 
   const validationsSchema = Yup.object().shape({
-    email: Yup.string('Введите e-mail')
-      .email('Введите корректный e-mail')
-      .required('Обязательное поле для заполнения!'),
-    password: Yup.string('Ввведите пароль')
-      .min(6, 'Пароль должен состоять минимум из 6 символов')
-      .max(14, 'Пароль должен состоять максимум из 14 символов')
-      .required('Обязательное поле для заполнения!'),
+    email: Yup.string('Enter e-mail')
+      .email('Invalid email')
+      .required('Required'),
+    password: Yup.string('Enter password')
+      .min(6, 'Too Short!')
+      .max(14, 'Too Long!')
+      .required('Required'),
   });
 
   const handleLogin = ({ email, password }) => {
