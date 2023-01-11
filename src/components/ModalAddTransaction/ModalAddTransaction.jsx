@@ -1,10 +1,9 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
-// import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { getTransactionCategories } from 'redux/transactionCategories/transactionCategories-operations';
-// import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getTransactionCategories } from 'redux/transactionCategories/transactionCategories-operations';
+import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
 import { createTransaction } from 'redux/transactionsController/transactionController-operations';
 import { useCloseModalAddTrans } from 'hooks';
 import { formatDate } from 'utils';
@@ -25,8 +24,13 @@ import {
   CancelButton,
 } from './ModalAddTransaction.styled';
 
+const TRANSACTION_TYPE = Object.freeze({
+  EXPENSE: 'EXPENSE',
+  INOME: 'INCOME',
+});
+
 export default function ModalAddTransaction() {
-  // const transactionCategories = useSelector(selectTransactionCategories);
+  const transactionCategories = useSelector(selectTransactionCategories);
   const closeModal = useCloseModalAddTrans();
   const dispatch = useDispatch();
 
@@ -42,13 +46,13 @@ export default function ModalAddTransaction() {
     );
   };
 
-  // useEffect(() => {
-  //   dispatch(getTransactionCategories());
-  // }, []);
+  useEffect(() => {
+    dispatch(getTransactionCategories());
+  }, []);
 
   const validationSchema = Yup.object({
     type: Yup.bool('not a bool').required('Required field'),
-    colors: Yup.string('String'),
+    categories: Yup.string('String'),
     amount: Yup.number('not a number')
       .moreThan(0, 'less than 0')
       .required('Required field'),
@@ -58,12 +62,16 @@ export default function ModalAddTransaction() {
     comment: Yup.string('String'),
   });
 
+  const expenseCategories = transactionCategories.filter(
+    element => element.type === TRANSACTION_TYPE.EXPENSE
+  );
+
   return (
     <Modal onClose={closeModal}>
       <Formik
         initialValues={{
           type: true,
-          colors: '',
+          categories: '',
           amount: '',
           date: '',
           comment: '',
@@ -71,8 +79,7 @@ export default function ModalAddTransaction() {
         validationSchema={validationSchema}
         onSubmit={(values, action) => {
           console.log('values: ', values);
-          console.log('this is submit');
-          handleSubmit(values);
+          // handleSubmit(values);
           action.resetForm();
         }}
       >
@@ -97,13 +104,35 @@ export default function ModalAddTransaction() {
               <ErrorMessage component={Error} name="type" />
               {formik.values.type && (
                 <>
-                  <Selector name="colors" as="select">
-                    <option value="">Chose color</option>
-                    <option value="red">Red</option>
-                    <option value="green">Green</option>
-                    <option value="blue">Blue</option>
+                  <Selector
+                    name="categories"
+                    onChange={formik.handleChange}
+                    as="select"
+                  >
+                    {expenseCategories.map(({ id, name }) => (
+                      <option key={id} value={name}>
+                        {name}
+                      </option>
+                    ))}
                   </Selector>
-                  <ErrorMessage component={Error} name="colors" />
+                  {/* <FieldArray name="categories">
+                    {() => (
+                      <Selector name="categories" as="select">
+                        {expenseCategories.map(({ id, name, type }, index) => (
+                          <option
+                            key={id}
+                            name={`expenseCategories[${index}].name`}
+                            value={name}
+                            type={type}
+                          >
+                            {name}
+                          </option>
+                        ))}
+                      </Selector>
+                    )}
+                  </FieldArray> */}
+
+                  <ErrorMessage component={Error} name="categories" />
                 </>
               )}
               <Box display="flex" gridGap={4}>
