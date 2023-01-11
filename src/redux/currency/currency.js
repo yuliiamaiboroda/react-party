@@ -6,7 +6,7 @@ const currency = createSlice({
     initialState:{
         Bank: [],
         loader:false,
-        
+        dateCurrency: 0,
     },
     extraReducers:{
         [money.rejected](state,action){
@@ -15,7 +15,14 @@ const currency = createSlice({
         [money.fulfilled](state,action){
             state.loader = true;
             state.Bank = action.payload;
+            state.dateCurrency = new Date().getTime();
+        }
+    },
+    reducers:{
+        loadingBool(state,action){
+          state.loader = action.payload
         }
     }
 })
+export const {loadingBool} = currency.actions;
 export default currency.reducer;
