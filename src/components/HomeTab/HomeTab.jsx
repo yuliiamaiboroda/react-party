@@ -4,16 +4,13 @@ import { getAllTransactions } from "redux/transactionsController/transactionCont
 import { selectTransictions } from "redux/transactionsController/transactionController-selectors";
 import { getTransactionCategories } from "redux/transactionCategories/transactionCategories-operations";
 import { selectTransactionCategories } from "redux/transactionCategories/transactionCategories-selectors";
-import { selectToken } from "redux/authController/authController-selectors";
 
 export default function HomeTab (){
 const dispatch = useDispatch(); 
 const financeData = useSelector(selectTransictions);
 const transactionCategArr = useSelector(selectTransactionCategories);
-const isToken = useSelector(selectToken);
 
 useEffect(()=>{
-    if(!isToken) return
     dispatch(getAllTransactions());
     dispatch(getTransactionCategories())},
 [dispatch]);
