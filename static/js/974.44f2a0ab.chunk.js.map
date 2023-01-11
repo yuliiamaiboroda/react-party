@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/974.44f2a0ab.chunk.js","mappings":"iMAAe,SAASA,IACpB,OACI,6CAEP,C","sources":["pages/RegistrationPage/RegistrationPage.jsx"],"sourcesContent":["export default function RegistrationPage (){\n    return(\n        <div>RegistrationPage</div>\n    )\n}"],"names":["RegistrationPage"],"sourceRoot":""}
