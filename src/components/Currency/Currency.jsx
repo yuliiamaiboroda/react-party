@@ -3,19 +3,31 @@ import Loader from 'components/Loader';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import money from 'redux/currency/currency-options';
+import {loadingBool } from 'redux/currency/currency';
 export default function Currency() {
   const dispatch = useDispatch();
-useEffect(()=>{
-dispatch(money())
-},[dispatch])
-const finance = useSelector(state=> state.currency.totalBalance);
+
+const currencyDate = useSelector(state=> state.currency.dateCurrency);
+const finance = useSelector(state=> state.currency.Bank);
 const loader = useSelector(state=> state.currency.loader);
+const date = new Date().getTime();
+const time = new Date(date - currencyDate).getUTCHours();
+useEffect(()=>{
+  if (time >= 1) {
+    dispatch(money())
+    return;
+  }
+    dispatch(loadingBool(true)); 
+ 
+  },[dispatch,time])
+
     return <MainDiv >{
-    loader?finance.length ? <>
+    loader?
+    finance.length ? <>
       <DivTop>
-        <PTop style={{marginLeft:'26px'}}>Currency</PTop>
+        <PTop>Currency</PTop>
         <PTop>Purchase</PTop>
-        <PTop style={{marginRight:'49px'}}>Sale</PTop>
+        <PTop>Sale</PTop>
       </DivTop>
       <UL>
         <LI >USD</LI>
@@ -27,22 +39,8 @@ const loader = useSelector(state=> state.currency.loader);
         <LI>{finance[1].rateBuy.toFixed(2)}</LI>
         <LI>{finance[1].rateSell.toFixed(2)}</LI>
       </UL>
-    </>:'':
-    <Loader />}</MainDiv>
-    
-    
-    // <div className='currency'>
-    //   <div style={{
-    //     display:'flex',
-    //     justifyContent: 'space-evenly',
-    //   }}>
-    //     <p className='currency_text'>Currency</p>
-    //     <p className='currency_text'>Purchase</p>
-    //     <p className='currency_text'>Sale</p>
-    //   </div>
-    //   <div>
-    //     <PTop></p>
-    //   </div>
-    // </div>
-    
+    </>:''
+    :
+    <Loader />
+    }</MainDiv>   
 }
