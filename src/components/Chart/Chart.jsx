@@ -7,8 +7,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Chart = ({ datas, colors }) => {
   const { categoriesSummary } = datas;
-  const dataLabels = categoriesSummary.map(el => el.name);
-  let dataAmount = categoriesSummary.map(el => el.total);
+
+  const onlyExpenses = categoriesSummary.filter(trans => trans.type === 'EXPENSE');
+  const dataLabels = onlyExpenses.map(el => el.name);
+  let dataAmount = onlyExpenses.map(el => el.total);
 
   const options = {
     plugins: {

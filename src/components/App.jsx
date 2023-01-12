@@ -45,9 +45,9 @@ export const App = () => {
                   />
                 }
               >
-                     <Route index element={<HomeTab />}/>
-                <Route path ="/diagram" element={<DiagramTab />} />
-                <Route path ="/currency" element={<Currency />}/>
+                <Route index element={<HomeTab />} />
+                <Route path="/diagram" element={<DiagramTab />} />
+                <Route path="/currency" element={<Currency />} />
                 {/* <Route index element={<HomeTab />} />
                 <Route path="currency" element={<h1>Stat</h1>} /> */}
               </Route>

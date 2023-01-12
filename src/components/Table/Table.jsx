@@ -16,6 +16,8 @@ const Table = ({ data, colors }) => {
   const currentColor = index => colors.find((_, ind) => index === ind);
   const { categoriesSummary, expenseSummary, incomeSummary } = data;
 
+  const onlyExpenses = categoriesSummary.filter(trans => trans.type === 'EXPENSE');
+
   return (
     <CompWrapper>
       <ul>
@@ -23,8 +25,8 @@ const Table = ({ data, colors }) => {
           <TextBold>Category</TextBold>
           <TextBold>Sum</TextBold>
         </HeaderLi>
-        {categoriesSummary.length ? (
-          categoriesSummary.map((el, index) => (
+        {onlyExpenses.length ? (
+          onlyExpenses.map((el, index) => (
             <Li key={el.name + el.total}>
               <Wrapper>
                 <span
@@ -38,7 +40,7 @@ const Table = ({ data, colors }) => {
                 ></span>
                 <Text>{el.name}</Text>
               </Wrapper>
-              <Text>{el.total.toFixed(2)}</Text>
+              <Text>{Math.abs(el.total).toFixed(2)}</Text>
             </Li>
           ))
         ) : (
@@ -49,7 +51,7 @@ const Table = ({ data, colors }) => {
         <TotalSum>
           <TotalText>Expenses:</TotalText>
           <TotalText>
-            <Red>{expenseSummary.toFixed(2)}</Red>
+            <Red>{Math.abs(expenseSummary).toFixed(2)}</Red>
           </TotalText>
         </TotalSum>
         <TotalSum>

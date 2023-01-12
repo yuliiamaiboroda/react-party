@@ -14,7 +14,6 @@ import { selectTransactionSummary } from 'redux/transactionSummaryController/tra
 import { getTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-operations';
 
 const colors = [
-  '#98DE74',
   '#FED037',
   '#FED098',
   '#FFD8D0',  
