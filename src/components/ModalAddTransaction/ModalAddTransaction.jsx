@@ -136,16 +136,16 @@ export default function ModalAddTransaction() {
                 </Box>
                 <Box width="100%">
                   <Datetime
-                    strictParsing={false}
+                    utc={true}
                     timeFormat={false}
                     dateFormat="DD.MM.YYYY"
                     closeOnSelect={true}
-                    onChange={date =>
+                    onChange={date => {
                       formik.setFieldValue(
                         'transactionDate',
                         formatDate(new Date(date._d))
-                      )
-                    }
+                      );
+                    }}
                     inputProps={{
                       required: true,
                       name: 'transactionDate',

@@ -1,3 +1,7 @@
 export const formatDate = date => {
-  return date.toISOString().split('T')[0];
+  try {
+    return date.toISOString().split('T')[0];
+  } catch (error) {
+    return '';
+  }
 };
