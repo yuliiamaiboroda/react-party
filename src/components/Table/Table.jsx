@@ -1,3 +1,4 @@
+import { normalizedNumber } from 'helpers/normalizedNumber';
 import React from 'react';
 import {
   CompWrapper,
@@ -40,7 +41,7 @@ const Table = ({ data, colors }) => {
                 ></span>
                 <Text>{el.name}</Text>
               </Wrapper>
-              <Text>{Math.abs(el.total).toFixed(2)}</Text>
+              <Text>{normalizedNumber(el.total)}</Text>
             </Li>
           ))
         ) : (
@@ -51,13 +52,13 @@ const Table = ({ data, colors }) => {
         <TotalSum>
           <TotalText>Expenses:</TotalText>
           <TotalText>
-            <Red>{Math.abs(expenseSummary).toFixed(2)}</Red>
+            <Red>{normalizedNumber(expenseSummary)}</Red>
           </TotalText>
         </TotalSum>
         <TotalSum>
           <TotalText>Income:</TotalText>
           <TotalText>
-            <Green>{incomeSummary.toFixed(2)}</Green>
+            <Green>{normalizedNumber(incomeSummary)}</Green>
           </TotalText>
         </TotalSum>
       </ul>
