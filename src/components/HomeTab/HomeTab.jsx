@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
+import AddTransactionButton from 'components/AddTransactionButton';
+import Balance from 'components/Balance/Balance';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getAllTransactions,
-  deleteTransaction,
-} from 'redux/transactionsController/transactionController-operations';
+import {deleteTransaction} from 'redux/transactionsController/transactionController-operations';
 import { selectTransictions } from 'redux/transactionsController/transactionController-selectors';
 import { getTransactionCategories } from 'redux/transactionCategories/transactionCategories-operations';
 import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
@@ -26,6 +25,7 @@ import {
   switchColor,
 } from 'helpers/homeTabHelpers';
 import Media from 'react-media';
+import React, { Fragment } from 'react';
 
 export default function HomeTab() {
   const dispatch = useDispatch();
@@ -33,7 +33,6 @@ export default function HomeTab() {
   const transactionCategArr = useSelector(selectTransactionCategories);
 
   useEffect(() => {
-    dispatch(getAllTransactions());
     dispatch(getTransactionCategories());
   }, [dispatch]);
 
@@ -55,6 +54,15 @@ export default function HomeTab() {
 
   return (
     <>
+       <Media  queries={{
+           small: '(max-width: 767px)',
+          }}>
+     {matches => (
+            <Fragment>
+              {matches.small &&  <Balance/>}
+            </Fragment>
+          )}
+        </Media>
       {sortedArr.length === 0 ? (
         <H3>No transaction yet</H3>
       ) : (
@@ -152,7 +160,9 @@ export default function HomeTab() {
             )
           }
         </Media>
-      )}
+      )}     
+          <AddTransactionButton />
     </>
+
   );
 }
