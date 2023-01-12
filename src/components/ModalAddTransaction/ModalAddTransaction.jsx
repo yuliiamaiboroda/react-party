@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, FormikProvider } from 'formik';
 import * as Yup from 'yup';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
@@ -136,7 +136,12 @@ export default function ModalAddTransaction() {
                 gridGap={4}
               >
                 <InputContainer>
-                  <Input type="number" name="amount" required />
+                  <Input
+                    type="number"
+                    name="amount"
+                    placeholder="0.00"
+                    required
+                  />
                   <ErrorMessage component={Error} name="amount" />
                 </InputContainer>
                 <InputContainer>
@@ -156,7 +161,7 @@ export default function ModalAddTransaction() {
                       name: 'transactionDate',
                     }}
                     renderInput={props => {
-                      return <Input {...props} />;
+                      return <Input {...props} placeholder="Choose date" />;
                     }}
                   />
                   <ErrorMessage component={Error} name="transactionDate" />
@@ -166,6 +171,7 @@ export default function ModalAddTransaction() {
                 onChange={formik.handleChange}
                 name="comment"
                 as="textarea"
+                placeholder="Comment"
               />
               <ErrorMessage component={Error} name="comment" />
               <SubmitButton type="submit">Add</SubmitButton>

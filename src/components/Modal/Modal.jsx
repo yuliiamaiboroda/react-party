@@ -56,7 +56,7 @@ export default function Modal({ onClose, children }) {
         backgroundColor="lightBg"
         borderRadius={['none', 'light']}
         m="auto"
-        overflow="auto"
+        overflow={['auto', 'visible']}
       >
         <CloseModalBtn type="button" onClick={handleClose}>
           <HiX style={{ pointerEvents: 'none' }} />

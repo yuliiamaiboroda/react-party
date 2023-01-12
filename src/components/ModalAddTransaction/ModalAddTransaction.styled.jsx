@@ -83,6 +83,9 @@ export const Selector = styled(Field)`
   min-height: 32px;
   width: 100%;
   max-width: 400px;
+
+  border: none;
+  border-bottom: ${p => p.theme.borders.formField};
 `;
 
 export const Input = styled(Field)`
@@ -93,23 +96,28 @@ export const Input = styled(Field)`
   padding-left: ${p => p.theme.space[2]}px;
   padding-right: ${p => p.theme.space[2]}px;
 
+  border: none;
+  border-bottom: ${p => p.theme.borders.formField};
+
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.m}px;
   line-height: ${p => p.theme.lineHeights.body};
 
-  color: #000000;
+  color: ${p => p.theme.colors.text};
 `;
 
 export const Comment = styled(Field)`
   width: 100%;
   max-width: 400px;
   height: 84px;
-
   resize: none;
 
   padding-left: ${p => p.theme.space[2]}px;
   padding-right: ${p => p.theme.space[2]}px;
+
+  border: none;
+  border-bottom: ${p => p.theme.borders.formField};
 
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.normal};
