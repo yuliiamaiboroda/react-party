@@ -12,13 +12,15 @@ import Box from 'components/Box';
 import {
   Title,
   RecordForm,
-  Input,
   Toggle,
   Switch,
   Slider,
   Text,
   Checkbox,
   Selector,
+  Input,
+  Amount,
+  DatePicker,
   Error,
   SubmitButton,
   CancelButton,
@@ -77,31 +79,30 @@ export default function ModalAddTransaction() {
 
   return (
     <Modal onClose={closeModal}>
-      <Box display={['block', 'none']}>
+      <Box display={['block', 'none']} mb={3}>
         <Header />
       </Box>
-      <Formik
-        initialValues={{
-          isExpense: true,
-          categoryId: '',
-          amount: '',
-          transactionDate: '',
-          comment: '',
-        }}
-        validationSchema={validationSchema}
-        onSubmit={values => {
-          handleSubmit(values);
-        }}
+      <Box
+        display="flex"
+        flexDirection="column"
+        px={[3, 4]}
+        width={['100%', 480]}
       >
-        {formik => (
-          <Box
-            display="flex"
-            flexDirection="column"
-            flexBasis="100%"
-            px={[3, 4]}
-            width={[380, 480]}
-          >
-            <Title>Add transaction</Title>
+        <Title>Add transaction</Title>
+        <Formik
+          initialValues={{
+            isExpense: true,
+            categoryId: '',
+            amount: '',
+            transactionDate: '',
+            comment: '',
+          }}
+          validationSchema={validationSchema}
+          onSubmit={values => {
+            handleSubmit(values);
+          }}
+        >
+          {formik => (
             <RecordForm>
               <Toggle>
                 <Text>Income</Text>
@@ -126,44 +127,47 @@ export default function ModalAddTransaction() {
                   ))}
                 </Selector>
               )}
-              <Box display="flex" gridGap={4}>
-                <Box width="100%">
-                  <Input type="number" name="amount" required />
-                  <ErrorMessage component={Error} name="amount" />
-                </Box>
-                <Box width="100%">
-                  <Datetime
-                    utc={true}
-                    timeFormat={false}
-                    dateFormat="DD.MM.YYYY"
-                    closeOnSelect={true}
-                    onChange={date => {
-                      formik.setFieldValue(
-                        'transactionDate',
-                        formatDate(new Date(date._d))
-                      );
-                    }}
-                    inputProps={{
-                      required: true,
-                      name: 'transactionDate',
-                    }}
-                    renderInput={props => {
-                      return <Input {...props} />;
-                    }}
-                  />
-                  <ErrorMessage component={Error} name="transactionDate" />
-                </Box>
+              <Box
+                display="flex"
+                flexWrap="wrap"
+                width="100%"
+                maxWidth="400px"
+                gridGap={4}
+              >
+                <Amount type="number" name="amount" required />
+                <ErrorMessage component={Error} name="amount" />
+
+                <DatePicker
+                  utc={true}
+                  timeFormat={false}
+                  dateFormat="DD.MM.YYYY"
+                  closeOnSelect={true}
+                  onChange={date => {
+                    formik.setFieldValue(
+                      'transactionDate',
+                      formatDate(new Date(date._d))
+                    );
+                  }}
+                  inputProps={{
+                    required: true,
+                    name: 'transactionDate',
+                  }}
+                  renderInput={props => {
+                    return <Input {...props} />;
+                  }}
+                />
+                <ErrorMessage component={Error} name="transactionDate" />
               </Box>
               <Input type="text" name="comment" />
               <ErrorMessage component={Error} name="comment" />
               <SubmitButton type="submit">Add</SubmitButton>
             </RecordForm>
-            <CancelButton type="button" onClick={closeModal}>
-              Cancel
-            </CancelButton>
-          </Box>
-        )}
-      </Formik>
+          )}
+        </Formik>
+        <CancelButton type="button" onClick={closeModal}>
+          Cancel
+        </CancelButton>
+      </Box>
     </Modal>
   );
 }
