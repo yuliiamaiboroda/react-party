@@ -13,122 +13,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-selectors';
 import { getTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-operations';
 
-const fakeData = [
-  {
-    id: 'string',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Education',
-    amount: 500.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string43',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Education',
-    amount: 500.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string2',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Leisure',
-    amount: 340.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string3',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Car',
-    amount: 750.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string4',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Self care',
-    amount: 220.0,
-    balanceAfter: 0,
-  },
-  // {
-  //   id: 'string5',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Pub',
-  //   amount: 150.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string55',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: '6th',
-  //   amount: 330.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string56',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: '6th',
-  //   amount: 330.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string57',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Extra-2',
-  //   amount: 330.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string58',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Extra',
-  //   amount: 200.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string59',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Gold',
-  //   amount: 200.0,
-  //   balanceAfter: 0,
-  // },
-];
-
 const colors = [
-  '#FED057',
-  '#FFD8D0',
+  '#98DE74',
+  '#FED037',
+  '#FED098',
+  '#FFD8D0',  
   '#FD9498',
   '#C5BAFF',
   '#6E78E8',
@@ -164,35 +53,13 @@ const DiagramTab = () => {
     }
   };
 
-  console.log('transactionSummary >>>', transactionSummary);
-
-  const dataLabels = fakeData.map(el => el.comment);
-  const dataAmount = fakeData.map(el => el.amount);
-
-  const options = {
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-  };
-
-  const data = {
-    labels: dataLabels,
-    datasets: [
-      {
-        data: dataAmount,
-        backgroundColor: colors,
-        borderWidth: 0,
-      },
-    ],
-  };
-
   return (
     <>
       <Title>Statistics</Title>
       <Wrapper>
-        <Chart data={data} options={options} />
+        {transactionSummary && (
+          <Chart datas={transactionSummary} colors={colors} />
+        )}
         <TableWrapper>
           <DropdownWrapper>
             <SelWrap>
@@ -229,7 +96,6 @@ const DiagramTab = () => {
               </Select>
             </SelWrap>
           </DropdownWrapper>
-          {/* <Table data={fakeData} colors={colors} /> */}
           {transactionSummary && (
             <Table data={transactionSummary} colors={colors} />
           )}
