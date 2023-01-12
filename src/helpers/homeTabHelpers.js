@@ -6,3 +6,5 @@ export const formatDateInStr = date => {
 export const formatTransType = type => (type === 'INCOME' ? '+' : '-');
 
 export const switchColor = type => (type === 'INCOME' ? '#24CCA7' : '#FF6596');
+
+export const transformEmptyComment = comment => (comment ? comment : '-');
