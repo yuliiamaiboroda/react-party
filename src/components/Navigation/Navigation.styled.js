@@ -16,8 +16,7 @@ export const Nav = styled.nav`
 `;
 
 export const LinkHome = styled(NavLink)`
-  &:focus,
-  &:active {
+  &.active {
     font-weight: bold;
     color: black;
     transform: scale(1.1);
@@ -29,8 +28,7 @@ export const LinkHome = styled(NavLink)`
   @media screen and (min-width: 768px) {
     position: relative;
 
-    &:focus,
-    &:active {
+    &.active {
       transform: none;
     }
     &::after {
@@ -45,8 +43,7 @@ export const LinkHome = styled(NavLink)`
   }
 `;
 export const LinkStatistics = styled(NavLink)`
-  &:focus,
-  &:active {
+  &.active {
     font-weight: bold;
     color: black;
     transform: scale(1.1);
@@ -58,8 +55,7 @@ export const LinkStatistics = styled(NavLink)`
   @media screen and (min-width: 768px) {
     position: relative;
 
-    &:focus,
-    &:active {
+    &.active {
       transform: none;
     }
     &::after {

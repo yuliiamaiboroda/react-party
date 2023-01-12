@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchingCurrentUser } from 'redux/authController/authController-operations';
 
 // create new transaction for logged in user
 export const createTransaction = createAsyncThunk(
