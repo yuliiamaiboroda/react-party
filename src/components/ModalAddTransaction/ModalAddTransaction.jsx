@@ -19,9 +19,10 @@ import {
   Checkbox,
   Selector,
   Input,
-  Amount,
+  InputContainer,
   DatePicker,
   Error,
+  Comment,
   SubmitButton,
   CancelButton,
 } from './ModalAddTransaction.styled';
@@ -37,7 +38,7 @@ export default function ModalAddTransaction() {
   const validationSchema = Yup.object({
     isExpense: Yup.bool().required(),
     categoryId: Yup.string(),
-    amount: Yup.number('not a number')
+    amount: Yup.number('The value must be a number')
       .moreThan(0, 'The number must be greater than 0')
       .required('Required field'),
     transactionDate: Yup.date('Wrong date standart')
@@ -134,31 +135,38 @@ export default function ModalAddTransaction() {
                 maxWidth="400px"
                 gridGap={4}
               >
-                <Amount type="number" name="amount" required />
-                <ErrorMessage component={Error} name="amount" />
-
-                <DatePicker
-                  utc={true}
-                  timeFormat={false}
-                  dateFormat="DD.MM.YYYY"
-                  closeOnSelect={true}
-                  onChange={date => {
-                    formik.setFieldValue(
-                      'transactionDate',
-                      formatDate(new Date(date._d))
-                    );
-                  }}
-                  inputProps={{
-                    required: true,
-                    name: 'transactionDate',
-                  }}
-                  renderInput={props => {
-                    return <Input {...props} />;
-                  }}
-                />
-                <ErrorMessage component={Error} name="transactionDate" />
+                <InputContainer>
+                  <Input type="number" name="amount" required />
+                  <ErrorMessage component={Error} name="amount" />
+                </InputContainer>
+                <InputContainer>
+                  <DatePicker
+                    utc={true}
+                    timeFormat={false}
+                    dateFormat="DD.MM.YYYY"
+                    closeOnSelect={true}
+                    onChange={date => {
+                      formik.setFieldValue(
+                        'transactionDate',
+                        formatDate(new Date(date._d))
+                      );
+                    }}
+                    inputProps={{
+                      required: true,
+                      name: 'transactionDate',
+                    }}
+                    renderInput={props => {
+                      return <Input {...props} />;
+                    }}
+                  />
+                  <ErrorMessage component={Error} name="transactionDate" />
+                </InputContainer>
               </Box>
-              <Input type="text" name="comment" />
+              <Comment
+                onChange={formik.handleChange}
+                name="comment"
+                as="textarea"
+              />
               <ErrorMessage component={Error} name="comment" />
               <SubmitButton type="submit">Add</SubmitButton>
             </RecordForm>

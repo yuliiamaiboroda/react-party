@@ -89,12 +89,43 @@ export const Input = styled(Field)`
   width: 100%;
   max-width: 400px;
   height: 32px;
+
+  padding-left: ${p => p.theme.space[2]}px;
+  padding-right: ${p => p.theme.space[2]}px;
+
+  font-family: ${p => p.theme.fonts.heading};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.m}px;
+  line-height: ${p => p.theme.lineHeights.body};
+
+  color: #000000;
 `;
 
-export const Amount = styled(Field)`
+export const Comment = styled(Field)`
   width: 100%;
   max-width: 400px;
-  height: 32px;
+  height: 84px;
+
+  resize: none;
+
+  padding-left: ${p => p.theme.space[2]}px;
+  padding-right: ${p => p.theme.space[2]}px;
+
+  font-family: ${p => p.theme.fonts.heading};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.m}px;
+  line-height: ${p => p.theme.lineHeights.body};
+
+  color: ${p => p.theme.colors.text};
+
+  @media screen and (min-width: 400px) {
+    height: 32px;
+  }
+`;
+
+export const InputContainer = styled.div`
+  width: 100%;
+  max-width: 400px;
 
   @media screen and (min-width: 400px) {
     width: calc(50% - 16px);
@@ -105,17 +136,16 @@ export const DatePicker = styled(Datetime)`
   width: 100%;
   max-width: 400px;
   height: 32px;
-
-  @media screen and (min-width: 400px) {
-    width: calc(50% - 16px);
-  }
 `;
 
 export const Error = styled.div`
-  position: absolute;
-  margin-top: ${p => p.theme.space[2]}px;
+  margin-top: ${p => p.theme.space[1]}px;
 
   color: ${p => p.theme.colors.expense};
+  font-family: ${p => p.theme.fonts.heading};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.xs}px;
+  line-height: ${p => p.theme.lineHeights.body};
   text-align: center;
 `;
 
@@ -123,7 +153,7 @@ const ModalButton = styled.button`
   margin: 0 auto;
   padding: 0 ${p => p.theme.space[3]}px;
 
-  min-width: 300px;
+  min-width: 280px;
   height: 50px;
 
   font-family: ${p => p.theme.fonts.heading};
