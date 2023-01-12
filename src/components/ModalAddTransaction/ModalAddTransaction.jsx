@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field, FormikProvider } from 'formik';
 import * as Yup from 'yup';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,6 +26,9 @@ import {
 
 import { TRANSACTION_TYPE } from 'constantes';
 
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
+
 export default function ModalAddTransaction() {
   const transactionCategories = useSelector(selectTransactionCategories);
   const closeModal = useCloseModalAddTrans();
@@ -42,7 +45,7 @@ export default function ModalAddTransaction() {
       .moreThan(0, 'The number must be greater than 0')
       .required('Required field'),
     transactionDate: Yup.date('Wrong date standart')
-      .max(formatDate(), 'Please choose a date no later than today')
+      .max(formatDate(new Date()), 'Please choose a date no later than today')
       .required('Required field'),
     comment: Yup.string().max(
       200,
@@ -132,7 +135,25 @@ export default function ModalAddTransaction() {
                   <ErrorMessage component={Error} name="amount" />
                 </Box>
                 <Box width="100%">
-                  <Input type="date" name="transactionDate" required />
+                  <Datetime
+                    strictParsing={false}
+                    timeFormat={false}
+                    dateFormat="DD.MM.YYYY"
+                    closeOnSelect={true}
+                    onChange={date =>
+                      formik.setFieldValue(
+                        'transactionDate',
+                        formatDate(new Date(date._d))
+                      )
+                    }
+                    inputProps={{
+                      required: true,
+                      name: 'transactionDate',
+                    }}
+                    renderInput={props => {
+                      return <Input {...props} />;
+                    }}
+                  />
                   <ErrorMessage component={Error} name="transactionDate" />
                 </Box>
               </Box>
