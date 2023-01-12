@@ -29,6 +29,23 @@ export const Li = styled.li`
   box-shadow: ${p => p.theme.shadows.table};
 `;
 
+export const TotalSum = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 395px;
+  padding: 5px 20px;
+  margin-top: 5px;
+`;
+
+export const Red = styled.span`
+color: ${p => p.theme.colors.expense};
+`
+
+export const Green = styled.span`
+color: ${p => p.theme.colors.income};
+`
+
 export const Wrapper = styled.div`
   display: flex;
   gap: 16px;
@@ -46,6 +63,14 @@ export const Text = styled.p`
 font-family: ${p => p.theme.fonts.heading};
 font-size: ${p => p.theme.fontSizes.s}px;
 font-weight: ${p => p.theme.fontWeights.normal};
+line-height: ${p => p.theme.lineHeights.body};
+color: ${p => p.theme.colors.text};
+`;
+
+export const TotalText = styled.p`
+font-family: ${p => p.theme.fonts.heading};
+font-size: ${p => p.theme.fontSizes.s}px;
+font-weight: ${p => p.theme.fontWeights.bold};
 line-height: ${p => p.theme.lineHeights.body};
 color: ${p => p.theme.colors.text};
 `;
