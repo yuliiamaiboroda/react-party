@@ -40,7 +40,7 @@ const Table = ({ data, colors }) => {
                 ></span>
                 <Text>{el.name}</Text>
               </Wrapper>
-              <Text>{el.total.toFixed(2)}</Text>
+              <Text>{Math.abs(el.total).toFixed(2)}</Text>
             </Li>
           ))
         ) : (
@@ -51,7 +51,7 @@ const Table = ({ data, colors }) => {
         <TotalSum>
           <TotalText>Expenses:</TotalText>
           <TotalText>
-            <Red>{expenseSummary.toFixed(2)}</Red>
+            <Red>{Math.abs(expenseSummary).toFixed(2)}</Red>
           </TotalText>
         </TotalSum>
         <TotalSum>
