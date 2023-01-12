@@ -1,4 +1,4 @@
-// import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chart from 'components/Chart/Chart';
 import Table from 'components/Table/Table';
 import {
@@ -6,124 +6,17 @@ import {
   Wrapper,
   DropdownWrapper,
   TableWrapper,
+  Select,
+  SelWrap,
 } from './DiagramTab.styled';
-
-const fakeData = [
-  {
-    id: 'string',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Education',
-    amount: 500.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string43',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Education',
-    amount: 500.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string2',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Leisure',
-    amount: 340.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string3',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Car',
-    amount: 750.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string4',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Self care',
-    amount: 220.0,
-    balanceAfter: 0,
-  },
-  // {
-  //   id: 'string5',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Pub',
-  //   amount: 150.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string55',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: '6th',
-  //   amount: 330.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string56',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: '6th',
-  //   amount: 330.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string57',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Extra-2',
-  //   amount: 330.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string58',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Extra',
-  //   amount: 200.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string59',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Gold',
-  //   amount: 200.0,
-  //   balanceAfter: 0,
-  // },
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-selectors';
+import { getTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-operations';
 
 const colors = [
-  '#FED057',
-  '#FFD8D0',
+  '#FED037',
+  '#FED098',
+  '#FFD8D0',  
   '#FD9498',
   '#C5BAFF',
   '#6E78E8',
@@ -136,60 +29,75 @@ const colors = [
 ];
 
 const DiagramTab = () => {
-  // const [selectedMounth, setSelectedMounth] = useState('january')
+  const transactionSummary = useSelector(selectTransactionSummary);
+  const [selectedMonth, setSelectedMonth] = useState('1');
+  const [selectedYear, setSelectedYear] = useState('2023');
+  const dispatch = useDispatch();
 
-  const dataLabels = fakeData.map(el => el.comment);
-  const dataAmount = fakeData.map(el => el.amount);
+  useEffect(() => {
+    dispatch(
+      getTransactionSummary({
+        month: Number(selectedMonth),
+        year: Number(selectedYear),
+      })
+    );
+  }, [dispatch, selectedMonth, selectedYear]);
 
-  const options = {
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-  };
-
-  const data = {
-    labels: dataLabels,
-    datasets: [
-      {
-        data: dataAmount,
-        backgroundColor: colors,
-        borderWidth: 0,
-      },
-    ],
+  const handleSelectChange = e => {
+    if (e.target.name === 'month') {
+      setSelectedMonth(e.target.value);
+    }
+    if (e.target.name === 'year') {
+      setSelectedYear(e.target.value);
+    }
   };
 
   return (
     <>
       <Title>Statistics</Title>
       <Wrapper>
-        <Chart data={data} options={options} />
+        {transactionSummary && (
+          <Chart datas={transactionSummary} colors={colors} />
+        )}
         <TableWrapper>
           <DropdownWrapper>
-            <select>
-              <option value="january">January</option>
-              <option value="february">February</option>
-              <option value="march">March</option>
-              <option value="april">April</option>
-              <option value="may">May</option>
-              <option value="june">June</option>
-              <option value="july">July</option>
-              <option value="august">August</option>
-              <option value="september">September</option>
-              <option value="october">October</option>
-              <option value="november ">November </option>
-              <option value="december ">December </option>
-            </select>
-            <select>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-              <option value="2023">2023</option>
-            </select>
+            <SelWrap>
+              <Select
+                value={selectedMonth}
+                name="month"
+                onChange={handleSelectChange}
+              >
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November </option>
+                <option value="12">December </option>
+              </Select>
+            </SelWrap>
+            <SelWrap>
+              <Select
+                value={selectedYear}
+                name="year"
+                onChange={handleSelectChange}
+              >
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </Select>
+            </SelWrap>
           </DropdownWrapper>
-          <Table data={fakeData} colors={colors} />
+          {transactionSummary && (
+            <Table data={transactionSummary} colors={colors} />
+          )}
         </TableWrapper>
       </Wrapper>
     </>
