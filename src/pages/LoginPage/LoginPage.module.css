@@ -21,12 +21,14 @@
   screen and (min-resolution: 192dpi),
   screen and (min-resolution: 2dppx) {
   .page_wrapper {
+    background-repeat: no-repeat;
+    background-position: bottom 0 left 0, top 0 right 0, top 60px left 114px;
     background-image: url(../../images/bg-tablet-login/ellipse-down@2x.png),
       url(../../images/bg-tablet-login/ellipse-up@2x.png),
       url(../../images/frame-login/frame-tablet@2x.png);
   }
-} */
-/* @media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+}
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
   screen and (min-resolution: 192dpi),
   screen and (min-resolution: 2dppx) {
   .page_wrapper {

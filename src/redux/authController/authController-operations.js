@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix';
 
 axios.defaults.baseURL = 'https://wallet.goit.ua/';
 
@@ -15,12 +16,14 @@ const token = {
 // Sign up new user
 export const signUp = createAsyncThunk(
   'auth/sign-up',
-  async (user, { rejectWithValue }) => {
+  async ({ resetForm, ...user }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/api/auth/sign-up', user);
       token.set(data.token);
       return data;
     } catch (error) {
+      resetForm();
+      Notify.failure('Please check your email and password and try again');
       return rejectWithValue(error.message);
     }
   }
@@ -29,12 +32,14 @@ export const signUp = createAsyncThunk(
 // Sign in existing user
 export const signIn = createAsyncThunk(
   'auth/sign-in',
-  async (user, { rejectWithValue }) => {
+  async ({ resetForm, ...user }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/api/auth/sign-in', user);
       token.set(data.token);
       return data;
     } catch (error) {
+      resetForm();
+      Notify.failure('Please change your email ore name and try again');
       return rejectWithValue(error.message);
     }
   }
