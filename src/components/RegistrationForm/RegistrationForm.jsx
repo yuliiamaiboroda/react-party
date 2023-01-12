@@ -30,13 +30,13 @@ function RegistrationForm() {
       .oneOf([Yup.ref('password')], 'Passwords do not match')
       .required('Required'),
     username: Yup.string()
-      .min(1, 'Please enter a name more than 0 character')
+      .min(2, 'Please enter a name more than 1 character')
       .max(12, 'Please enter a name less than 12 character')
       .required('Required'),
   });
 
-  const handleRegister = ({ username, email, password }) => {
-    dispatch(signUp({ username, email, password }));
+  const handleRegister = ({ username, email, password }, { resetForm }) => {
+    dispatch(signUp({ username, email, password, resetForm }));
   };
 
   return (

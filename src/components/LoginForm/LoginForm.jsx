@@ -27,8 +27,8 @@ function LoginForm() {
       .required('Required'),
   });
 
-  const handleLogin = ({ email, password }) => {
-    dispatch(signIn({ email, password }));
+  const handleLogin = ({ email, password }, { resetForm }) => {
+    dispatch(signIn({ email, password, resetForm }));
   };
 
   return (
