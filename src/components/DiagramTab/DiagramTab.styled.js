@@ -46,6 +46,8 @@ export const SelWrap = styled.div`
 
 export const Select = styled.select`
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background-color: transparent;
   padding: 10px 20px;
   margin: 0;
@@ -57,4 +59,9 @@ export const Select = styled.select`
   line-height: ${p => p.theme.lineHeights.heading};
   border: ${p => p.theme.borders.normal};
   border-radius: ${p => p.theme.radii.normal}px;
+`;
+
+export const Option = styled.option`
+  background-color: #e5e5e5;
+  font-size: ${p => p.theme.fontSizes.s}px;
 `;

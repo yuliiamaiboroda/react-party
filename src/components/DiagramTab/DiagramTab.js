@@ -6,6 +6,7 @@ import {
   Wrapper,
   DropdownWrapper,
   TableWrapper,
+  Option,
   Select,
   SelWrap,
 } from './DiagramTab.styled';
@@ -67,18 +68,18 @@ const DiagramTab = () => {
                 name="month"
                 onChange={handleSelectChange}
               >
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November </option>
-                <option value="12">December </option>
+                <Option value="1">January</Option>
+                <Option value="2">February</Option>
+                <Option value="3">March</Option>
+                <Option value="4">April</Option>
+                <Option value="5">May</Option>
+                <Option value="6">June</Option>
+                <Option value="7">July</Option>
+                <Option value="8">August</Option>
+                <Option value="9">September</Option>
+                <Option value="10">October</Option>
+                <Option value="11">November </Option>
+                <Option value="12">December </Option>
               </Select>
             </SelWrap>
             <SelWrap>
@@ -87,11 +88,11 @@ const DiagramTab = () => {
                 name="year"
                 onChange={handleSelectChange}
               >
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
+                <Option value="2019">2019</Option>
+                <Option value="2020">2020</Option>
+                <Option value="2021">2021</Option>
+                <Option value="2022">2022</Option>
+                <Option value="2023">2023</Option>
               </Select>
             </SelWrap>
           </DropdownWrapper>
