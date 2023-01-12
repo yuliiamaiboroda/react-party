@@ -16,7 +16,6 @@ import { getTransactionSummary } from 'redux/transactionSummaryController/transa
 
 const colors = [
   '#FED037',
-  '#FED098',
   '#FFD8D0',  
   '#FD9498',
   '#C5BAFF',
@@ -26,11 +25,16 @@ const colors = [
   '#24CCA7',
   '#00AD84',
   '#14EA88',
-  '#75DE12',
+  '#80B189',
+  '#DEDD98',
+  '#C5B070',
+  '#CF89C1',
 ];
 
 const DiagramTab = () => {
   const transactionSummary = useSelector(selectTransactionSummary);
+  const balanceUserMoney = useSelector(state => state.finance.totalBalance);
+
   const [selectedMonth, setSelectedMonth] = useState('1');
   const [selectedYear, setSelectedYear] = useState('2023');
   const dispatch = useDispatch();
@@ -58,7 +62,7 @@ const DiagramTab = () => {
       <Title>Statistics</Title>
       <Wrapper>
         {transactionSummary && (
-          <Chart datas={transactionSummary} colors={colors} />
+          <Chart datas={transactionSummary} colors={colors} balance={balanceUserMoney} />
         )}
         <TableWrapper>
           <DropdownWrapper>
