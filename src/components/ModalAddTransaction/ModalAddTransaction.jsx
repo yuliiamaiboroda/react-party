@@ -25,6 +25,7 @@ import {
 } from './ModalAddTransaction.styled';
 
 import { TRANSACTION_TYPE } from 'constantes';
+import Header from 'components/Header/Header';
 
 export default function ModalAddTransaction() {
   const transactionCategories = useSelector(selectTransactionCategories);
@@ -76,6 +77,9 @@ export default function ModalAddTransaction() {
 
   return (
     <Modal onClose={closeModal}>
+      <Box display={['block', 'none']}>
+        <Header />
+      </Box>
       <Formik
         initialValues={{
           isExpense: true,
