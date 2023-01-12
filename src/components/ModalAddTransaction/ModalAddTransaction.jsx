@@ -1,8 +1,8 @@
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useEffect } from 'react';
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTransactionCategories } from 'redux/transactionCategories/transactionCategories-operations';
 import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
 import { createTransaction } from 'redux/transactionsController/transactionController-operations';
 import { useCloseModalAddTrans } from 'hooks';
@@ -26,17 +26,10 @@ import {
 
 import { TRANSACTION_TYPE } from 'constantes';
 
-import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
-
 export default function ModalAddTransaction() {
   const transactionCategories = useSelector(selectTransactionCategories);
   const closeModal = useCloseModalAddTrans();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTransactionCategories());
-  }, [dispatch]);
 
   const validationSchema = Yup.object({
     isExpense: Yup.bool().required(),

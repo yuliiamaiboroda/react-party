@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchingCurrentUser } from 'redux/authController/authController-operations';
 
 // create new transaction for logged in user
 export const createTransaction = createAsyncThunk(
@@ -17,16 +18,16 @@ export const createTransaction = createAsyncThunk(
 // Get all transactions for logged in user
 export const getAllTransactions = createAsyncThunk(
   'transactions/getAllTransiction',
-  async (_, { rejectWithValue , getState }) => {
+  async (_, { rejectWithValue, getState }) => {
     const isToken = getState().auth.token;
-    if(isToken) { 
+    if (isToken) {
       try {
-      const { data } = await axios.get('/api/transactions');
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }}
-   
+        const { data } = await axios.get('/api/transactions');
+        return data;
+      } catch (error) {
+        return rejectWithValue(error.message);
+      }
+    }
   }
 );
 
