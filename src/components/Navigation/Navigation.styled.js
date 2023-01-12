@@ -16,11 +16,21 @@ export const Nav = styled.nav`
 `;
 
 export const LinkHome = styled(NavLink)`
+  &.active {
+    font-weight: bold;
+    color: black;
+    transform: scale(1.1);
+    opacity: 1;
+  }
   @media screen and (max-width: 767px) {
     margin-bottom: 15px;
   }
   @media screen and (min-width: 768px) {
     position: relative;
+
+    &.active {
+      transform: none;
+    }
     &::after {
       display: block;
       position: absolute;
@@ -33,11 +43,21 @@ export const LinkHome = styled(NavLink)`
   }
 `;
 export const LinkStatistics = styled(NavLink)`
+  &.active {
+    font-weight: bold;
+    color: black;
+    transform: scale(1.1);
+    opacity: 1;
+  }
   @media screen and (max-width: 767px) {
     margin-bottom: 43px;
   }
   @media screen and (min-width: 768px) {
     position: relative;
+
+    &.active {
+      transform: none;
+    }
     &::after {
       display: block;
       position: absolute;
@@ -70,22 +90,15 @@ export const Link = styled.li`
   font-weight: 400;
   line-height: 1.5;
   color: black;
-  opacity: 0.8;
+  opacity: 1.2;
   &:hover,
   &:focus {
     transform: scale(1.2);
   }
-  &:active {
-    font-weight: bold;
-    color: black;
-    transform: scale(1.1);
-    opacity: 1;
-  }
   @media screen and (min-width: 768px) {
     margin-bottom: 21px;
     &:hover,
-    &:focus,
-    &:active {
+    &:focus {
       transform: none;
     }
   }
@@ -98,4 +111,3 @@ export const Img = styled.img`
     width: 38px;
   }
 `;
-

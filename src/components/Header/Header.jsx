@@ -7,6 +7,7 @@ import {
   Name,
   ImgSep,
   Button,
+  ImgWallet,
 } from './Header.styled';
 import LogoIcon from 'images/Header/logo-icon.svg';
 import SeparatorIcon from 'images/Header/separator-icon.svg';
@@ -26,10 +27,10 @@ const Header = () => {
   const openModal = useOpenModalLogout();
 
   return (
-    <Container>
+    // <Container>
       <HeaderLine>
         <LogoWrapper to="/">
-          <img src={LogoIcon} alt="Main logo" />
+          <ImgWallet src={LogoIcon} alt="Main logo" />
           <H2>Wallet</H2>
         </LogoWrapper>
         <Wrapper>
@@ -47,7 +48,7 @@ const Header = () => {
           {isModalOpen && <ModalLogout />}
         </Wrapper>
       </HeaderLine>
-    </Container>
+    //  </Container> 
   );
 };
 
