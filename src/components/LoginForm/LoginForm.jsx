@@ -95,4 +95,3 @@ function LoginForm() {
 }
 
 export default LoginForm;
-console.log('first', first);
