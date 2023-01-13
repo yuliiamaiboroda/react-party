@@ -6,6 +6,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
 import { FormTextInput } from 'components/FormTextInput/FormTextInput';
+import PasswordStrenght from './PasswordStrength';
 
 import { ReactComponent as EmailIcon } from '../../icons/email.svg';
 import { ReactComponent as LockIcon } from '../../icons/lock.svg';
@@ -81,6 +82,8 @@ function RegistrationForm() {
                 placeholder="Password"
                 className={css.input}
               />
+
+              <PasswordStrenght password={values.password} />
 
               <FormTextInput
                 label={<LockIcon width={16} height={21} />}

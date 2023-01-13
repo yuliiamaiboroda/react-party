@@ -16,9 +16,9 @@ export default function DashBoardPage() {
     dispatch(getAllTransactions());
   },
 [dispatch]);
-  return (
-    <Box p={5}> 
-    <Header />
+  return (<><Header />
+  <Box p={5}> 
+    
     <Navigation />
     <Media  queries={{
            medium: "(min-width: 768px) and (max-width: 1199px)",
@@ -44,6 +44,8 @@ export default function DashBoardPage() {
         </Media>
     <Outlet/>
   </Box>
+  </>
+    
  );
 }
 

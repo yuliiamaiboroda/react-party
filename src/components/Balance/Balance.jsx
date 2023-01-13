@@ -6,7 +6,7 @@ export default function Balance() {
   return (
     <DivBalnce>
       <PText>Your balance</PText>
-      <PMoney>&#8372; {balanceUserMoney}</PMoney>
+      <PMoney>&#8372; {balanceUserMoney.toFixed(2)}</PMoney>
     </DivBalnce>
   );
 }
