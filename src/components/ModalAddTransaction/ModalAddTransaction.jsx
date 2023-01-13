@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import 'react-datetime/css/react-datetime.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -49,6 +49,7 @@ export default function ModalAddTransaction() {
       200,
       'The comment should not exceed 200 characters'
     ),
+    test: Yup.string('not a ctring').required('is required'),
   });
 
   const handleSubmit = ({
@@ -98,9 +99,11 @@ export default function ModalAddTransaction() {
             amount: '',
             transactionDate: '',
             comment: '',
+            test: '',
           }}
           validationSchema={validationSchema}
           onSubmit={values => {
+            console.log('values: ', values);
             handleSubmit(values);
           }}
         >
@@ -114,7 +117,12 @@ export default function ModalAddTransaction() {
                 </Switch>
                 <Expense status={formik.values.isExpense}>Expense</Expense>
               </Toggle>
-              {/* <ModalSelect /> */}
+              <ModalSelect
+                name="test"
+                onChange={id => formik.setFieldValue('test', id)}
+                options={expenseCategories}
+              />
+              <ErrorMessage name="test" />
               {formik.values.isExpense && (
                 <Selector
                   name="categoryId"

@@ -9,11 +9,13 @@ export const Dropdown = styled.ul`
   max-width: 100%;
 
   background-color: tomato;
+
+  z-index: 9999;
 `;
 
 export const Option = styled.li`
   width: 100%;
-  height: 50px;
+  height: 32px;
 
   background-color: yellow;
 
