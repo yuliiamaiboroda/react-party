@@ -43,16 +43,20 @@ export default function Modal({ onClose, children }) {
       alignItems="center"
       backgroundColor="backdropBg"
       overflow="auto"
-      p={3}
+      p={[0, 3]}
     >
       <Box
         position="relative"
-        minWidth="200px"
-        minHeight="200px"
-        p={4}
+        minWidth={['100%', '200px']}
+        minHeight={['100%', '200px']}
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        p={[0, 4]}
         backgroundColor="lightBg"
-        borderRadius="light"
+        borderRadius={['none', 'light']}
         m="auto"
+        overflow={['auto', 'visible']}
       >
         <CloseModalBtn type="button" onClick={handleClose}>
           <HiX style={{ pointerEvents: 'none' }} />
