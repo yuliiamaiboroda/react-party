@@ -12,7 +12,6 @@ export const DivBalnce = styled.div`
   margin-bottom: 32px;
   @media (min-width: 768px) {
     width: 336px;
-    margin-left: -20px;
     margin-bottom: 20px;
     margin-right: 32px;
   }

@@ -30,6 +30,7 @@ export const Div = styled.div`
   }
   @media (max-width: 768px) {
     width: 705px;
+    max-width: 100%;
   }
 `;
 

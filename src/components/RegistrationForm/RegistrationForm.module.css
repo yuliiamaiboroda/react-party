@@ -120,7 +120,7 @@
   border-radius: 20px;
   text-align: center;
   background-color: #fff;
-  border: 2px solid #4a56e2;
+  border: 1px solid #4a56e2;
 
   transition: 100ms linear, color 100ms linear, border-color 100ms linear;
 }

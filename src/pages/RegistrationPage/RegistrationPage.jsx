@@ -4,7 +4,7 @@ import css from './RegistrationPage.module.css';
 
 export default function LoginPage() {
   return (
-    <div>
+    <div className={css.page_bg}>
       <div className={css.page_reg}>
         <p className={css.page_text_reg}>Finance App</p>
         <RegistrationForm />
