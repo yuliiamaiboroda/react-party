@@ -12,7 +12,8 @@ import {
 import LogoIcon from 'images/Header/logo-icon.svg';
 import SeparatorIcon from 'images/Header/separator-icon.svg';
 import ExitIcon from 'images/Header/exit-icon.svg';
-// import Container from 'components/Container';
+import Box from 'components/Box';
+import Container from 'components/Container';
 import ModalLogout from 'components/ModalLogout';
 import { useOpenModalLogout } from 'hooks';
 import { useSelector } from 'react-redux';
@@ -27,24 +28,30 @@ const Header = () => {
   const openModal = useOpenModalLogout();
 
   return (
-    // <Container>
-    <HeaderLine>
-      <LogoWrapper to="/">
-        <ImgWallet src={LogoIcon} alt="Main logo" />
-        <H2>Wallet</H2>
-      </LogoWrapper>
-      <Wrapper>
-        {/* Тимчасова умова 👇, поки немає авторизації */}
-        <Name>{username}</Name>
-        <ImgSep src={SeparatorIcon} alt="separator" />
-        <Button type="Button" onClick={openModal}>
-          <img src={ExitIcon} alt="exit icon" style={{ marginRight: '8px' }} />
-          Exit
-        </Button>
-        {isModalOpen && <ModalLogout />}
-      </Wrapper>
-    </HeaderLine>
-    //  </Container>
+    <Box backgroundColor="lightBg">
+      <Container>
+        <HeaderLine>
+          <LogoWrapper to="/">
+            <ImgWallet src={LogoIcon} alt="Main logo" />
+            <H2>Wallet</H2>
+          </LogoWrapper>
+          <Wrapper>
+            {/* Тимчасова умова 👇, поки немає авторизації */}
+            <Name>{username}</Name>
+            <ImgSep src={SeparatorIcon} alt="separator" />
+            <Button type="Button" onClick={openModal}>
+              <img
+                src={ExitIcon}
+                alt="exit icon"
+                style={{ marginRight: '8px' }}
+              />
+              Exit
+            </Button>
+            {isModalOpen && <ModalLogout />}
+          </Wrapper>
+        </HeaderLine>
+      </Container>
+    </Box>
   );
 };
 
