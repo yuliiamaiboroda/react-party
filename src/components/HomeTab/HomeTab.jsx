@@ -27,6 +27,7 @@ import {
 } from 'helpers/homeTabHelpers';
 import Media from 'react-media';
 import React, { Fragment } from 'react';
+import { normalizedNumber } from 'helpers/normalizedNumber';
 
 export default function HomeTab() {
   const dispatch = useDispatch();
@@ -106,7 +107,7 @@ export default function HomeTab() {
                         </SpanMobile>
                       </LiMobile>
                       <LiMobile>
-                        Sum <SpanMobile>{amount}</SpanMobile>
+                        Sum <SpanMobile>{normalizedNumber(amount)}</SpanMobile>
                       </LiMobile>
                       <LiMobile>
                         Options
@@ -142,7 +143,9 @@ export default function HomeTab() {
                       <P>{formatTransType(type)}</P>
                       <P>{currentTransCateg(categoryId)}</P>
                       <P>{transformEmptyComment(comment)}</P>
-                      <P style={{ color: switchColor(type) }}>{amount}</P>
+                      <P style={{ color: switchColor(type) }}>
+                        {normalizedNumber(amount)}
+                      </P>
                       <P>
                         <Button type="button" onClick={() => hadleDelete(id)}>
                           delete
