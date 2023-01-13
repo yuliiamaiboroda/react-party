@@ -88,9 +88,10 @@ export const Slider = styled.span`
     left: -4px;
     bottom: -3px;
 
-    background-image: url(${p => (p.checked ? iconMinus : iconPlus)});
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url(${iconMinus}), url(${iconPlus});
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    background-size: ${p => (p.checked ? 'auto, 0' : '0, auto')};
     border-radius: ${p => p.theme.radii.circle};
 
     background-color: ${p =>
