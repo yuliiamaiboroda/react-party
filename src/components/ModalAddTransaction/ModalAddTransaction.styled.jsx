@@ -190,6 +190,8 @@ const ModalButton = styled.button`
   min-width: 280px;
   height: 50px;
 
+  border-radius: ${p => p.theme.radii.light}px;
+
   font-family: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.m}px;
@@ -212,14 +214,12 @@ const ModalButton = styled.button`
 
 export const SubmitButton = styled(ModalButton)`
   background: ${p => p.theme.colors.primary};
-  border-radius: ${p => p.theme.radii.light}px;
   border-color: transparent;
 
   color: ${p => p.theme.colors.textLight};
 `;
 export const CancelButton = styled(ModalButton)`
   background: ${p => p.theme.colors.lightBg};
-  border-radius: ${p => p.theme.radii.light}px;
   border: ${p => p.theme.borders.accented};
 
   color: ${p => p.theme.colors.secondary};
