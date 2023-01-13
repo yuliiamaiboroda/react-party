@@ -1,4 +1,4 @@
-// import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chart from 'components/Chart/Chart';
 import Table from 'components/Table/Table';
 import {
@@ -6,123 +6,17 @@ import {
   Wrapper,
   DropdownWrapper,
   TableWrapper,
+  Option,
+  Select,
+  SelWrap,
+  Div,
 } from './DiagramTab.styled';
-
-const fakeData = [
-  {
-    id: 'string',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Education',
-    amount: 500.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string43',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Education',
-    amount: 500.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string2',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Leisure',
-    amount: 340.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string3',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Car',
-    amount: 750.0,
-    balanceAfter: 0,
-  },
-  {
-    id: 'string4',
-    transactionDate: 'string',
-    type: 'EXPENSE',
-    categoryId: 'string',
-    userId: 'string',
-    comment: 'Self care',
-    amount: 220.0,
-    balanceAfter: 0,
-  },
-  // {
-  //   id: 'string5',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Pub',
-  //   amount: 150.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string55',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: '6th',
-  //   amount: 330.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string56',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: '6th',
-  //   amount: 330.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string57',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Extra-2',
-  //   amount: 330.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string58',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Extra',
-  //   amount: 200.0,
-  //   balanceAfter: 0,
-  // },
-  // {
-  //   id: 'string59',
-  //   transactionDate: 'string',
-  //   type: 'EXPENSE',
-  //   categoryId: 'string',
-  //   userId: 'string',
-  //   comment: 'Gold',
-  //   amount: 200.0,
-  //   balanceAfter: 0,
-  // },
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-selectors';
+import { getTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-operations';
 
 const colors = [
-  '#FED057',
+  '#FED037',
   '#FFD8D0',
   '#FD9498',
   '#C5BAFF',
@@ -132,68 +26,258 @@ const colors = [
   '#24CCA7',
   '#00AD84',
   '#14EA88',
-  '#75DE12',
+  '#80B189',
+  '#DEDD98',
+  '#C5B070',
+  '#CF89C1',
 ];
 
 const DiagramTab = () => {
-  // const [selectedMounth, setSelectedMounth] = useState('january')
+  const transactionSummary = useSelector(selectTransactionSummary);
+  const balanceUserMoney = useSelector(state => state.finance.totalBalance);
 
-  const dataLabels = fakeData.map(el => el.comment);
-  const dataAmount = fakeData.map(el => el.amount);
+  const [selectedMonth, setSelectedMonth] = useState('1');
+  const [selectedYear, setSelectedYear] = useState('2023');
+  const dispatch = useDispatch();
 
-  const options = {
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-  };
+  useEffect(() => {
+    dispatch(
+      getTransactionSummary({
+        month: Number(selectedMonth),
+        year: Number(selectedYear),
+      })
+    );
+  }, [dispatch, selectedMonth, selectedYear]);
 
-  const data = {
-    labels: dataLabels,
-    datasets: [
-      {
-        data: dataAmount,
-        backgroundColor: colors,
-        borderWidth: 0,
-      },
-    ],
+  const handleSelectChange = e => {
+    if (e.target.name === 'month') {
+      setSelectedMonth(e.target.value);
+    }
+    if (e.target.name === 'year') {
+      setSelectedYear(e.target.value);
+    }
   };
 
   return (
     <>
-      <Title>Statistics</Title>
-      <Wrapper>
-        <Chart data={data} options={options} />
-        <TableWrapper>
-          <DropdownWrapper>
-            <select>
-              <option value="january">January</option>
-              <option value="february">February</option>
-              <option value="march">March</option>
-              <option value="april">April</option>
-              <option value="may">May</option>
-              <option value="june">June</option>
-              <option value="july">July</option>
-              <option value="august">August</option>
-              <option value="september">September</option>
-              <option value="october">October</option>
-              <option value="november ">November </option>
-              <option value="december ">December </option>
-            </select>
-            <select>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-              <option value="2023">2023</option>
-            </select>
-          </DropdownWrapper>
-          <Table data={fakeData} colors={colors} />
-        </TableWrapper>
-      </Wrapper>
+      <Div>
+        <Title>Statistics</Title>
+        <Wrapper>
+          {transactionSummary && (
+            <Chart
+              datas={transactionSummary}
+              colors={colors}
+              balance={balanceUserMoney}
+            />
+          )}
+          <TableWrapper>
+            <DropdownWrapper>
+              <SelWrap>
+                <Select
+                  value={selectedMonth}
+                  name="month"
+                  onChange={handleSelectChange}
+                >
+                  <Option value="1">January</Option>
+                  <Option value="2">February</Option>
+                  <Option value="3">March</Option>
+                  <Option value="4">April</Option>
+                  <Option value="5">May</Option>
+                  <Option value="6">June</Option>
+                  <Option value="7">July</Option>
+                  <Option value="8">August</Option>
+                  <Option value="9">September</Option>
+                  <Option value="10">October</Option>
+                  <Option value="11">November </Option>
+                  <Option value="12">December </Option>
+                </Select>
+              </SelWrap>
+              <SelWrap>
+                <Select
+                  value={selectedYear}
+                  name="year"
+                  onChange={handleSelectChange}
+                >
+                  <Option value="2019">2019</Option>
+                  <Option value="2020">2020</Option>
+                  <Option value="2021">2021</Option>
+                  <Option value="2022">2022</Option>
+                  <Option value="2023">2023</Option>
+                </Select>
+              </SelWrap>
+            </DropdownWrapper>
+            {transactionSummary && (
+              <Table data={transactionSummary} colors={colors} />
+            )}
+          </TableWrapper>
+        </Wrapper>
+      </Div>
     </>
   );
 };
 
 export default DiagramTab;
+// import React, { useState, useEffect } from 'react';
+// import Chart from 'components/Chart/Chart';
+// import Table from 'components/Table/Table';
+// import {
+//   Title,
+//   Wrapper,
+//   DropdownWrapper,
+//   TableWrapper,
+//   Option,
+//   Select,
+//   SelWrap,
+//   Div,
+// } from './DiagramTab.styled';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { selectTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-selectors';
+// import { getTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-operations';
+
+// const colors = [
+//   '#FED037',
+// <<<<<<< Updated upstream
+//   '#FFD8D0',
+// =======
+//   '#FED098',
+//   '#FFD8D0',
+// >>>>>>> Stashed changes
+//   '#FD9498',
+//   '#C5BAFF',
+//   '#6E78E8',
+//   '#4A56E2',
+//   '#81E1FF',
+//   '#24CCA7',
+//   '#00AD84',
+//   '#14EA88',
+//   '#80B189',
+//   '#DEDD98',
+//   '#C5B070',
+//   '#CF89C1',
+// ];
+
+// const DiagramTab = () => {
+//   const transactionSummary = useSelector(selectTransactionSummary);
+//   const balanceUserMoney = useSelector(state => state.finance.totalBalance);
+
+//   const [selectedMonth, setSelectedMonth] = useState('1');
+//   const [selectedYear, setSelectedYear] = useState('2023');
+//   const dispatch = useDispatch();
+
+//   useEffect(() => {
+//     dispatch(
+//       getTransactionSummary({
+//         month: Number(selectedMonth),
+//         year: Number(selectedYear),
+//       })
+//     );
+//   }, [dispatch, selectedMonth, selectedYear]);
+
+//   const handleSelectChange = e => {
+//     if (e.target.name === 'month') {
+//       setSelectedMonth(e.target.value);
+//     }
+//     if (e.target.name === 'year') {
+//       setSelectedYear(e.target.value);
+//     }
+//   };
+
+//   return (
+//     <>
+// <<<<<<< Updated upstream
+//       <Title>Statistics</Title>
+//       <Wrapper>
+//         {transactionSummary && (
+//           <Chart datas={transactionSummary} colors={colors} balance={balanceUserMoney} />
+//         )}
+//         <TableWrapper>
+//           <DropdownWrapper>
+//             <SelWrap>
+//               <Select
+//                 value={selectedMonth}
+//                 name="month"
+//                 onChange={handleSelectChange}
+//               >
+//                 <Option value="1">January</Option>
+//                 <Option value="2">February</Option>
+//                 <Option value="3">March</Option>
+//                 <Option value="4">April</Option>
+//                 <Option value="5">May</Option>
+//                 <Option value="6">June</Option>
+//                 <Option value="7">July</Option>
+//                 <Option value="8">August</Option>
+//                 <Option value="9">September</Option>
+//                 <Option value="10">October</Option>
+//                 <Option value="11">November </Option>
+//                 <Option value="12">December </Option>
+//               </Select>
+//             </SelWrap>
+//             <SelWrap>
+//               <Select
+//                 value={selectedYear}
+//                 name="year"
+//                 onChange={handleSelectChange}
+//               >
+//                 <Option value="2019">2019</Option>
+//                 <Option value="2020">2020</Option>
+//                 <Option value="2021">2021</Option>
+//                 <Option value="2022">2022</Option>
+//                 <Option value="2023">2023</Option>
+//               </Select>
+//             </SelWrap>
+//           </DropdownWrapper>
+// =======
+//       <Div>
+//         <Title>Statistics</Title>
+//         <Wrapper>
+// >>>>>>> Stashed changes
+//           {transactionSummary && (
+//             <Chart datas={transactionSummary} colors={colors} />
+//           )}
+//           <TableWrapper>
+//             <DropdownWrapper>
+//               <SelWrap>
+//                 <Select
+//                   value={selectedMonth}
+//                   name="month"
+//                   onChange={handleSelectChange}
+//                 >
+//                   <option value="1">January</option>
+//                   <option value="2">February</option>
+//                   <option value="3">March</option>
+//                   <option value="4">April</option>
+//                   <option value="5">May</option>
+//                   <option value="6">June</option>
+//                   <option value="7">July</option>
+//                   <option value="8">August</option>
+//                   <option value="9">September</option>
+//                   <option value="10">October</option>
+//                   <option value="11">November </option>
+//                   <option value="12">December </option>
+//                 </Select>
+//               </SelWrap>
+//               <SelWrap>
+//                 <Select
+//                   value={selectedYear}
+//                   name="year"
+//                   onChange={handleSelectChange}
+//                 >
+//                   <option value="2019">2019</option>
+//                   <option value="2020">2020</option>
+//                   <option value="2021">2021</option>
+//                   <option value="2022">2022</option>
+//                   <option value="2023">2023</option>
+//                 </Select>
+//               </SelWrap>
+//             </DropdownWrapper>
+//             {transactionSummary && (
+//               <Table data={transactionSummary} colors={colors} />
+//             )}
+//           </TableWrapper>
+//         </Wrapper>
+//       </Div>
+//     </>
+//   );
+// };
+
+// export default DiagramTab;

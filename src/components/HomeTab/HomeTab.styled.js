@@ -4,14 +4,14 @@ export const Ul = styled.ul`
   position: sticky;
   top: 0;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   border-radius: 30px;
   background-color: ${p => p.theme.colors.textLight};
   padding: 15px 20px;
 `;
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   padding: 15px 20px;
   border-bottom: 1px solid #dcdcdf;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
@@ -22,6 +22,12 @@ export const Div = styled.div`
   width: 715px;
   max-height: 60vh;
   overflow: auto;
+  @media (min-width: 1280px) {
+    margin-top: 45px;
+  }
+  @media screen and (max-width: 1279px) {
+    margin-right: 32px;
+  }
   @media (max-width: 768px) {
     width: 705px;
   }
