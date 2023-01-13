@@ -5,6 +5,8 @@ import Box from 'components/Box';
 import { useCloseModalLogout } from 'hooks';
 import { Title, LogoutButton, CancelButton } from './ModalLogout.styled';
 
+import Header from 'components/Header/Header';
+
 export default function ModalLogout() {
   const dispatch = useDispatch();
   const closeModal = useCloseModalLogout();
@@ -15,6 +17,9 @@ export default function ModalLogout() {
   };
   return (
     <Modal onClose={closeModal}>
+      <Box display={['block', 'none']} mb={3}>
+        <Header />
+      </Box>
       <Box
         display="flex"
         flexDirection="column"

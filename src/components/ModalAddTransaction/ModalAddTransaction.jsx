@@ -114,7 +114,7 @@ export default function ModalAddTransaction() {
                 </Switch>
                 <Expense status={formik.values.isExpense}>Expense</Expense>
               </Toggle>
-              <ModalSelect />
+              {/* <ModalSelect /> */}
               {formik.values.isExpense && (
                 <Selector
                   name="categoryId"
