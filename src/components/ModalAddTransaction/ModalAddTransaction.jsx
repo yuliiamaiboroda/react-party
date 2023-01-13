@@ -29,6 +29,7 @@ import {
 
 import { TRANSACTION_TYPE } from 'constantes';
 import Header from 'components/Header/Header';
+import ModalSelect from 'components/ModalSelect';
 
 export default function ModalAddTransaction() {
   const transactionCategories = useSelector(selectTransactionCategories);
@@ -113,6 +114,7 @@ export default function ModalAddTransaction() {
                 </Switch>
                 <Expense status={formik.values.isExpense}>Expense</Expense>
               </Toggle>
+              <ModalSelect />
               {formik.values.isExpense && (
                 <Selector
                   name="categoryId"
