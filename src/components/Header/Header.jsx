@@ -8,6 +8,7 @@ import {
   ImgSep,
   Button,
   ImgWallet,
+  ExitText,
 } from './Header.styled';
 import LogoIcon from 'images/Header/logo-icon.svg';
 import SeparatorIcon from 'images/Header/separator-icon.svg';
@@ -36,16 +37,14 @@ const Header = () => {
             <H2>Wallet</H2>
           </LogoWrapper>
           <Wrapper>
-            {/* Тимчасова умова 👇, поки немає авторизації */}
             <Name>{username}</Name>
             <ImgSep src={SeparatorIcon} alt="separator" />
             <Button type="Button" onClick={openModal}>
               <img
                 src={ExitIcon}
                 alt="exit icon"
-                style={{ marginRight: '8px' }}
               />
-              Exit
+              <ExitText>Exit</ExitText>
             </Button>
             {isModalOpen && <ModalLogout />}
           </Wrapper>
