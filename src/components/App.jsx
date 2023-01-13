@@ -9,6 +9,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import DiagramTab from './DiagramTab/DiagramTab';
 import Currency from './Currency/Currency';
+import { useMedia } from 'react-use';
 
 const DashBoardPage = lazy(() =>
   import('../pages/DashboardPage/DashBoardPage')
@@ -26,6 +27,7 @@ export const App = () => {
   }, [dispatch]);
 
   const isFetchingCurrentUser = useSelector(selectIsFetchingCurrentUser);
+  const isMobile = useMedia('(max-width: 767px)');
 
   return (
     <>
@@ -45,7 +47,7 @@ export const App = () => {
             >
               <Route index element={<HomeTab />} />
               <Route path="diagram" element={<DiagramTab />} />
-              <Route path="currency" element={<Currency />} />
+              {isMobile && <Route path="currency" element={<Currency />} />}
             </Route>
             <Route
               path="/login"

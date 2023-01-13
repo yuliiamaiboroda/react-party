@@ -26,6 +26,7 @@
     "react-scripts": "5.0.1",
     "react-switch": "^7.0.0",
     "react-toastify": "^9.1.1",
+    "react-use": "^17.4.0",
     "redirect": "^0.2.0",
     "redux-persist": "^6.0.0",
     "styled-components": "^5.3.6",
