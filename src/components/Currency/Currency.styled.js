@@ -38,6 +38,9 @@ export const MainDiv = styled.div`
   background-color: rgba(74, 86, 226, 1);
   border-radius: 30px;
   color: #ffffff;
+  @media (max-width: 767px) {
+    margin-top: 16px;
+  }
 `;
 export const DivTop = styled.div`
   display: flex;

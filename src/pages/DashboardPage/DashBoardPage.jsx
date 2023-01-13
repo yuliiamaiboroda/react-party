@@ -1,5 +1,4 @@
 import Balance from 'components/Balance/Balance';
-import Box from 'components/Box';
 import Currency from 'components/Currency/Currency';
 import Header from 'components/Header/Header';
 import { Outlet } from 'react-router-dom';
@@ -20,44 +19,42 @@ export default function DashBoardPage() {
   return (
     <>
       <Header />
-      <Box p={5}>
-        <Container>
-          <Div>
-            <Wrapper>
-              <DivContainer>
-                <Navigation />
-                <Media
-                  queries={{
-                    medium: '(min-width: 768px) and (max-width: 1199px)',
-                    large: '(min-width: 1200px)',
-                  }}
-                >
-                  {matches => (
-                    <Fragment>
-                      {matches.medium && <Balance />}
-                      {matches.large && <Balance />}
-                    </Fragment>
-                  )}
-                </Media>
-                <Media
-                  queries={{
-                    medium: '(min-width: 768px) and (max-width: 1199px)',
-                    large: '(min-width: 1200px)',
-                  }}
-                >
-                  {matches => (
-                    <Fragment>
-                      {matches.medium && <Currency />}
-                      {matches.large && <Currency />}
-                    </Fragment>
-                  )}
-                </Media>
-              </DivContainer>
-            </Wrapper>
-            <Outlet />
-          </Div>
-        </Container>
-      </Box>
+      <Container>
+        <Div>
+          <Wrapper>
+            <DivContainer>
+              <Navigation />
+              <Media
+                queries={{
+                  medium: '(min-width: 768px) and (max-width: 1199px)',
+                  large: '(min-width: 1200px)',
+                }}
+              >
+                {matches => (
+                  <Fragment>
+                    {matches.medium && <Balance />}
+                    {matches.large && <Balance />}
+                  </Fragment>
+                )}
+              </Media>
+              <Media
+                queries={{
+                  medium: '(min-width: 768px) and (max-width: 1199px)',
+                  large: '(min-width: 1200px)',
+                }}
+              >
+                {matches => (
+                  <Fragment>
+                    {matches.medium && <Currency />}
+                    {matches.large && <Currency />}
+                  </Fragment>
+                )}
+              </Media>
+            </DivContainer>
+          </Wrapper>
+          <Outlet />
+        </Div>
+      </Container>
     </>
   );
 }
