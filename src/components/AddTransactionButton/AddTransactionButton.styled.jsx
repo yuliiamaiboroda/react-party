@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const AddButton = styled.button`
   position: fixed;
-  bottom: ${p => p.theme.space[5]}px;
-  right: ${p => p.theme.space[5]}px;
+  bottom: ${p => p.theme.space[3]}px;
+  right: ${p => p.theme.space[3]}px;
 
   display: flex;
   justify-content: center;
@@ -33,5 +33,10 @@ export const AddButton = styled.button`
 
   :active {
     scale: ${p => p.theme.sizes.scale.down};
+  }
+
+  @media screen and (min-width: 768px) {
+    bottom: ${p => p.theme.space[4]}px;
+    right: ${p => p.theme.space[4]}px;
   }
 `;

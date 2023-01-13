@@ -22,8 +22,15 @@ export const Div = styled.div`
   width: 715px;
   max-height: 60vh;
   overflow: auto;
+  @media (min-width: 1280px) {
+    margin-top: 45px;
+  }
+  @media screen and (max-width: 1279px) {
+    margin-right: 32px;
+  }
   @media (max-width: 768px) {
     width: 705px;
+    max-width: 100%;
   }
 `;
 

@@ -15,9 +15,15 @@ export default function ModalLogout() {
   };
   return (
     <Modal onClose={closeModal}>
-      <Box display="flex" flexDirection="column" height="100%">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        px={[3, 4]}
+        height="100%"
+      >
         <Title>Are you sure you want to log out?</Title>
-        <Box display="flex" justifyContent="flex-end" gridGap={3}>
+        <Box display="flex" justifyContent="center" flexWrap="wrap" gridGap={3}>
           <LogoutButton type="button" onClick={handleLogout}>
             Log out
           </LogoutButton>

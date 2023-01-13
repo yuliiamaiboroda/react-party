@@ -1,6 +1,5 @@
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
@@ -12,19 +11,24 @@ import Box from 'components/Box';
 import {
   Title,
   RecordForm,
-  Input,
   Toggle,
   Switch,
   Slider,
-  Text,
+  Expense,
+  Income,
   Checkbox,
   Selector,
+  Input,
+  InputContainer,
+  DatePicker,
   Error,
+  Comment,
   SubmitButton,
   CancelButton,
 } from './ModalAddTransaction.styled';
 
 import { TRANSACTION_TYPE } from 'constantes';
+import Header from 'components/Header/Header';
 
 export default function ModalAddTransaction() {
   const transactionCategories = useSelector(selectTransactionCategories);
@@ -34,7 +38,7 @@ export default function ModalAddTransaction() {
   const validationSchema = Yup.object({
     isExpense: Yup.bool().required(),
     categoryId: Yup.string(),
-    amount: Yup.number('not a number')
+    amount: Yup.number('The value must be a number')
       .moreThan(0, 'The number must be greater than 0')
       .required('Required field'),
     transactionDate: Yup.date('Wrong date standart')
@@ -76,36 +80,38 @@ export default function ModalAddTransaction() {
 
   return (
     <Modal onClose={closeModal}>
-      <Formik
-        initialValues={{
-          isExpense: true,
-          categoryId: '',
-          amount: '',
-          transactionDate: '',
-          comment: '',
-        }}
-        validationSchema={validationSchema}
-        onSubmit={values => {
-          handleSubmit(values);
-        }}
+      <Box display={['block', 'none']} mb={3}>
+        <Header />
+      </Box>
+      <Box
+        display="flex"
+        flexDirection="column"
+        px={[3, 4]}
+        width={['100%', 480]}
       >
-        {formik => (
-          <Box
-            display="flex"
-            flexDirection="column"
-            flexBasis="100%"
-            px={[3, 4]}
-            width={[380, 480]}
-          >
-            <Title>Add transaction</Title>
+        <Title>Add transaction</Title>
+        <Formik
+          initialValues={{
+            isExpense: true,
+            categoryId: '',
+            amount: '',
+            transactionDate: '',
+            comment: '',
+          }}
+          validationSchema={validationSchema}
+          onSubmit={values => {
+            handleSubmit(values);
+          }}
+        >
+          {formik => (
             <RecordForm>
               <Toggle>
-                <Text>Income</Text>
+                <Income status={formik.values.isExpense}>Income</Income>
                 <Switch>
                   <Checkbox type="checkbox" name="isExpense" />
                   <Slider checked={formik.values.isExpense} />
                 </Switch>
-                <Text>Expense</Text>
+                <Expense status={formik.values.isExpense}>Expense</Expense>
               </Toggle>
               {formik.values.isExpense && (
                 <Selector
@@ -122,13 +128,24 @@ export default function ModalAddTransaction() {
                   ))}
                 </Selector>
               )}
-              <Box display="flex" gridGap={4}>
-                <Box width="100%">
-                  <Input type="number" name="amount" required />
+              <Box
+                display="flex"
+                flexWrap="wrap"
+                width="100%"
+                maxWidth="400px"
+                gridGap={4}
+              >
+                <InputContainer>
+                  <Input
+                    type="number"
+                    name="amount"
+                    placeholder="0.00"
+                    required
+                  />
                   <ErrorMessage component={Error} name="amount" />
-                </Box>
-                <Box width="100%">
-                  <Datetime
+                </InputContainer>
+                <InputContainer>
+                  <DatePicker
                     utc={true}
                     timeFormat={false}
                     dateFormat="DD.MM.YYYY"
@@ -144,22 +161,27 @@ export default function ModalAddTransaction() {
                       name: 'transactionDate',
                     }}
                     renderInput={props => {
-                      return <Input {...props} />;
+                      return <Input {...props} placeholder="Choose date" />;
                     }}
                   />
                   <ErrorMessage component={Error} name="transactionDate" />
-                </Box>
+                </InputContainer>
               </Box>
-              <Input type="text" name="comment" />
+              <Comment
+                onChange={formik.handleChange}
+                name="comment"
+                as="textarea"
+                placeholder="Comment"
+              />
               <ErrorMessage component={Error} name="comment" />
               <SubmitButton type="submit">Add</SubmitButton>
             </RecordForm>
-            <CancelButton type="button" onClick={closeModal}>
-              Cancel
-            </CancelButton>
-          </Box>
-        )}
-      </Formik>
+          )}
+        </Formik>
+        <CancelButton type="button" onClick={closeModal}>
+          Cancel
+        </CancelButton>
+      </Box>
     </Modal>
   );
 }

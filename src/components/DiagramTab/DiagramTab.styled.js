@@ -6,6 +6,18 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   width: 715px;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+
+    align-items: center;
+  }
+`;
+export const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 767px) {
+    align-items: center;
+  }
 `;
 
 export const TableWrapper = styled.div`
@@ -20,6 +32,9 @@ export const DropdownWrapper = styled.form`
 `;
 
 export const Title = styled.h3`
+  @media screen and (max-width: 1279px) {
+    margin-top: 20px;
+  }
   margin: 32px 15px 20px;
   font-family: ${p => p.theme.fonts.body};
   font-size: ${p => p.theme.fontSizes.xl}px;
@@ -46,6 +61,8 @@ export const SelWrap = styled.div`
 
 export const Select = styled.select`
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background-color: transparent;
   padding: 10px 20px;
   margin: 0;
@@ -57,4 +74,9 @@ export const Select = styled.select`
   line-height: ${p => p.theme.lineHeights.heading};
   border: ${p => p.theme.borders.normal};
   border-radius: ${p => p.theme.radii.normal}px;
+`;
+
+export const Option = styled.option`
+  background-color: #e5e5e5;
+  font-size: ${p => p.theme.fontSizes.s}px;
 `;

@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 
 export const CloseModalBtn = styled.button`
+  display: none;
   position: absolute;
   top: ${p => p.theme.space[2]}px;
   right: ${p => p.theme.space[2]}px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   padding: ${p => p.theme.space[1]}px;
 
@@ -28,5 +25,11 @@ export const CloseModalBtn = styled.button`
 
   :active {
     color: ${p => p.theme.colors.primary};
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
