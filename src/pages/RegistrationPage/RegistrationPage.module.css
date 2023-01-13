@@ -1,6 +1,10 @@
+.page_bg {
+  background-color: #e7eaf2;
+}
 .page_reg {
   position: relative;
   background-color: #e7eaf2;
+  margin: 0 auto;
 
   background-repeat: no-repeat;
 }
