@@ -49,7 +49,6 @@ export default function ModalAddTransaction() {
       200,
       'The comment should not exceed 200 characters'
     ),
-    test: Yup.string('not a ctring').required('is required'),
   });
 
   const handleSubmit = ({
@@ -99,7 +98,6 @@ export default function ModalAddTransaction() {
             amount: '',
             transactionDate: '',
             comment: '',
-            test: '',
           }}
           validationSchema={validationSchema}
           onSubmit={values => {
@@ -117,13 +115,15 @@ export default function ModalAddTransaction() {
                 </Switch>
                 <Expense status={formik.values.isExpense}>Expense</Expense>
               </Toggle>
-              <ModalSelect
-                name="test"
-                onChange={id => formik.setFieldValue('test', id)}
-                options={expenseCategories}
-              />
-              <ErrorMessage name="test" />
               {formik.values.isExpense && (
+                <ModalSelect
+                  name="categoryId"
+                  isExpense={formik.values.isExpense}
+                  onChange={id => formik.setFieldValue('categoryId', id)}
+                  options={expenseCategories}
+                />
+              )}
+              {/* {formik.values.isExpense && (
                 <Selector
                   name="categoryId"
                   onChange={formik.handleChange}
@@ -137,7 +137,7 @@ export default function ModalAddTransaction() {
                     </option>
                   ))}
                 </Selector>
-              )}
+              )} */}
               <Box
                 display="flex"
                 flexWrap="wrap"

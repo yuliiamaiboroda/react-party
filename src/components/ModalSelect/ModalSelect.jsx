@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Box from 'components/Box';
 import { Dropdown, Option } from './ModalSelect.styled';
+import { TRANSACTION_TYPE } from 'constantes';
 
 export default function ModalSelect({ options, onChange }) {
   const [isShown, setIsShown] = useState(false);
@@ -13,6 +14,7 @@ export default function ModalSelect({ options, onChange }) {
       setIsShown(!isShown);
     }
   };
+
   return (
     <Box
       position="relative"
