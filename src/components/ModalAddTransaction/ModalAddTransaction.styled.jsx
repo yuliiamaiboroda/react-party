@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Form, Field } from 'formik';
 import Datetime from 'react-datetime';
+import iconMinus from 'icons/Minus.svg';
+import iconPlus from 'icons/Plus.svg';
 
 export const Title = styled.h2`
   margin-bottom: ${p => p.theme.space[4]}px;
@@ -25,58 +27,81 @@ export const RecordForm = styled(Form)`
 `;
 
 export const Toggle = styled.label`
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   gap: ${p => p.theme.space[3]}px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: ${p => p.theme.space[3]}px;
 `;
 
 export const Switch = styled.label`
-  //   position: relative;
-  //   display: inline-block;
-  //   width: 60px;
-  //   height: 34px;
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
 `;
 
-export const Text = styled.span`
-  //   font-family: ${p => p.theme.fonts.heading};
-  //   font-weight: ${p => p.theme.fontWeights.bold};
-  //   font-size: ${p => p.theme.fontSizes.s}px;
-  //   line-height: ${p => p.theme.lineHeights.body};
+const Text = styled.span`
+  font-family: ${p => p.theme.fonts.heading};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s}px;
+  line-height: ${p => p.theme.lineHeights.body};
+`;
+
+export const Expense = styled(Text)`
+  color: ${p => (p.status ? p.theme.colors.expense : p.theme.colors.muted)};
+  transition: 0.4s;
+`;
+
+export const Income = styled(Text)`
+  color: ${p => (!p.status ? p.theme.colors.income : p.theme.colors.muted)};
+  transition: 0.4s;
 `;
 
 export const Checkbox = styled(Field)`
-  //   opacity: 0;
-  //   width: 0;
-  //   height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 `;
 
 export const Slider = styled.span`
-  //   position: absolute;
-  //   cursor: pointer;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   background-color: #ccc;
-  //   -webkit-transition: 0.4s;
-  //   transition: 0.4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 
-  //   ${p => p.checked && 'background-color: #2196F3;'}
+  width: 80px;
+  height: 40px;
 
-  //   :before {
-  //     position: absolute;
-  //     content: '';
-  //     height: 26px;
-  //     width: 26px;
-  //     left: 4px;
-  //     bottom: 4px;
-  //     background-color: white;
-  //     -webkit-transition: 0.4s;
-  //     transition: 0.4s;
+  background: ${p => p.theme.colors.lightBg};
+  border: ${p => p.theme.borders.formField};
+  border-radius: ${p => p.theme.radii.normal}px;
 
-  //     ${p => p.checked && 'transform: translateX(26px);'};
-  //   }
+  :before {
+    position: absolute;
+    content: '';
+    width: 44px;
+    height: 44px;
+    left: -4px;
+    bottom: -3px;
+
+    background-image: url(${p => (p.checked ? iconMinus : iconPlus)});
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: ${p => p.theme.radii.circle};
+
+    background-color: ${p =>
+      p.checked ? p.theme.colors.expense : p.theme.colors.income};
+    box-shadow: ${p =>
+      p.checked ? p.theme.shadows.expenseSwitch : p.theme.shadows.incomeSwitch};
+
+    ${p => p.checked && 'transform: translateX(40px);'};
+
+    transition: 0.4s;
+  }
 `;
 
 export const Selector = styled(Field)`

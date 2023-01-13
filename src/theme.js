@@ -35,7 +35,7 @@ export const theme = Object.freeze({
   },
   borders: {
     none: 'none',
-    transperent : '1px solid transperent',
+    transperent: '1px solid transperent',
     normal: '1px solid #000000',
     accented: '1px solid #4A56E2',
     table: '1px solid #DCDCDF',
@@ -46,6 +46,8 @@ export const theme = Object.freeze({
     table: '0px 1px 0px rgba(255, 255, 255, 0.6)',
     addButton: '0px 6px 15px rgba(36, 204, 167, 0.5)',
     dropdown: '0px 6px 15px rgba(0, 0, 0, 0.1)',
+    expenseSwitch: '0px 6px 15px rgba(255, 101, 150, 0.5)',
+    incomeSwitch: '0px 6px 15px rgba(36, 204, 167, 0.5)',
   },
   opacities: { none: 0, half: 0.6, full: 1 },
   sizes: {

@@ -9,7 +9,6 @@ import './index.css';
 
 import { theme } from './theme';
 import { persistor, store } from 'redux/store';
-import ModalAddTransaction from 'components/ModalAddTransaction';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -18,7 +17,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
             <App />
-            <ModalAddTransaction />
           </ThemeProvider>
         </PersistGate>
       </Provider>

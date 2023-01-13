@@ -1,6 +1,5 @@
-import { Formik, ErrorMessage, FormikProvider } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
@@ -15,7 +14,8 @@ import {
   Toggle,
   Switch,
   Slider,
-  Text,
+  Expense,
+  Income,
   Checkbox,
   Selector,
   Input,
@@ -106,12 +106,12 @@ export default function ModalAddTransaction() {
           {formik => (
             <RecordForm>
               <Toggle>
-                <Text>Income</Text>
+                <Income status={formik.values.isExpense}>Income</Income>
                 <Switch>
                   <Checkbox type="checkbox" name="isExpense" />
                   <Slider checked={formik.values.isExpense} />
                 </Switch>
-                <Text>Expense</Text>
+                <Expense status={formik.values.isExpense}>Expense</Expense>
               </Toggle>
               {formik.values.isExpense && (
                 <Selector
