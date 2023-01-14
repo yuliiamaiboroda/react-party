@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
 import { createTransaction } from 'redux/transactionsController/transactionController-operations';
 import { useCloseModalAddTrans } from 'hooks';
-import { formatDate } from 'utils';
+import { formatDate, formatCurrentDate } from 'utils';
 import Modal from 'components/Modal';
+import Header from 'components/Header/Header';
 import Box from 'components/Box';
 import {
   Title,
@@ -27,7 +28,6 @@ import {
 } from './ModalAddTransaction.styled';
 
 import { TRANSACTION_TYPE } from 'constantes';
-import Header from 'components/Header/Header';
 import ModalSelect from 'components/ModalSelect';
 
 export default function ModalAddTransaction() {
@@ -110,7 +110,7 @@ export default function ModalAddTransaction() {
             isExpense: true,
             categoryId: '',
             amount: '',
-            transactionDate: '',
+            transactionDate: formatDate(new Date()),
             comment: '',
           }}
           validationSchema={validationSchema}
@@ -154,8 +154,10 @@ export default function ModalAddTransaction() {
                   />
                   <ErrorMessage component={Error} name="amount" />
                 </InputContainer>
+                {console.log('formik.values: ', formik.values)}
                 <InputContainer>
                   <DatePicker
+                    initialValue={formatCurrentDate()}
                     utc={true}
                     timeFormat={false}
                     dateFormat="DD.MM.YYYY"

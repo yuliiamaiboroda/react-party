@@ -60,6 +60,7 @@ export default function Modal({ onClose, children }) {
         <CloseModalBtn type="button" onClick={handleClose}>
           <HiX style={{ pointerEvents: 'none' }} />
         </CloseModalBtn>
+
         {children}
       </Box>
     </Box>,
