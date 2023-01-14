@@ -10,6 +10,7 @@ import PublicRoute from './PublicRoute';
 import DiagramTab from './DiagramTab/DiagramTab';
 import Currency from './Currency/Currency';
 import { useMedia } from 'react-use';
+import UserPage from 'pages/UserPage/UserPage';
 
 const DashBoardPage = lazy(() =>
   import('../pages/DashboardPage/DashBoardPage')
@@ -47,6 +48,7 @@ export const App = () => {
             >
               <Route index element={<HomeTab />} />
               <Route path="diagram" element={<DiagramTab />} />
+              <Route path="user" element={<UserPage />} />
               {isMobile && <Route path="currency" element={<Currency />} />}
             </Route>
             <Route
