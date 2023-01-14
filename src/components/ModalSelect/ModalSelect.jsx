@@ -3,15 +3,12 @@ import Select from 'react-select';
 import {
   container,
   control,
-  valueContainer,
-  indicatorsContainer,
+  placeholder,
   indicatorSeparator,
+  dropdownIndicator,
   menu,
   menuList,
   option,
-  placeholder,
-  dropdownIndicator,
-  theme,
 } from './ModalSelectStyles';
 
 export default function ModalSelect({ options, onSelect }) {
@@ -19,20 +16,17 @@ export default function ModalSelect({ options, onSelect }) {
     <Select
       options={options}
       onChange={onSelect}
-      placeholder="Select category..."
+      placeholder="Select a category"
       styles={{
         container,
         control,
-        valueContainer,
-        indicatorsContainer,
+        placeholder,
         indicatorSeparator,
+        dropdownIndicator,
         menu,
         menuList,
         option,
-        placeholder,
-        dropdownIndicator,
       }}
-      theme={theme}
     />
   );
 }

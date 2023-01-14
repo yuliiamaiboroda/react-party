@@ -1,137 +1,131 @@
+import { theme } from '../../theme';
+import dropdownIcon from 'icons/dropdownIcon.svg';
+
 export const container = baseStyles => ({
   ...baseStyles,
   maxWidth: '400px',
   width: '100%',
+  height: '32px',
   boxShadow: 'none',
 });
 
-export const control = (baseStyles, state) => {
-  // console.log('baseStyles: ', baseStyles);
-  // console.log('state: ', state);
+export const control = baseStyles => {
   return {
     ...baseStyles,
-    border: 'none',
-    borderBottom: '1px solid #E0E0E0',
-    borderRadius: '0',
+    border: theme.borders.none,
+    borderBottom: theme.borders.formField,
+    borderRadius: theme.radii.none,
     cursor: 'pointer',
 
     '&:hover': {
       border: 'none',
-      borderBottom: '1px solid #E0E0E0',
+      borderBottom: theme.borders.formField,
       boxShadow: 'none',
     },
   };
 };
 
-export const valueContainer = (baseStyles, state) => {
-  // console.log('valueContainer => baseStyles: ', baseStyles);
-  // console.log('valueContainer => state: ', state);
-  return { ...baseStyles };
+export const placeholder = baseStyles => {
+  return {
+    ...baseStyles,
+    fontFamily: theme.fonts.heading,
+    fontWeight: theme.fontWeights.normal,
+    fontSize: `${theme.fontSizes.m}px`,
+    lineHeight: theme.lineHeights.body,
+
+    color: theme.colors.muted,
+  };
 };
 
-export const indicatorsContainer = (baseStyles, state) => {
-  // console.log('indicators => baseStyles: ', baseStyles);
-  // console.log('indicators => state: ', state);
-  return { ...baseStyles };
+export const indicatorSeparator = () => {
+  return { display: 'none' };
 };
 
-export const indicatorSeparator = (baseStyles, state) => {
-  // console.log('indicatorSeparator => baseStyles: ', baseStyles);
-  // console.log('indicatorSeparator => state: ', state);
-  return { ...baseStyles };
+export const dropdownIndicator = baseStyles => {
+  return {
+    ...baseStyles,
+    width: '32px',
+    height: '32px',
+    padding: '0',
+    backgroundImage: `url(${dropdownIcon})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    svg: {
+      display: 'none',
+    },
+  };
 };
 
-export const menu = (baseStyles, state) => {
-  // console.log('menu => baseStyles: ', baseStyles);
-  // console.log('menu => state: ', state);
+export const menu = baseStyles => {
   return {
     ...baseStyles,
     maxWidth: '400px',
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
-    boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
-    backdropFilter: 'blur(25px)',
-    borderRadius: '20px',
+    maxHeight: '290px',
+    backgroundColor: theme.colors.dropdownBg,
+    boxShadow: theme.shadows.dropdown,
+    backdropFilter: theme.colors.blur,
+    borderRadius: `${theme.radii.light}px`,
     overflow: 'hidden',
   };
 };
 
-export const menuList = (baseStyles, state) => {
-  // console.log('menuList => baseStyles: ', baseStyles);
-  // console.log('menuList => state: ', state);
+export const menuList = baseStyles => {
   return {
     ...baseStyles,
     '::-webkit-scrollbar': { width: '5px' },
     '::-webkit-scrollbar-track': {
       boxShadow: 'transparent',
-      borderRadius: '20px',
+      borderRadius: `${theme.radii.light}px`,
     },
     '::-webkit-scrollbar-thumb': {
-      background: '#FF6596',
-      borderRadius: '20px',
+      background: theme.colors.expenseLight,
+      borderRadius: `${theme.radii.light}px`,
     },
 
     '::-webkit-scrollbar-thumb:hover': {
-      background: '#FFD1E0',
+      background: theme.colors.expense,
     },
   };
 };
 
 export const option = (baseStyles, state) => {
-  // console.log('option => baseStyles: ', baseStyles);
-  // console.log('option => state: ', state);
   return {
     ...baseStyles,
-    fontFamily: 'Work Sans, sans-serif',
-    fontWeight: (state.isSelected && '700') || '400',
-    fontSize: '18px',
+    display: 'flex',
+    alignItems: 'center',
+    height: '40px',
+    padding: `${theme.space[0]} ${theme.space[3]}px`,
+    fontFamily: theme.fonts.heading,
+    fontWeight:
+      (state.isSelected && theme.fontWeights.bold) || theme.fontWeights.normal,
+    fontSize: `${theme.fontSizes.m}px`,
     lineHeight: '1.18',
 
-    color: (state.isSelected && '#FFFFFF') || '#000000',
+    color: (state.isSelected && theme.colors.textLight) || theme.colors.text,
     backgroundColor:
-      (state.isSelected && '#FF6596') ||
-      (state.isFocused && '#FFD1E0') ||
+      (state.isSelected && theme.colors.expense) ||
+      (state.isFocused && theme.colors.expenseLight) ||
       'transparent',
 
-    '&:hover': { fontWeight: '700', color: '#FF6596', backgroundColor: '#fff' },
-    '&:focus': { fontWeight: '700', color: '#FF6596', backgroundColor: '#fff' },
+    '&:hover': {
+      fontWeight: theme.fontWeights.bold,
+      color: theme.colors.expense,
+      backgroundColor: theme.colors.lightBg,
+    },
+    '&:focus': {
+      fontWeight: theme.fontWeights.bold,
+      color: theme.colors.expense,
+      backgroundColor: theme.colors.lightBg,
+    },
     '&:target': {
-      fontWeight: '700',
-      color: '#FF6596',
-      backgroundColor: '#fff',
+      fontWeight: theme.fontWeights.bold,
+      color: theme.colors.expense,
+      backgroundColor: theme.colors.lightBg,
     },
     '&:active': {
-      fontWeight: '700',
-      color: '#FF6596',
-      backgroundColor: '#fff',
+      fontWeight: theme.fontWeights.bold,
+      color: theme.colors.expense,
+      backgroundColor: theme.colors.lightBg,
     },
   };
 };
-
-export const placeholder = (baseStyles, state) => {
-  // console.log('placeholder => baseStyles: ', baseStyles);
-  // console.log('placeholder => state: ', state);
-  return { ...baseStyles };
-};
-
-export const dropdownIndicator = (baseStyles, state) => {
-  // console.log('dropdownIndicator => baseStyles: ', baseStyles);
-  // console.log('dropdownIndicator => state: ', state);
-  return {
-    ...baseStyles,
-  };
-};
-
-export const theme = theme => {
-  // console.log('theme => ', theme);
-  return { ...theme };
-};
-
-// font-family: 'Work Sans';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 18px;
-// line-height: 21px;
-// display: flex;
-// align-items: center;
-
-// color: #000000;
