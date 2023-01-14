@@ -19,16 +19,17 @@ const finance = createSlice({
       state.isHidden = true;
     },
   },
-  extraReducers: {
-    [fetchingCurrentUser.fulfilled](state, action) {
-      state.totalBalance = action.payload.balance;
-    },
-    [createTransaction.fulfilled](state, action) {
-      state.totalBalance = action.payload.balanceAfter;
-    },
-    [deleteTransaction.fulfilled](state, { payload }) {
-      state.totalBalance = state.totalBalance - payload.amount;
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchingCurrentUser.fulfilled, (state, { payload }) => {
+        state.totalBalance = payload.balance;
+      })
+      .addCase(createTransaction.fulfilled, (state, { payload }) => {
+        state.totalBalance = payload.balanceAfter;
+      })
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        state.totalBalance = state.totalBalance - payload.amount;
+      });
   },
 });
 export const { showBalance, hideBalance } = finance.actions;

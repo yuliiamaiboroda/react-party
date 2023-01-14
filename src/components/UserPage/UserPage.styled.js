@@ -22,6 +22,7 @@ export const Button = styled.button`
   width: 100px;
   background-color: rgba(110, 120, 232, 1);
   flex-grow: 1;
+  cursor: pointer;
 `;
 
 export const InfoDiv = styled.div`

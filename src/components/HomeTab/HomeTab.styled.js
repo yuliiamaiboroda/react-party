@@ -57,9 +57,11 @@ export const Button = styled.button`
   color: ${p => p.theme.colors.textLight};
   border: transparent;
   border-radius: ${p => p.theme.radii.light}px;
+  cursor: pointer;
 `;
 
 export const H3 = styled.h3`
+  padding: 40px;
   font-family: ${p => p.theme.fonts.body};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.m}px;
