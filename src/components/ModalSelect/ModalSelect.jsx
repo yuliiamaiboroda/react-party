@@ -19,6 +19,7 @@ export default function ModalSelect({ options, onSelect }) {
     <Select
       options={options}
       onChange={onSelect}
+      placeholder="Select category..."
       styles={{
         container,
         control,
