@@ -39,7 +39,7 @@ export default function UserPage() {
                 backgroundColor: '#FF6596',
               }}
             >
-              hide balance
+              Hide balance
             </Button>
           ) : (
             <Button
@@ -49,7 +49,7 @@ export default function UserPage() {
                 backgroundColor: '#24CCA7',
               }}
             >
-              show balance
+              Show balance
             </Button>
           )}
           <Button type="button" onClick={openModal}>

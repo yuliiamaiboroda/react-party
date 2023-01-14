@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import AddTransactionButton from 'components/AddTransactionButton';
-import Balance from 'components/Balance/Balance';
+import Balance from 'components/Balance';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTransaction } from 'redux/transactionsController/transactionController-operations';
 import { selectTransictions } from 'redux/transactionsController/transactionController-selectors';

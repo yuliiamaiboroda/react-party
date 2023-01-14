@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Chart from 'components/Chart/Chart';
-import Table from 'components/Table/Table';
+import Chart from 'components/Chart';
+import Table from 'components/Table';
 import {
   Title,
   Wrapper,

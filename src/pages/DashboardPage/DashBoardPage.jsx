@@ -1,6 +1,6 @@
-import Balance from 'components/Balance/Balance';
-import Currency from 'components/Currency/Currency';
-import Header from 'components/Header/Header';
+import Balance from 'components/Balance';
+import Currency from 'components/Currency';
+import Header from 'components/Header';
 import { Outlet } from 'react-router-dom';
 import Navigation from 'components/Navigation';
 import Media from 'react-media';
