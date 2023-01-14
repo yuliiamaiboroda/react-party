@@ -28,6 +28,7 @@ const authController = createSlice({
   reducers: {
     openModalLogout(state) {
       state.isModalLogoutOpen = true;
+      state.error = null;
     },
     closeModalLogout(state) {
       state.isModalLogoutOpen = false;
@@ -83,7 +84,6 @@ const authController = createSlice({
         };
       })
       .addCase(signOut.rejected, (state, { payload }) => {
-        state.isLoggedIn = false;
         state.isLoading = false;
         state.error = payload;
       })
