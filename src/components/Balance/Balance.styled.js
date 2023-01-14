@@ -13,10 +13,11 @@ export const DivBalnce = styled.div`
   @media (min-width: 768px) {
     width: 336px;
     margin-bottom: 20px;
-    margin-right: 32px;
   }
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin-top: 134px;
+    margin-left: -20px;
+    margin-right: 32px;
   }
   @media (min-width: 1280px) {
     width: 395px;

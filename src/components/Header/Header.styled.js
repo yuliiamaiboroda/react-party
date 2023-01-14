@@ -4,17 +4,13 @@ import { theme } from 'theme';
 
 export const HeaderLine = styled.header`
   display: flex;
-  background-color: ${theme.colors.lightBg};
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  padding: 0 20px;
-  @media (min-width: ${theme.breakpoints[0]}){
-    padding: 0 32px;
-  }
-  @media (min-width: ${theme.breakpoints[1]}){
-    padding: 0 16px;
+  @media (max-width: ${theme.sizes.containerWidth.tablet - 1}px){
+    margin: 0 auto;
+    max-width:280px;
   }
 `;
 
@@ -81,4 +77,10 @@ export const Button = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+`;
+export const ExitText = styled.p`
+@media (max-width: ${theme.sizes.containerWidth.tablet - 1}px){
+display: none;
+}
+margin-left: 8px;
 `;
