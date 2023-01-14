@@ -28,11 +28,13 @@ import {
 import Media from 'react-media';
 import React, { Fragment } from 'react';
 import { normalizedNumber } from 'helpers/normalizedNumber';
+import { selectIsHiddenBalance } from 'redux/finance/finance-selectors';
 
 export default function HomeTab() {
   const dispatch = useDispatch();
   const financeData = useSelector(selectTransictions);
   const transactionCategArr = useSelector(selectTransactionCategories);
+  const isHiddenBalance = useSelector(selectIsHiddenBalance);
 
   useEffect(() => {
     dispatch(getTransactionCategories());
@@ -50,8 +52,8 @@ export default function HomeTab() {
     return currentTrans.name;
   };
 
-  const hadleDelete = id => {
-    dispatch(deleteTransaction(id));
+  const hadleDelete = el => {
+    dispatch(deleteTransaction(el));
   };
 
   return (
@@ -74,15 +76,16 @@ export default function HomeTab() {
           {matches =>
             matches.small ? (
               <DivMobile>
-                {sortedArr.map(
-                  ({
+                {sortedArr.map(el => {
+                  const {
                     transactionDate,
                     type,
                     categoryId,
                     comment,
                     amount,
                     id,
-                  }) => (
+                  } = el;
+                  return (
                     <UlMobile
                       key={id}
                       style={{ borderLeft: `5px solid ${switchColor(type)}` }}
@@ -107,17 +110,20 @@ export default function HomeTab() {
                         </SpanMobile>
                       </LiMobile>
                       <LiMobile>
-                        Sum <SpanMobile>{normalizedNumber(amount)}</SpanMobile>
+                        Sum{' '}
+                        <SpanMobile>
+                          {isHiddenBalance ? '***' : normalizedNumber(amount)}
+                        </SpanMobile>
                       </LiMobile>
                       <LiMobile>
                         Options
-                        <Button type="button" onClick={() => hadleDelete(id)}>
+                        <Button type="button" onClick={() => hadleDelete(el)}>
                           delete
                         </Button>
                       </LiMobile>
                     </UlMobile>
-                  )
-                )}
+                  );
+                })}
               </DivMobile>
             ) : (
               <Div>
@@ -129,31 +135,32 @@ export default function HomeTab() {
                   <Li>Sum</Li>
                   <Li>Options</Li>
                 </Ul>
-                {sortedArr.map(
-                  ({
+                {sortedArr.map(el => {
+                  const {
                     transactionDate,
                     type,
                     categoryId,
                     comment,
                     amount,
                     id,
-                  }) => (
+                  } = el;
+                  return (
                     <Wrapper key={id}>
                       <P>{formatDateInStr(transactionDate)}</P>
                       <P>{formatTransType(type)}</P>
                       <P>{currentTransCateg(categoryId)}</P>
                       <P>{transformEmptyComment(comment)}</P>
                       <P style={{ color: switchColor(type) }}>
-                        {normalizedNumber(amount)}
+                        {isHiddenBalance ? '***' : normalizedNumber(amount)}
                       </P>
                       <P>
-                        <Button type="button" onClick={() => hadleDelete(id)}>
+                        <Button type="button" onClick={() => hadleDelete(el)}>
                           delete
                         </Button>
                       </P>
                     </Wrapper>
-                  )
-                )}
+                  );
+                })}
               </Div>
             )
           }

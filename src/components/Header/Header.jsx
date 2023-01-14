@@ -37,13 +37,12 @@ const Header = () => {
             <H2>Wallet</H2>
           </LogoWrapper>
           <Wrapper>
-            <Name>{username}</Name>
+            <LogoWrapper to="/user">
+              <Name>{username}</Name>
+            </LogoWrapper>
             <ImgSep src={SeparatorIcon} alt="separator" />
             <Button type="Button" onClick={openModal}>
-              <img
-                src={ExitIcon}
-                alt="exit icon"
-              />
+              <img src={ExitIcon} alt="exit icon" />
               <ExitText>Exit</ExitText>
             </Button>
             {isModalOpen && <ModalLogout />}

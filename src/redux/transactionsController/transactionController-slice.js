@@ -74,7 +74,7 @@ const transactionController = createSlice({
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         const index = state.items.findIndex(
-          transaction => transaction.id === payload
+          transaction => transaction.id === payload.id
         );
         state.items.splice(index, 1);
       })
