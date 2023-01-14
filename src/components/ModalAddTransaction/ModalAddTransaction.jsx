@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage, Field } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import 'react-datetime/css/react-datetime.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,7 +17,6 @@ import {
   Expense,
   Income,
   Checkbox,
-  Selector,
   Input,
   InputContainer,
   DatePicker,
@@ -79,6 +78,11 @@ export default function ModalAddTransaction() {
     element => element.type === TRANSACTION_TYPE.EXPENSE
   );
 
+  const options = expenseCategories.map(({ id, name }) => ({
+    value: id,
+    label: name,
+  }));
+
   return (
     <Modal onClose={closeModal}>
       <Box display={['block', 'none']} mb={3}>
@@ -117,27 +121,13 @@ export default function ModalAddTransaction() {
               </Toggle>
               {formik.values.isExpense && (
                 <ModalSelect
-                  name="categoryId"
-                  isExpense={formik.values.isExpense}
-                  onChange={id => formik.setFieldValue('categoryId', id)}
-                  options={expenseCategories}
+                  options={options}
+                  onSelect={option =>
+                    formik.setFieldValue('categoryId', option.value)
+                  }
                 />
               )}
-              {/* {formik.values.isExpense && (
-                <Selector
-                  name="categoryId"
-                  onChange={formik.handleChange}
-                  as="select"
-                  required
-                >
-                  <option value="">Chose category</option>
-                  {expenseCategories.map(({ id, name }) => (
-                    <option key={id} value={id}>
-                      {name}
-                    </option>
-                  ))}
-                </Selector>
-              )} */}
+              {console.log('formik.values: ', formik.values)}
               <Box
                 display="flex"
                 flexWrap="wrap"
