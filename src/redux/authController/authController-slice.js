@@ -93,7 +93,6 @@ const authController = createSlice({
         state.isFetchingCurrentUser = true;
       })
       .addCase(fetchingCurrentUser.fulfilled, (state, { payload }) => {
-        console.log('auth fetch: ', payload);
         state.user = payload;
         state.isLoggedIn = true;
         state.isLoading = false;

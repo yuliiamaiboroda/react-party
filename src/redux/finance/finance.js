@@ -26,7 +26,6 @@ const finance = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchingCurrentUser.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.totalBalance = payload.balance;
       })
       .addCase(createTransaction.fulfilled, (state, { payload }) => {
