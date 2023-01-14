@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "/react-party/static/css/main.29a43105.css",
-    "main.js": "/react-party/static/js/main.eacd8687.js",
-    "static/js/182.1962d1a5.chunk.js": "/react-party/static/js/182.1962d1a5.chunk.js",
+    "main.css": "/react-party/static/css/main.91d5c3ef.css",
+    "main.js": "/react-party/static/js/main.86b68217.js",
+    "static/js/182.e1134632.chunk.js": "/react-party/static/js/182.e1134632.chunk.js",
     "static/css/539.878ff241.chunk.css": "/react-party/static/css/539.878ff241.chunk.css",
     "static/js/539.5baaaa74.chunk.js": "/react-party/static/js/539.5baaaa74.chunk.js",
     "static/css/271.0928d3b9.chunk.css": "/react-party/static/css/271.0928d3b9.chunk.css",
     "static/js/271.20b02527.chunk.js": "/react-party/static/js/271.20b02527.chunk.js",
     "static/js/761.628d0213.chunk.js": "/react-party/static/js/761.628d0213.chunk.js",
+    "static/media/rectangle-bg-desktop@2x.png": "/react-party/static/media/rectangle-bg-desktop@2x.972b701c51a5f0e8c072.png",
+    "static/media/rectangle-bg-tablet@2x.png": "/react-party/static/media/rectangle-bg-tablet@2x.1fcff58221b2ab08694f.png",
+    "static/media/rectangle-bg-tablet.png": "/react-party/static/media/rectangle-bg-tablet.392c4a948fc857f17b83.png",
+    "static/media/rectangle-bg-desktop.png": "/react-party/static/media/rectangle-bg-desktop.19dba5aa3f4a2aefa141.png",
     "static/media/rectangle.png": "/react-party/static/media/rectangle.60ccd7e4587f25d7391e.png",
     "static/media/frame-desctop.png": "/react-party/static/media/frame-desctop.520e90e1569f602dbad0.png",
     "static/media/frame-tablet.png": "/react-party/static/media/frame-tablet.7114964bdf9512389a41.png",
@@ -25,9 +29,9 @@
     "static/media/Plus.svg": "/react-party/static/media/Plus.7ef19b336a9524bcb1b6721a414e24d1.svg",
     "static/media/separator-icon.svg": "/react-party/static/media/separator-icon.4197971255a4c6a047f2d568d14b817e.svg",
     "static/media/Minus.svg": "/react-party/static/media/Minus.a2189924598eeb008f66dae13e621eb1.svg",
-    "main.29a43105.css.map": "/react-party/static/css/main.29a43105.css.map",
-    "main.eacd8687.js.map": "/react-party/static/js/main.eacd8687.js.map",
-    "182.1962d1a5.chunk.js.map": "/react-party/static/js/182.1962d1a5.chunk.js.map",
+    "main.91d5c3ef.css.map": "/react-party/static/css/main.91d5c3ef.css.map",
+    "main.86b68217.js.map": "/react-party/static/js/main.86b68217.js.map",
+    "182.e1134632.chunk.js.map": "/react-party/static/js/182.e1134632.chunk.js.map",
     "539.878ff241.chunk.css.map": "/react-party/static/css/539.878ff241.chunk.css.map",
     "539.5baaaa74.chunk.js.map": "/react-party/static/js/539.5baaaa74.chunk.js.map",
     "271.0928d3b9.chunk.css.map": "/react-party/static/css/271.0928d3b9.chunk.css.map",
@@ -35,7 +39,7 @@
     "761.628d0213.chunk.js.map": "/react-party/static/js/761.628d0213.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.29a43105.css",
-    "static/js/main.eacd8687.js"
+    "static/css/main.91d5c3ef.css",
+    "static/js/main.86b68217.js"
   ]
 }
