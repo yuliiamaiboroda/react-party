@@ -154,7 +154,6 @@ export default function ModalAddTransaction() {
                   />
                   <ErrorMessage component={Error} name="amount" />
                 </InputContainer>
-                {console.log('formik.values: ', formik.values)}
                 <InputContainer>
                   <DatePicker
                     initialValue={formatCurrentDate()}
