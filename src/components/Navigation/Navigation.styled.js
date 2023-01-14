@@ -14,6 +14,7 @@ export const Nav = styled.nav`
     margin-bottom: 15px;
     justify-content: center;
     gap: 36px;
+    width: 280px;
   }
   @media screen and (min-width: 768px) {
     margin-bottom: 42px;

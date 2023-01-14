@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
 export const WrapperRel = styled.div`
-  width: 288px;
-  height: 100%;
+  width: 280px;
+  // height: 100%;
   float: left;
   position: relative;
+  @media (min-width: 768px) {
+    width: 336px;
+  }
+  @media (min-width: 1280px) {
+    width: 288px;
+  }
 `;
 
 export const WrapperTextAbs = styled.div`
@@ -19,5 +25,5 @@ export const WrapperTextAbs = styled.div`
   line-height: ${p => p.theme.lineHeights.body};
   color: ${p => p.theme.colors.text};
   text-align: center;
-  zindex: 99;
+  z-index: 99;
 `;
