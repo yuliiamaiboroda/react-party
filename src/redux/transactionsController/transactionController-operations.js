@@ -49,10 +49,10 @@ export const updateTransaction = createAsyncThunk(
 // Remove transaction
 export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
-  async (id, { rejectWithValue }) => {
+  async (el, { rejectWithValue }) => {
     try {
-      await axios.delete(`/api/transactions/${id}`);
-      return id;
+      await axios.delete(`/api/transactions/${el.id}`);
+      return el;
     } catch (error) {
       return rejectWithValue(error.message);
     }
