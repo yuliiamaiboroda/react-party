@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchingCurrentUser } from 'redux/authController/authController-operations';
+import {
+  fetchingCurrentUser,
+  signIn,
+  signOut,
+} from 'redux/authController/authController-operations';
 import {
   createTransaction,
   deleteTransaction,
@@ -29,6 +33,12 @@ const finance = createSlice({
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.totalBalance = state.totalBalance - payload.amount;
+      })
+      .addCase(signIn.fulfilled, (state, { payload }) => {
+        state.totalBalance = payload.user.balance;
+      })
+      .addCase(signOut.fulfilled, state => {
+        state.totalBalance = 0;
       });
   },
 });
