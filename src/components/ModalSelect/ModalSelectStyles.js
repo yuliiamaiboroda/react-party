@@ -7,6 +7,13 @@ export const container = baseStyles => ({
   width: '100%',
   height: '32px',
   boxShadow: 'none',
+
+  fontFamily: theme.fonts.heading,
+  fontWeight: theme.fontWeights.normal,
+  fontSize: `${theme.fontSizes.m}px`,
+  lineHeight: theme.lineHeights.body,
+
+  color: theme.colors.text,
 });
 
 export const control = baseStyles => {

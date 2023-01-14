@@ -85,7 +85,7 @@ export default function ModalAddTransaction() {
 
   return (
     <Modal onClose={closeModal}>
-      <Box display={['block', 'none']} mb={3}>
+      <Box display={['block', 'none']} mb={3} onClick={closeModal}>
         <Header />
       </Box>
       <Box
@@ -105,7 +105,6 @@ export default function ModalAddTransaction() {
           }}
           validationSchema={validationSchema}
           onSubmit={values => {
-            console.log('values: ', values);
             handleSubmit(values);
           }}
         >
@@ -127,7 +126,6 @@ export default function ModalAddTransaction() {
                   }
                 />
               )}
-              {console.log('formik.values: ', formik.values)}
               <Box
                 display="flex"
                 flexWrap="wrap"
