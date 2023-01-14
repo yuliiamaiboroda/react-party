@@ -17,7 +17,6 @@ import {
   Expense,
   Income,
   Checkbox,
-  Selector,
   Input,
   InputContainer,
   DatePicker,
@@ -29,6 +28,7 @@ import {
 
 import { TRANSACTION_TYPE } from 'constantes';
 import Header from 'components/Header/Header';
+import ModalSelect from 'components/ModalSelect';
 
 export default function ModalAddTransaction() {
   const transactionCategories = useSelector(selectTransactionCategories);
@@ -78,9 +78,14 @@ export default function ModalAddTransaction() {
     element => element.type === TRANSACTION_TYPE.EXPENSE
   );
 
+  const options = expenseCategories.map(({ id, name }) => ({
+    value: id,
+    label: name,
+  }));
+
   return (
     <Modal onClose={closeModal}>
-      <Box display={['block', 'none']} mb={3}>
+      <Box display={['block', 'none']} mb={3} onClick={closeModal}>
         <Header />
       </Box>
       <Box
@@ -114,19 +119,12 @@ export default function ModalAddTransaction() {
                 <Expense status={formik.values.isExpense}>Expense</Expense>
               </Toggle>
               {formik.values.isExpense && (
-                <Selector
-                  name="categoryId"
-                  onChange={formik.handleChange}
-                  as="select"
-                  required
-                >
-                  <option value="">Chose category</option>
-                  {expenseCategories.map(({ id, name }) => (
-                    <option key={id} value={id}>
-                      {name}
-                    </option>
-                  ))}
-                </Selector>
+                <ModalSelect
+                  options={options}
+                  onSelect={option =>
+                    formik.setFieldValue('categoryId', option.value)
+                  }
+                />
               )}
               <Box
                 display="flex"

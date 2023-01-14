@@ -51,7 +51,6 @@ export default function Modal({ onClose, children }) {
         minHeight={['100%', '200px']}
         display="flex"
         flexDirection="column"
-        justifyContent="center"
         p={[0, 4]}
         backgroundColor="lightBg"
         borderRadius={['none', 'light']}

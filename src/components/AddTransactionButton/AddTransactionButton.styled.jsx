@@ -25,6 +25,7 @@ export const AddButton = styled.button`
   font-weight: ${p => p.theme.fontWeights.bold};
 
   transition: ${p => p.theme.transitions.regularScale};
+  cursor: pointer;
 
   :hover,
   :focus {

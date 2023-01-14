@@ -201,6 +201,7 @@ const ModalButton = styled.button`
   text-transform: uppercase;
 
   transition: ${p => p.theme.transitions.regularScale};
+  cursor: pointer;
 
   :hover,
   :focus {

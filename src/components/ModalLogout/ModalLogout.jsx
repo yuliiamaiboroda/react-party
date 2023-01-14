@@ -19,6 +19,7 @@ export default function ModalLogout() {
         display="flex"
         flexDirection="column"
         alignItems="center"
+        my={['auto', 0]}
         px={[3, 4]}
         height="100%"
       >
