@@ -8,7 +8,13 @@ import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllTransactions } from 'redux/transactionsController/transactionController-operations';
-import { Div, Wrapper, DivContainer } from './DashBoardPage.styled';
+import {
+  Div,
+  Wrapper,
+  DivContainer,
+  DivWrapper,
+  Splitter,
+} from './DashBoardPage.styled';
 import Container from 'components/Container';
 
 export default function DashBoardPage() {
@@ -19,42 +25,45 @@ export default function DashBoardPage() {
   return (
     <>
       <Header />
-      <Container>
-        <Div>
-          <Wrapper>
-            <DivContainer>
-              <Navigation />
-              <Media
-                queries={{
-                  medium: '(min-width: 768px) and (max-width: 1199px)',
-                  large: '(min-width: 1200px)',
-                }}
-              >
-                {matches => (
-                  <Fragment>
-                    {matches.medium && <Balance />}
-                    {matches.large && <Balance />}
-                  </Fragment>
-                )}
-              </Media>
-              <Media
-                queries={{
-                  medium: '(min-width: 768px) and (max-width: 1199px)',
-                  large: '(min-width: 1200px)',
-                }}
-              >
-                {matches => (
-                  <Fragment>
-                    {matches.medium && <Currency />}
-                    {matches.large && <Currency />}
-                  </Fragment>
-                )}
-              </Media>
-            </DivContainer>
-          </Wrapper>
-          <Outlet />
-        </Div>
-      </Container>
+      <DivWrapper>
+        <Container>
+          <Div>
+            <Wrapper>
+              <DivContainer>
+                <Navigation />
+                <Media
+                  queries={{
+                    medium: '(min-width: 768px) and (max-width: 1199px)',
+                    large: '(min-width: 1200px)',
+                  }}
+                >
+                  {matches => (
+                    <Fragment>
+                      {matches.medium && <Balance />}
+                      {matches.large && <Balance />}
+                    </Fragment>
+                  )}
+                </Media>
+                <Media
+                  queries={{
+                    medium: '(min-width: 768px) and (max-width: 1199px)',
+                    large: '(min-width: 1200px)',
+                  }}
+                >
+                  {matches => (
+                    <Fragment>
+                      {matches.medium && <Currency />}
+                      {matches.large && <Currency />}
+                    </Fragment>
+                  )}
+                </Media>
+              </DivContainer>
+            </Wrapper>
+            <Splitter></Splitter>
+            <Outlet />
+          </Div>
+        </Container>
+      </DivWrapper>
     </>
   );
 }
