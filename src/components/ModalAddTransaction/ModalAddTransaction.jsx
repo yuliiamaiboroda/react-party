@@ -1,12 +1,13 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, FormikConsumer } from 'formik';
 import * as Yup from 'yup';
 import 'react-datetime/css/react-datetime.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTransactionCategories } from 'redux/transactionCategories/transactionCategories-selectors';
 import { createTransaction } from 'redux/transactionsController/transactionController-operations';
 import { useCloseModalAddTrans } from 'hooks';
-import { formatDate } from 'utils';
+import { formatDate, formatCurrentDate } from 'utils';
 import Modal from 'components/Modal';
+import Header from 'components/Header/Header';
 import Box from 'components/Box';
 import {
   Title,
@@ -27,7 +28,6 @@ import {
 } from './ModalAddTransaction.styled';
 
 import { TRANSACTION_TYPE } from 'constantes';
-import Header from 'components/Header/Header';
 import ModalSelect from 'components/ModalSelect';
 
 export default function ModalAddTransaction() {
@@ -37,7 +37,7 @@ export default function ModalAddTransaction() {
 
   const validationSchema = Yup.object({
     isExpense: Yup.bool().required(),
-    categoryId: Yup.string(),
+    categoryId: Yup.string().required('Required field'),
     amount: Yup.number('The value must be a number')
       .moreThan(0, 'The number must be greater than 0')
       .required('Required field'),
@@ -59,15 +59,11 @@ export default function ModalAddTransaction() {
   }) => {
     const type = isExpense ? TRANSACTION_TYPE.EXPENSE : TRANSACTION_TYPE.INCOME;
 
-    const transaction = transactionCategories.find(element =>
-      isExpense ? element.id === categoryId : element.type === type
-    );
-
     dispatch(
       createTransaction({
         transactionDate,
-        type: transaction.type,
-        categoryId: transaction.id,
+        type,
+        categoryId,
         comment,
         amount: isExpense ? -Math.abs(amount) : amount,
       })
@@ -82,6 +78,20 @@ export default function ModalAddTransaction() {
     value: id,
     label: name,
   }));
+
+  const incomeCategory = transactionCategories.find(
+    element => element.type === TRANSACTION_TYPE.INCOME
+  );
+
+  const switchCategoryType = ({ values, setFieldValue }) => {
+    if (!values.isExpense && values.categoryId !== incomeCategory.id) {
+      setFieldValue('categoryId', incomeCategory.id);
+    }
+
+    if (values.isExpense && values.categoryId === incomeCategory.id) {
+      setFieldValue('categoryId', '');
+    }
+  };
 
   return (
     <Modal onClose={closeModal}>
@@ -100,7 +110,7 @@ export default function ModalAddTransaction() {
             isExpense: true,
             categoryId: '',
             amount: '',
-            transactionDate: '',
+            transactionDate: formatDate(new Date()),
             comment: '',
           }}
           validationSchema={validationSchema}
@@ -126,6 +136,8 @@ export default function ModalAddTransaction() {
                   }
                 />
               )}
+              <ErrorMessage component={Error} name="categoryId" />
+              {switchCategoryType(formik)}
               <Box
                 display="flex"
                 flexWrap="wrap"
@@ -144,6 +156,7 @@ export default function ModalAddTransaction() {
                 </InputContainer>
                 <InputContainer>
                   <DatePicker
+                    initialValue={formatCurrentDate()}
                     utc={true}
                     timeFormat={false}
                     dateFormat="DD.MM.YYYY"
