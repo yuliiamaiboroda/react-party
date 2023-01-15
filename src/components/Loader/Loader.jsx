@@ -1,21 +1,9 @@
 import { ThreeDots } from 'react-loader-spinner';
+import { Wrapper } from 'components/Loader/Loader.styled';
 
 export default function Loader() {
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '100vh',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        zIndex: '1000',
-        transform: 'translate(-50%, -50%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
+    <Wrapper>
       <ThreeDots
         height="80"
         width="80"
@@ -26,6 +14,6 @@ export default function Loader() {
         wrapperClassName=""
         visible={true}
       />
-    </div>
+    </Wrapper>
   );
 }
