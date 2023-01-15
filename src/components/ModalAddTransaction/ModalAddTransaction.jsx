@@ -70,7 +70,7 @@ export default function ModalAddTransaction() {
         transactionDate,
         type,
         categoryId,
-        comment,
+        comment: comment.trim(),
         amount: isExpense ? -Math.abs(amount) : amount,
       })
     );
