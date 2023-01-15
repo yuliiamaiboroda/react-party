@@ -10,20 +10,10 @@
 
 @media screen and (min-width: 768px) {
   .form_reg {
-    position: absolute;
-    bottom: 100px;
-    right: 50%;
-    transform: translate(50%);
     width: 540px;
+    height: 620px;
     border-radius: 50px;
     padding-bottom: 50px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .form_reg {
-    bottom: 50%;
-    right: 85px;
-    transform: translateY(50%);
   }
 }
 

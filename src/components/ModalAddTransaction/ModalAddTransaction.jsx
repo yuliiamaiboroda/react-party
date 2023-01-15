@@ -10,7 +10,7 @@ import { createTransaction } from 'redux/transactionsController/transactionContr
 import { useCloseModalAddTrans } from 'hooks';
 import { formatDate, formatCurrentDate } from 'utils';
 import Modal from 'components/Modal';
-import Header from 'components/Header/Header';
+import Header from 'components/Header';
 import Box from 'components/Box';
 import {
   Title,
@@ -30,7 +30,7 @@ import {
   CancelButton,
 } from './ModalAddTransaction.styled';
 
-import { TRANSACTION_TYPE } from 'constantes';
+import { TRANSACTION_TYPE } from 'constants';
 import ModalSelect from 'components/ModalSelect';
 import Loader from 'components/Loader';
 
