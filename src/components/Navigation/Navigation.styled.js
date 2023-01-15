@@ -9,15 +9,10 @@ export const Nav = styled.nav`
   margin-top: 45px;
   @media screen and (max-width: 767px) {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
     margin-top: 15px;
-    justify-items: center;
-    justify-content: space-around;
     margin-bottom: 15px;
     justify-content: center;
     gap: 36px;
-    width: 280px;
     align-items: stretch;
   }
   @media screen and (min-width: 768px) {
@@ -49,9 +44,6 @@ export const LinkHome = styled(NavLink)`
   }
   @media screen and (min-width: 768px) {
     position: relative;
-    &.active {
-      transform: none;
-    }
     &::after {
       display: block;
       position: absolute;
@@ -88,9 +80,6 @@ export const LinkStatistics = styled(NavLink)`
   }
   @media screen and (min-width: 768px) {
     position: relative;
-    &.active {
-      transform: none;
-    }
     &::after {
       display: block;
       position: absolute;
