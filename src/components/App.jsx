@@ -3,18 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { fetchingCurrentUser } from 'redux/authController/authController-operations';
 import { selectIsFetchingCurrentUser } from 'redux/authController/authController-selectors';
-import HomeTab from './HomeTab';
 import Loader from './Loader';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import DiagramTab from './DiagramTab';
-import Currency from './Currency';
 import { useMedia } from 'react-use';
-import UserPage from './UserPage';
 
 const DashBoardPage = lazy(() => import('../pages/DashboardPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegistrationPage = lazy(() => import('../pages/RegistrationPage'));
+const HomeTab = lazy(() => import('./HomeTab'));
+const DiagramTab = lazy(() => import('./DiagramTab'));
+const Currency = lazy(() => import('./Currency'));
+const UserPage = lazy(() => import('./UserPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
