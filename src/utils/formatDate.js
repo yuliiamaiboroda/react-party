@@ -5,3 +5,8 @@ export const formatDate = date => {
     return '';
   }
 };
+
+export const formatCurrentDate = () => {
+  const [year, month, day] = formatDate(new Date()).split('-');
+  return [day, month, year].join('.');
+};

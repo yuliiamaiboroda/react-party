@@ -4,11 +4,10 @@ import {
   LinkCurrency,
   Nav,
   Link,
-  Img,
+  StyledIconHome,
+  StyledStatisticsIcon,
+  StyledCurrencyIcon,
 } from './Navigation.styled';
-import HomeIcon from 'icons/home.svg';
-import StatisticsIcon from 'icons/statistics.svg';
-import CurrencyIcon from 'icons/currency.svg';
 import { selectIsLoggedIn } from 'redux/authController/authController-selectors';
 import { useSelector } from 'react-redux';
 
@@ -20,19 +19,19 @@ export default function Navigation() {
       <Nav>
         <Link>
           <LinkHome to="/">
-            <Img src={HomeIcon} alt="Home" />
+            <StyledIconHome />
           </LinkHome>
         </Link>
         <Link>
           {isLoggedIn && (
             <LinkStatistics to="/diagram">
-              <Img src={StatisticsIcon} alt="Statistics" />
+              <StyledStatisticsIcon />
             </LinkStatistics>
           )}
         </Link>
         <Link>
           <LinkCurrency to="/currency">
-            <Img src={CurrencyIcon} alt="Currency" />
+            <StyledCurrencyIcon />
           </LinkCurrency>
         </Link>
       </Nav>

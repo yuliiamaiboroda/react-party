@@ -30,8 +30,9 @@ export const theme = Object.freeze({
     secondary: '#4A56E2',
     income: '#24CCA7',
     expense: '#FF6596',
+    expenseLight: '#FFD1E0',
     muted: '#BDBDBD',
-    blur: 25,
+    blur: 'blur(25px)',
   },
   borders: {
     none: 'none',

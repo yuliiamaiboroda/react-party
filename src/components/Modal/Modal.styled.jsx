@@ -17,6 +17,7 @@ export const CloseModalBtn = styled.button`
   font-weight: ${p => p.theme.fontWeights.normal};
 
   transition: ${p => p.theme.transitions.regularColor};
+  cursor: pointer;
 
   :hover,
   :focus {

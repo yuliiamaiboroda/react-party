@@ -3,21 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { fetchingCurrentUser } from 'redux/authController/authController-operations';
 import { selectIsFetchingCurrentUser } from 'redux/authController/authController-selectors';
-import HomeTab from './HomeTab/HomeTab';
 import Loader from './Loader';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import DiagramTab from './DiagramTab/DiagramTab';
-import Currency from './Currency/Currency';
 import { useMedia } from 'react-use';
 
-const DashBoardPage = lazy(() =>
-  import('../pages/DashboardPage/DashBoardPage')
-);
-const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-const RegistrationPage = lazy(() =>
-  import('../pages/RegistrationPage/RegistrationPage')
-);
+const DashBoardPage = lazy(() => import('../pages/DashboardPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const RegistrationPage = lazy(() => import('../pages/RegistrationPage'));
+const HomeTab = lazy(() => import('./HomeTab'));
+const DiagramTab = lazy(() => import('./DiagramTab'));
+const Currency = lazy(() => import('./Currency'));
+const UserPage = lazy(() => import('./UserPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -47,6 +44,7 @@ export const App = () => {
             >
               <Route index element={<HomeTab />} />
               <Route path="diagram" element={<DiagramTab />} />
+              <Route path="user" element={<UserPage />} />
               {isMobile && <Route path="currency" element={<Currency />} />}
             </Route>
             <Route

@@ -3,6 +3,7 @@ import { Form, Field } from 'formik';
 import Datetime from 'react-datetime';
 import iconMinus from 'icons/Minus.svg';
 import iconPlus from 'icons/Plus.svg';
+import iconCalendar from 'icons/calendarIcon.svg';
 
 export const Title = styled.h2`
   margin-bottom: ${p => p.theme.space[4]}px;
@@ -167,9 +168,25 @@ export const InputContainer = styled.div`
 `;
 
 export const DatePicker = styled(Datetime)`
+  position: relative;
   width: 100%;
   max-width: 400px;
   height: 32px;
+
+  ::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+
+    background-image: url(${iconCalendar});
+    background-repeat: no-repeat;
+    background-position: center;
+
+    pointer-events: none;
+  }
 `;
 
 export const Error = styled.div`
@@ -201,6 +218,7 @@ const ModalButton = styled.button`
   text-transform: uppercase;
 
   transition: ${p => p.theme.transitions.regularScale};
+  cursor: pointer;
 
   :hover,
   :focus {

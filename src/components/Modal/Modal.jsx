@@ -1,15 +1,24 @@
 import { PropTypes } from 'prop-types';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 import { HiX } from 'react-icons/hi';
 import Box from 'components/Box';
 import { CloseModalBtn } from './Modal.styled';
 
+const body = window.document.body;
+const page = document.getElementById('root');
 const portal = document.getElementById('modal-root');
 const ESCAPE_CODE = 'Escape';
 
 export default function Modal({ onClose, children }) {
   useEffect(() => {
+    disableBodyScroll(body);
+    page.style.paddingRight = '15px';
     const escapeModal = event => {
       if (event.code === ESCAPE_CODE) {
         event.preventDefault();
@@ -20,6 +29,9 @@ export default function Modal({ onClose, children }) {
 
     return () => {
       window.removeEventListener('keydown', escapeModal);
+      enableBodyScroll(body);
+      clearAllBodyScrollLocks(body);
+      page.style.paddingRight = '0';
     };
   });
 
@@ -37,7 +49,6 @@ export default function Modal({ onClose, children }) {
       left="0"
       width="100%"
       height="100%"
-      zIndex="9999"
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -51,7 +62,6 @@ export default function Modal({ onClose, children }) {
         minHeight={['100%', '200px']}
         display="flex"
         flexDirection="column"
-        justifyContent="center"
         p={[0, 4]}
         backgroundColor="lightBg"
         borderRadius={['none', 'light']}
@@ -61,6 +71,7 @@ export default function Modal({ onClose, children }) {
         <CloseModalBtn type="button" onClick={handleClose}>
           <HiX style={{ pointerEvents: 'none' }} />
         </CloseModalBtn>
+
         {children}
       </Box>
     </Box>,

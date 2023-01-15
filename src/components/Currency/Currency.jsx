@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import money from 'redux/currency/currency-options';
 import { loadingBool } from 'redux/currency/currency';
-// import Container from 'components/Container';
 export default function Currency() {
   const dispatch = useDispatch();
 
