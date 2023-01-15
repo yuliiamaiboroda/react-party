@@ -1,5 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { ReactComponent as HomeIcon } from 'icons/home.svg';
+import { ReactComponent as StatisticsIcon } from 'icons/statistics.svg';
+import { ReactComponent as CurrencyIcon } from 'icons/currency.svg';
 
 export const Nav = styled.nav`
   margin-bottom: 32px;
@@ -15,6 +18,7 @@ export const Nav = styled.nav`
     justify-content: center;
     gap: 36px;
     width: 280px;
+    align-items: stretch;
   }
   @media screen and (min-width: 768px) {
     margin-bottom: 42px;
@@ -27,9 +31,21 @@ export const LinkHome = styled(NavLink)`
     color: black;
     transform: scale(1.1);
     opacity: 1;
+    &.active svg {
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+      fill: #6e78e8;
+      background-color: white;
+      border-radius: 6px;
+    }
   }
   @media screen and (max-width: 767px) {
     margin-bottom: 15px;
+    &.active svg {
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+      fill: #6e78e8;
+      background-color: white;
+      border-radius: 6px;
+    }
   }
   @media screen and (min-width: 768px) {
     position: relative;
@@ -39,7 +55,7 @@ export const LinkHome = styled(NavLink)`
     &::after {
       display: block;
       position: absolute;
-      bottom: -6px;
+      bottom: -1px;
       left: 23px;
       content: 'Home';
       font-size: 18px;
@@ -47,15 +63,28 @@ export const LinkHome = styled(NavLink)`
     }
   }
 `;
+
 export const LinkStatistics = styled(NavLink)`
   &.active {
     font-weight: bold;
     color: black;
     transform: scale(1.1);
     opacity: 1;
+    &.active svg {
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+      fill: #6e78e8;
+      background-color: white;
+      border-radius: 6px;
+    }
   }
   @media screen and (max-width: 767px) {
     margin-bottom: 43px;
+    &.active svg {
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+      fill: #6e78e8;
+      background-color: white;
+      border-radius: 6px;
+    }
   }
   @media screen and (min-width: 768px) {
     position: relative;
@@ -65,7 +94,7 @@ export const LinkStatistics = styled(NavLink)`
     &::after {
       display: block;
       position: absolute;
-      bottom: -6px;
+      bottom: -1px;
       left: 23px;
       content: 'Statistics';
       font-size: 18px;
@@ -77,6 +106,12 @@ export const LinkStatistics = styled(NavLink)`
 export const LinkCurrency = styled(NavLink)`
   @media screen and (max-width: 767px) {
     margin-bottom: 31px;
+    &.active svg {
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+      fill: #6e78e8;
+      background-color: white;
+      border-radius: 6px;
+    }
   }
   @media screen and (min-width: 768px) {
     display: none;
@@ -95,22 +130,34 @@ export const Link = styled.li`
   line-height: 1.5;
   color: black;
   opacity: 1.2;
-  &:hover,
-  &:focus {
-    transform: scale(1.2);
-  }
+
   @media screen and (min-width: 768px) {
     margin-bottom: 21px;
-    &:hover,
-    &:focus {
-      transform: none;
-    }
   }
 `;
 
-export const Img = styled.img`
-  width: 18px;
+export const StyledIconHome = styled(HomeIcon)`
+  @media screen and (min-width: 768px) {
+    height: ${({ height }) => height || '18px'};
+  }
+
   @media screen and (max-width: 767px) {
-    width: 38px;
+    height: ${({ height }) => height || '38px'};
+  }
+`;
+
+export const StyledStatisticsIcon = styled(StatisticsIcon)`
+  @media screen and (min-width: 768px) {
+    height: ${({ height }) => height || '18px'};
+  }
+
+  @media screen and (max-width: 767px) {
+    height: ${({ height }) => height || '38px'};
+  }
+`;
+
+export const StyledCurrencyIcon = styled(CurrencyIcon)`
+  @media screen and (max-width: 767px) {
+    height: ${({ height }) => height || '38px'};
   }
 `;
