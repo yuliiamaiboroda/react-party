@@ -70,6 +70,7 @@ export const H3 = styled.h3`
 
 export const UlMobile = styled.ul`
   border-radius: 10px;
+  max-width: 280px;
 `;
 
 export const DivMobile = styled.div`

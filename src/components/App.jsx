@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { fetchingCurrentUser } from 'redux/authController/authController-operations';
@@ -7,6 +7,7 @@ import Loader from './Loader';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { useMedia } from 'react-use';
+import SharedLoyaout from './SharedLayout';
 
 const DashBoardPage = lazy(() => import('../pages/DashboardPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -31,8 +32,8 @@ export const App = () => {
       {isFetchingCurrentUser ? (
         <Loader />
       ) : (
-        <Suspense fallback={<Loader />}>
-          <Routes>
+        <Routes>
+          <Route path="/" element={<SharedLoyaout />}>
             <Route
               path="/"
               element={
@@ -56,8 +57,8 @@ export const App = () => {
               element={<PublicRoute component={<RegistrationPage />} />}
             />
             <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </Suspense>
+          </Route>
+        </Routes>
       )}
     </>
   );
