@@ -34,9 +34,11 @@ export const Wrapper = styled.div`
 `;
 
 export const ImageDiv = styled.div`
-  display: flex;
+  display: none;
+
   @media (min-width: 768px) {
     flex-direction: row;
+    display: flex;
     align-items: center;
     gap: 40px;
   }
