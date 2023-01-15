@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
     width: 715px;
   }
 `;
+
 export const Div = styled.div`
   // display: flex;
   // flex-direction: column;
@@ -34,8 +35,6 @@ export const Div = styled.div`
   @media (min-width: 1280px) {
     width: 715px;
   }
-
-
 `;
 
 export const TableWrapper = styled.div`
@@ -68,43 +67,4 @@ export const Title = styled.h3`
   @media (min-width: 1280px) {
     margin: 32px 15px 20px 15px;
   }
-`;
-
-export const SelWrap = styled.div`
-  & {
-    width: 100%;
-    position: relative;
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 1.2em;
-    height: 1em;
-    background-color: black;
-    clip-path: polygon(0 0, 6% 0, 48% 55%, 94% 0, 100% 0, 48% 64%);
-  }
-`;
-
-export const Select = styled.select`
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-color: transparent;
-  padding: 10px 20px;
-  margin: 0;
-  width: 100%;
-  height: 50px;
-  cursor: pointer;
-  font-family: ${p => p.theme.fonts.heading};
-  font-size: ${p => p.theme.fontSizes.s}px;
-  line-height: ${p => p.theme.lineHeights.heading};
-  border: ${p => p.theme.borders.normal};
-  border-radius: ${p => p.theme.radii.normal}px;
-`;
-
-export const Option = styled.option`
-  background-color: #e5e5e5;
-  font-size: ${p => p.theme.fontSizes.s}px;
 `;
