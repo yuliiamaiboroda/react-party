@@ -4,7 +4,7 @@ import Header from 'components/Header';
 import { Outlet } from 'react-router-dom';
 import Navigation from 'components/Navigation';
 import Media from 'react-media';
-import React, { Fragment } from 'react';
+import React, { Fragment, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllTransactions } from 'redux/transactionsController/transactionController-operations';
@@ -60,7 +60,9 @@ export default function DashBoardPage() {
               </DivContainer>
             </Wrapper>
             <Splitter></Splitter>
-            <Outlet />
+            <Suspense fallback={null}>
+              <Outlet />
+            </Suspense>
           </Div>
         </Container>
       </DivWrapper>

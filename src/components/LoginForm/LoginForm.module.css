@@ -1,20 +1,15 @@
-@media screen and (min-width: 320px) {
-  .form {
-    width: 320px;
-    height: auto;
-    padding-top: 110px;
-    padding-bottom: 110px;
-    margin: 0 auto;
-    background-color: #fff;
-    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-  }
+.form {
+  width: 320px;
+  height: auto;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
 }
+
 @media screen and (min-width: 768px) {
   .form {
-    position: absolute;
-    bottom: 110px;
-    right: 50%;
-    transform: translate(50%);
     width: 540px;
     border-radius: 20px;
     padding-top: 40px;
@@ -22,14 +17,7 @@
     margin: auto;
   }
 }
-@media screen and (min-width: 1280px) {
-  .form {
-    bottom: 50%;
-    right: 85px;
-    transform: translateY(50%);
-    margin: 0;
-  }
-}
+
 .logo_wrapper {
   display: flex;
   gap: 20px;

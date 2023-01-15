@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const AddButton = styled.button`
+  outline: none;
   position: fixed;
   bottom: ${p => p.theme.space[3]}px;
   right: ${p => p.theme.space[3]}px;
