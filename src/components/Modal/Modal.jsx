@@ -11,14 +11,12 @@ import Box from 'components/Box';
 import { CloseModalBtn } from './Modal.styled';
 
 const body = window.document.body;
-const page = document.getElementById('root');
 const portal = document.getElementById('modal-root');
 const ESCAPE_CODE = 'Escape';
 
 export default function Modal({ onClose, children }) {
   useEffect(() => {
     disableBodyScroll(body);
-    page.style.paddingRight = '15px';
     const escapeModal = event => {
       if (event.code === ESCAPE_CODE) {
         event.preventDefault();
@@ -31,7 +29,6 @@ export default function Modal({ onClose, children }) {
       window.removeEventListener('keydown', escapeModal);
       enableBodyScroll(body);
       clearAllBodyScrollLocks(body);
-      page.style.paddingRight = '0';
     };
   });
 
