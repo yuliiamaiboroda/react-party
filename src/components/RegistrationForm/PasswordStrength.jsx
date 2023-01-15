@@ -41,7 +41,7 @@ const PasswordStrenght = ({ password }) => {
   const changeProgressStyle = () => ({
     width: '100%',
     height: '4px',
-    marginTop: '-20px',
+    marginTop: '-4px',
   });
 
   const changePasswordColor = () => ({
