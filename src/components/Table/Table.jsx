@@ -12,19 +12,25 @@ import {
   TotalText,
   Wrapper,
 } from './Table.styled';
+import { useTranslation } from 'react-i18next';
+import { handlerCategories } from 'helpers/multiLanguage';
 
 const Table = ({ data, colors }) => {
+  const { t } = useTranslation();
+
   const currentColor = index => colors.find((_, ind) => index === ind);
   const { categoriesSummary, expenseSummary, incomeSummary } = data;
 
-  const onlyExpenses = categoriesSummary.filter(trans => trans.type === 'EXPENSE');
+  const onlyExpenses = categoriesSummary.filter(
+    trans => trans.type === 'EXPENSE'
+  );
 
   return (
     <CompWrapper>
       <ul>
         <HeaderLi>
-          <TextBold>Category</TextBold>
-          <TextBold>Sum</TextBold>
+          <TextBold>{t('table.category')}</TextBold>
+          <TextBold>{t('table.sum')}</TextBold>
         </HeaderLi>
         {onlyExpenses.length ? (
           onlyExpenses.map((el, index) => (
@@ -39,7 +45,7 @@ const Table = ({ data, colors }) => {
                     borderRadius: '3px',
                   }}
                 ></span>
-                <Text>{el.name}</Text>
+                <Text>{t(handlerCategories(el.name))}</Text>
               </Wrapper>
               <Text>{normalizedNumber(el.total)}</Text>
             </Li>

@@ -33,8 +33,11 @@ import {
 import { TRANSACTION_TYPE } from 'constants';
 import ModalSelect from 'components/ModalSelect';
 import Loader from 'components/Loader';
+import { useTranslation } from 'react-i18next';
+import { handlerCategories } from 'helpers/multiLanguage';
 
 export default function ModalAddTransaction() {
+  const { t } = useTranslation();
   const transactionCategories = useSelector(selectTransactionCategories);
   const isLoading = useSelector(selectIsLoadingCategories);
   const error = useSelector(selectError);
@@ -82,7 +85,7 @@ export default function ModalAddTransaction() {
 
   const options = expenseCategories.map(({ id, name }) => ({
     value: id,
-    label: name,
+    label: t(handlerCategories(name)),
   }));
 
   const incomeCategory = transactionCategories.find(

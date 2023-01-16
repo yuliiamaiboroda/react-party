@@ -9,8 +9,15 @@ import ModalLogout from 'components/ModalLogout';
 import { hideBalance, showBalance } from 'redux/finance/finance';
 import { selectIsHiddenBalance } from 'redux/finance/finance-selectors';
 import { Button, P, Span, InfoDiv, ButtonsWrapper } from './UserPage.styled';
+import { useTranslation } from 'react-i18next';
+
+const lngs = [
+  { code: "en", native: "English" },
+  { code: "uk", native: "Українська" },
+];
 
 export default function UserPage() {
+  const { i18n } = useTranslation();
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUser);
   const isModalOpen = useSelector(selectIsModalLogoutOpen);
@@ -18,6 +25,10 @@ export default function UserPage() {
 
   const openModal = useOpenModalLogout();
   const { username, email } = userInfo;
+
+  const handleTrans = (code) => {
+    i18n.changeLanguage(code);
+  };
 
   return (
     <>
@@ -30,6 +41,12 @@ export default function UserPage() {
             Your email is <Span>{email}</Span>
           </P>
         </InfoDiv>
+
+        {lngs.map((lng) => {
+        const { code, native } = lng;
+        return <button onClick={() => handleTrans(code)}>{native}</button>;
+      })}
+
         <ButtonsWrapper>
           {!isBalancehidden ? (
             <Button
