@@ -6,7 +6,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { App } from 'components/App';
 import './index.css';
-// import i18n from 'utils'
+//eslint-disable-next-line
+import i18n from 'utils'
 
 import { theme } from './theme';
 import { persistor, store } from 'redux/store';

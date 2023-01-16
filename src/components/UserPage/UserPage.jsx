@@ -44,7 +44,7 @@ export default function UserPage() {
 
         {lngs.map((lng) => {
         const { code, native } = lng;
-        return <button onClick={() => handleTrans(code)}>{native}</button>;
+        return <button key={code} onClick={() => handleTrans(code)}>{native}</button>;
       })}
 
         <ButtonsWrapper>

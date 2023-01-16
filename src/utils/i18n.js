@@ -22,6 +22,7 @@ i18n.use(initReactI18next).init({
           otherExpenses: 'Other expenses',
           entertainment: 'Entertainment',
           income: 'Income',
+          other: 'Other',
         },
         month: {
           january: 'January',
@@ -41,12 +42,22 @@ i18n.use(initReactI18next).init({
           title: 'Your balance',
         },
         currencys: {
-          currency: 'Currency222',
-          purchase: 'Purchase222',
+          currency: 'Currency',
+          purchase: 'Purchase',
           sale: 'Sale',
         },
         diagramTab: {
           title: 'Statistics',
+        },
+        homeTab: {
+          date: 'Date',
+          type: 'Type',
+          category: 'Category',
+          comment: 'Comment',
+          sum: 'Sum',
+          options: 'Options',
+          delBtn: 'delete',
+          noTrans: 'There are no transactions',
         },
         addTrans: {
           add: 'Add transaction',
@@ -81,6 +92,7 @@ i18n.use(initReactI18next).init({
           otherExpenses: 'Інші витрати',
           entertainment: 'Розваги',
           income: 'Дохід',
+          other: 'Інша',
         },
         month: {
           january: 'Січень',
@@ -107,6 +119,16 @@ i18n.use(initReactI18next).init({
         diagramTab: {
           title: 'Статистика',
         },
+        homeTab: {
+          date: 'Дата',
+          type: 'Тип',
+          category: 'Категорія',
+          сomment: 'Коментар',
+          sum: 'Сума',
+          options: 'Опції',
+          delBtn: 'видалити',
+          noTrans: 'Транзакцій не знайдено',
+        },
         addTrans: {
           add: 'Додати транзакцію',
           toggInc: 'Дохід',
@@ -123,7 +145,6 @@ i18n.use(initReactI18next).init({
           noTrans: 'Транзакцій не знайдено',
           expenses: 'Витрати:',
           income: 'Дохід:',
-
         },
       },
     },
