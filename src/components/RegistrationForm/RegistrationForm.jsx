@@ -15,25 +15,27 @@ import { ReactComponent as NameIcon } from '../../icons/name.svg';
 
 import { signUp } from 'redux/authController/authController-operations';
 import css from './RegistrationForm.module.css';
+import { useTranslation } from 'react-i18next';
 
 function RegistrationForm() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const validationsSchema = Yup.object().shape({
     email: Yup.string('Enter e-mail')
-      .email('Invalid email')
-      .required('Required'),
+      .email(t('reg.invalidEmail'))
+      .required(t('reg.requiredField')),
     password: Yup.string('Enter password')
-      .min(6, 'Too Short!')
-      .max(14, 'Too Long!')
-      .required('Required'),
+      .min(6, t('reg.shortPass'))
+      .max(14, t('reg.longPass'))
+      .required(t('reg.requiredField')),
     confirmPassword: Yup.string('Confirm password')
-      .oneOf([Yup.ref('password')], 'Passwords do not match')
-      .required('Required'),
+      .oneOf([Yup.ref('password')], t('reg.motMatchPass'))
+      .required(t('reg.requiredField')),
     username: Yup.string()
-      .min(2, 'Please enter a name more than 1 character')
-      .max(12, 'Please enter a name less than 12 character')
-      .required('Required'),
+      .min(2, t('reg.shortName'))
+      .max(12, t('reg.shortName'))
+      .required(t('reg.requiredField')),
   });
 
   const handleRegister = ({ username, email, password }, { resetForm }) => {
@@ -68,7 +70,7 @@ function RegistrationForm() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
-                placeholder="E-mail"
+                placeholder={t('reg.placeholderEmail')}
                 className={css.input}
               />
 
@@ -79,7 +81,7 @@ function RegistrationForm() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
-                placeholder="Password"
+                placeholder={t('reg.placeholderPass')}
                 className={css.input}
               />
 
@@ -92,7 +94,7 @@ function RegistrationForm() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.confirmPassword}
-                placeholder="Confirm password"
+                placeholder={t('reg.placeholderConfirm')}
                 className={css.input}
               />
 
@@ -103,7 +105,7 @@ function RegistrationForm() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.username}
-                placeholder="Your name"
+                placeholder={t('reg.placeholderName')}
                 className={css.input}
               />
             </div>
@@ -114,11 +116,11 @@ function RegistrationForm() {
                 type="submit"
                 disabled={!isValid && !dirty}
               >
-                REGISTER
+                {t('reg.registrationBtn')}
               </button>
               <div>
                 <Link to="/login" className={css.main_btn}>
-                  LOG IN
+                {t('reg.loginBtn')}
                 </Link>
               </div>
             </div>

@@ -1,7 +1,9 @@
 import React from 'react';
 import zxcvbn from 'zxcvbn';
+import { useTranslation } from 'react-i18next';
 
 const PasswordStrenght = ({ password }) => {
+  const { t } = useTranslation();
   const testResult = zxcvbn(password);
   const num = (testResult.score * 100) / 4;
   const progressColor = () => {
@@ -26,13 +28,13 @@ const PasswordStrenght = ({ password }) => {
       case 0:
         return '';
       case 1:
-        return 'Weak password strength';
+        return t('reg.weakPass');
       case 2:
-        return 'Normal password strength';
+        return t('reg.normPass');
       case 3:
-        return 'Good password strength';
+        return t('reg.goodPass');
       case 4:
-        return 'Strong password strength';
+        return t('reg.strongPass');
       default:
         return '';
     }

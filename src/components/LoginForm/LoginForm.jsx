@@ -13,18 +13,20 @@ import { ReactComponent as Logo } from '../../icons/wallet.svg';
 
 import { signIn } from 'redux/authController/authController-operations';
 import css from './LoginForm.module.css';
+import { useTranslation } from 'react-i18next';
 
 function LoginForm() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const validationsSchema = Yup.object().shape({
     email: Yup.string('Enter e-mail')
-      .email('Invalid email')
-      .required('Required'),
+      .email(t('login.invalidEmail'))
+      .required(t('login.requiredField')),
     password: Yup.string('Enter password')
-      .min(6, 'Too Short!')
-      .max(14, 'Too Long!')
-      .required('Required'),
+      .min(6, t('login.shortPass'))
+      .max(14, t('login.longPass'))
+      .required(t('login.requiredField')),
   });
 
   const handleLogin = ({ email, password }, { resetForm }) => {
@@ -57,7 +59,7 @@ function LoginForm() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
-                placeholder="E-mail"
+                placeholder={t('login.placeholderEmail')}
                 className={css.input}
               />
               <FormTextInput
@@ -67,7 +69,7 @@ function LoginForm() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
-                placeholder="Password"
+                placeholder={t('login.placeholderPass')}
                 className={css.input}
               />
             </div>
@@ -78,12 +80,12 @@ function LoginForm() {
                 type="submit"
                 disabled={!isValid && !dirty}
               >
-                LOG IN
+                {t('login.loginBtn')}
               </button>
 
               <div>
                 <Link to="/registration" className={css.main_btn}>
-                  REGISTER
+                {t('login.registrationBtn')}
                 </Link>
               </div>
             </div>
