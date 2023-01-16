@@ -10,6 +10,38 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       translation: {
+        reg: {
+          weakPass: 'Weak password strength',
+          normPass: 'Normal password strength',
+          goodPass: 'Good password strength',
+          strongPass: 'Strong password strength',
+          motMatchPass: 'Passwords do not match',
+          shortName: 'Please enter a name more than 1 character',
+          shortName: 'Please enter a name less than 12 character',
+
+
+
+          requiredField: 'Required field',
+          invalidEmail: 'Invalid email',
+          shortPass: 'Too Short!',
+          longPass: 'Too Long!',
+          placeholderEmail: 'E-mail',
+          placeholderPass: 'Password',
+          placeholderConfirm: 'Confirm password',
+          placeholderName: 'Your name',
+          loginBtn: 'LOG IN',
+          registrationBtn: 'REGISTER',
+        },
+        login: {
+          requiredField: 'Required field',
+          invalidEmail: 'Invalid email',
+          shortPass: 'Too Short!',
+          longPass: 'Too Long!',
+          placeholderEmail: 'E-mail',
+          placeholderPass: 'Password',
+          loginBtn: 'LOG IN',
+          registrationBtn: 'REGISTER',
+        },
         catList: {
           mainExpenses: 'Main expenses',
           products: 'Products',
@@ -97,6 +129,36 @@ i18n.use(initReactI18next).init({
     },
     uk: {
       translation: {
+        reg: {
+          weakPass: 'Слабка надійність пароля',
+          normPass: 'Середня надійність пароля',
+          goodPass: 'Надійний пароль',
+          strongPass: 'Супер-надійний пароль :)',
+          motMatchPass: 'Паролі не збігаються',
+          shortName: 'Будь ласка, введіть ім`я, що містить більше ніж 1 символ',
+          shortName: 'Будь ласка, введіть ім`я менше ніж 12 символів',
+
+          requiredField: 'Обов`язкове поле',
+          invalidEmail: 'Некоректний формат eлектронної пошти',
+          shortPass: 'Занадто короткий пароль',
+          longPass: 'Занадто довгий пароль',
+          placeholderEmail: 'Електронна пошта',
+          placeholderPass: 'Пароль',
+          placeholderConfirm: 'Підтвердьте пароль',
+          placeholderName: 'Ваше ім`я',
+          loginBtn: 'УВІЙТИ',
+          registrationBtn: 'ЗАРЕЄСТРУВАТИСЯ',
+        },
+        login: {
+          requiredField: 'Обов`язкове поле',
+          invalidEmail: 'Некоректний формат eлектронної пошти',
+          shortPass: 'Занадто короткий пароль',
+          longPass: 'Занадто довгий пароль',
+          placeholderEmail: 'Електронна пошта',
+          placeholderPass: 'Пароль',
+          loginBtn: 'УВІЙТИ',
+          registrationBtn: 'ЗАРЕЄСТРУВАТИСЯ',
+        },
         catList: {
           mainExpenses: 'Основні витрати',
           products: 'Продукти',
