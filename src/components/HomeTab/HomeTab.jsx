@@ -51,7 +51,7 @@ export default function HomeTab() {
 
   const currentTransCateg = categoryId => {
     const currentTrans = transactionCategArr.find(el => el.id === categoryId);
-    if (!currentTrans) return 'other';
+    if (!currentTrans) return t('catList.other');
     return t(handlerCategories(currentTrans.name));
   };
 

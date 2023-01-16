@@ -39,6 +39,7 @@ export default function UserPage() {
 
   const handleTrans = code => {
     i18n.changeLanguage(code);
+    localStorage.setItem('lng', code)
   };
 
   return (
