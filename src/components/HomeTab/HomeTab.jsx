@@ -107,7 +107,7 @@ export default function HomeTab() {
                         <SpanMobile>{currentTransCateg(categoryId)}</SpanMobile>
                       </LiMobile>
                       <LiMobile>
-                        {t('homeTab.comment')}
+                        {t('homeTab.commentar')}
                         <SpanMobile>
                           {transformEmptyComment(comment)}
                         </SpanMobile>
@@ -134,7 +134,7 @@ export default function HomeTab() {
                   <Li>{t('homeTab.date')}</Li>
                   <Li>{t('homeTab.type')}</Li>
                   <Li>{t('homeTab.category')}</Li>
-                  <Li>{t('homeTab.comment')}</Li>
+                  <Li>{t('homeTab.commentar')}</Li>
                   <Li>{t('homeTab.sum')}</Li>
                   <Li>{t('homeTab.options')}</Li>
                 </Ul>
