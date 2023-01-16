@@ -49,6 +49,9 @@ i18n.use(initReactI18next).init({
         diagramTab: {
           title: 'Statistics',
         },
+        header: {
+          exit: 'Exit',
+        },
         homeTab: {
           date: 'Date',
           type: 'Type',
@@ -57,7 +60,7 @@ i18n.use(initReactI18next).init({
           sum: 'Sum',
           options: 'Options',
           delBtn: 'delete',
-          noTrans: 'There are no transactions',
+          noTrans: 'No transaction yet',
         },
         addTrans: {
           add: 'Add transaction',
@@ -69,12 +72,26 @@ i18n.use(initReactI18next).init({
           cancelBtn: 'Cancel',
           requiredField: 'Required field',
         },
+        exitModal: {
+          title: 'Are you sure you want to log out?',
+          logOut: 'Log out',
+          cancelBtn: 'Cancel',
+        },
         table: {
           category: 'Category',
           sum: 'Sum',
           noTrans: 'There are no transactions',
           expenses: 'Expenses:',
           income: 'Income:',
+        },
+        userPage: {
+          hello: 'Hello,',
+          emailInfo: 'Your email is',
+          settings: 'Settings',
+          lang: 'Language',
+          hideBal: 'Hide balance',
+          showBal: 'Show balance',
+          exit: 'Exit',
         },
       },
     },
@@ -119,6 +136,9 @@ i18n.use(initReactI18next).init({
         diagramTab: {
           title: 'Статистика',
         },
+        header: {
+          exit: 'Вихід',
+        },
         homeTab: {
           date: 'Дата',
           type: 'Тип',
@@ -139,12 +159,26 @@ i18n.use(initReactI18next).init({
           cancelBtn: 'Скасувати',
           requiredField: 'Обов`язкове поле',
         },
+        exitModal: {
+          title: 'Ви впевнені, що хочете вийти?',
+          logOut: 'Вихід',
+          cancelBtn: 'Скасувати',
+        },
         table: {
           category: 'Категорія',
           sum: 'Сума',
           noTrans: 'Транзакцій не знайдено',
           expenses: 'Витрати:',
           income: 'Дохід:',
+        },
+        userPage: {
+          hello: 'Вітаємо,',
+          emailInfo: 'Ваш емейл -',
+          settings: 'Налаштування',
+          lang: 'Мова',
+          hideBal: 'Приховати баланс',
+          showBal: 'Показати баланс',
+          exit: 'Вихід',
         },
       },
     },

@@ -8,12 +8,23 @@ import { useOpenModalLogout } from 'hooks';
 import ModalLogout from 'components/ModalLogout';
 import { hideBalance, showBalance } from 'redux/finance/finance';
 import { selectIsHiddenBalance } from 'redux/finance/finance-selectors';
-import { Button, P, Span, InfoDiv, ButtonsWrapper } from './UserPage.styled';
+import {
+  Button,
+  P,
+  PBold,
+  PSett,
+  Span,
+  InfoDiv,
+  SettingsDiv,
+  ButtonsWrapper,
+  SettBtnWrapper,
+} from './UserPage.styled';
 import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 const lngs = [
-  { code: "en", native: "English" },
-  { code: "uk", native: "Українська" },
+  { code: 'en', native: 'English' },
+  { code: 'uk', native: 'Українська' },
 ];
 
 export default function UserPage() {
@@ -26,7 +37,7 @@ export default function UserPage() {
   const openModal = useOpenModalLogout();
   const { username, email } = userInfo;
 
-  const handleTrans = (code) => {
+  const handleTrans = code => {
     i18n.changeLanguage(code);
   };
 
@@ -35,19 +46,28 @@ export default function UserPage() {
       <Container>
         <InfoDiv>
           <P>
-            Hello, <Span>{username}</Span>!
+            {t('userPage.hello')} <Span>{username}</Span>!
           </P>
           <P>
-            Your email is <Span>{email}</Span>
+            {t('userPage.emailInfo')} <Span>{email}</Span>
           </P>
         </InfoDiv>
-
-        {lngs.map((lng) => {
-        const { code, native } = lng;
-        return <button key={code} onClick={() => handleTrans(code)}>{native}</button>;
-      })}
-
-        <ButtonsWrapper>
+        <PBold>{t('userPage.settings')}</PBold>
+        <SettingsDiv>
+          <PSett>{t('userPage.lang')}</PSett>
+          <SettBtnWrapper>
+            {lngs.map(lng => {
+              const { code, native } = lng;
+              return (
+                <Button key={code} onClick={() => handleTrans(code)}>
+                  {native}
+                </Button>
+              );
+            })}
+          </SettBtnWrapper>
+        </SettingsDiv>
+        <SettingsDiv>
+          <PSett>{t('userPage.hideBal')}</PSett>
           {!isBalancehidden ? (
             <Button
               type="button"
@@ -56,7 +76,7 @@ export default function UserPage() {
                 backgroundColor: '#FF6596',
               }}
             >
-              Hide balance
+              {t('userPage.hideBal')}
             </Button>
           ) : (
             <Button
@@ -66,11 +86,13 @@ export default function UserPage() {
                 backgroundColor: '#24CCA7',
               }}
             >
-              Show balance
+              {t('userPage.showBal')}
             </Button>
           )}
+        </SettingsDiv>
+        <ButtonsWrapper>
           <Button type="button" onClick={openModal}>
-            Log out
+          {t('userPage.exit')}
           </Button>
         </ButtonsWrapper>
         {isModalOpen && <ModalLogout />}

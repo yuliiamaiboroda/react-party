@@ -69,7 +69,7 @@ export default function HomeTab() {
         {matches => <Fragment>{matches.small && <Balance />}</Fragment>}
       </Media>
       {sortedArr.length === 0 ? (
-        <H3>No transaction yet</H3>
+        <H3>{t('homeTab.noTrans')}</H3>
       ) : (
         <Media
           queries={{

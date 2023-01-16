@@ -6,8 +6,10 @@ import Modal from 'components/Modal';
 import Box from 'components/Box';
 import { useCloseModalLogout } from 'hooks';
 import { Title, LogoutButton, CancelButton } from './ModalLogout.styled';
+import { useTranslation } from 'react-i18next';
 
 export default function ModalLogout() {
+  const { t } = useTranslation();
   const error = useSelector(selectError);
   const dispatch = useDispatch();
   const closeModal = useCloseModalLogout();
@@ -30,13 +32,13 @@ export default function ModalLogout() {
         px={[3, 4]}
         height="100%"
       >
-        <Title>Are you sure you want to log out?</Title>
+        <Title>{t('exitModal.title')}</Title>
         <Box display="flex" justifyContent="center" flexWrap="wrap" gridGap={3}>
           <LogoutButton type="button" onClick={handleLogout}>
-            Log out
+          {t('exitModal.logOut')}
           </LogoutButton>
           <CancelButton type="button" onClick={closeModal}>
-            Cancel
+          {t('exitModal.cancelBtn')}
           </CancelButton>
         </Box>
       </Box>

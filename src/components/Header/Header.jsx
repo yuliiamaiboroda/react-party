@@ -22,8 +22,10 @@ import {
   selectUser,
   selectIsModalLogoutOpen,
 } from 'redux/authController/authController-selectors';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const { t } = useTranslation();
   const { username } = useSelector(selectUser);
   const isModalOpen = useSelector(selectIsModalLogoutOpen);
   const openModal = useOpenModalLogout();
@@ -43,7 +45,7 @@ const Header = () => {
             <ImgSep src={SeparatorIcon} alt="separator" />
             <Button type="Button" onClick={openModal}>
               <img src={ExitIcon} alt="exit icon" />
-              <ExitText>Exit</ExitText>
+              <ExitText>{t('header.exit')}</ExitText>
             </Button>
             {isModalOpen && <ModalLogout />}
           </Wrapper>
