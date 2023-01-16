@@ -10,13 +10,15 @@ import {
   menuList,
   option,
 } from './ModalSelectStyles';
+import { useTranslation } from 'react-i18next';
 
 export default function ModalSelect({ options, onSelect }) {
+  const { t } = useTranslation();
   return (
     <Select
       options={options}
       onChange={onSelect}
-      placeholder="Select a category"
+      placeholder={t('addTrans.placeholderCat')}
       styles={{
         container,
         control,

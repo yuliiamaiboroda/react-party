@@ -52,17 +52,17 @@ const Table = ({ data, colors }) => {
           ))
         ) : (
           <Li>
-            <Text>There are no transactions</Text>
+            <Text>{t('table.noTrans')}</Text>
           </Li>
         )}
         <TotalSum>
-          <TotalText>Expenses:</TotalText>
+          <TotalText>{t('table.expenses')}</TotalText>
           <TotalText>
             <Red>{normalizedNumber(expenseSummary)}</Red>
           </TotalText>
         </TotalSum>
         <TotalSum>
-          <TotalText>Income:</TotalText>
+          <TotalText>{t('table.income')}</TotalText>
           <TotalText>
             <Green>{normalizedNumber(incomeSummary)}</Green>
           </TotalText>

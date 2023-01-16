@@ -26,7 +26,7 @@ export const Button = styled.button`
 `;
 
 export const InfoDiv = styled.div`
-  margin: 20px 0;
+  margin: 40px 0 20px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
