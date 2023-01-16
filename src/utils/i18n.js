@@ -37,9 +37,12 @@ i18n.use(initReactI18next).init({
           november: 'November',
           december: 'December',
         },
+        balance: {
+          title: 'Your balance',
+        },
         currencys: {
-          currency: 'Currency',
-          purchase: 'Purchase',
+          currency: 'Currency222',
+          purchase: 'Purchase222',
           sale: 'Sale',
         },
         diagramTab: {
@@ -92,6 +95,9 @@ i18n.use(initReactI18next).init({
           october: 'Жовтень',
           november: 'Листопад',
           december: 'Грудень',
+        },
+        balance: {
+          title: 'Ваш баланс',
         },
         currencys: {
           currency: 'Валюта',

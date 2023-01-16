@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 export default function Currency() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
+  
   const currencyDate = useSelector(state => state.currency.dateCurrency);
   const finance = useSelector(state => state.currency.Bank);
   const loader = useSelector(state => state.currency.loader);
