@@ -34,7 +34,7 @@ function RegistrationForm() {
       .required(t('reg.requiredField')),
     username: Yup.string()
       .min(2, t('reg.shortName'))
-      .max(12, t('reg.shortName'))
+      .max(12, t('reg.longName'))
       .required(t('reg.requiredField')),
   });
 
