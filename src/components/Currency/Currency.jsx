@@ -4,7 +4,10 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import money from 'redux/currency/currency-options';
 import { loadingBool } from 'redux/currency/currency';
+import { useTranslation } from 'react-i18next';
+
 export default function Currency() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const currencyDate = useSelector(state => state.currency.dateCurrency);
@@ -26,9 +29,9 @@ export default function Currency() {
         finance.length ? (
           <>
             <DivTop>
-              <PTop>Currency</PTop>
-              <PTop>Purchase</PTop>
-              <PTop>Sale</PTop>
+              <PTop>{t('currencys.currency')}</PTop>
+              <PTop>{t('currencys.purchase')}</PTop>
+              <PTop>{t('currencys.sale')}</PTop>
             </DivTop>
             <UL>
               <LI>USD</LI>
