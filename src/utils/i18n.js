@@ -18,9 +18,6 @@ i18n.use(initReactI18next).init({
           motMatchPass: 'Passwords do not match',
           shortName: 'Please enter a name more than 1 character',
           shortName: 'Please enter a name less than 12 character',
-
-
-
           requiredField: 'Required field',
           invalidEmail: 'Invalid email',
           shortPass: 'Too Short!',
@@ -69,6 +66,10 @@ i18n.use(initReactI18next).init({
           october: 'October',
           november: 'November',
           december: 'December',
+        },
+        navi: {
+          home: 'Home',
+          stat: 'Statistics',
         },
         balance: {
           title: 'Your balance',
@@ -137,7 +138,6 @@ i18n.use(initReactI18next).init({
           motMatchPass: 'Паролі не збігаються',
           shortName: 'Будь ласка, введіть ім`я, що містить більше ніж 1 символ',
           shortName: 'Будь ласка, введіть ім`я менше ніж 12 символів',
-
           requiredField: 'Обов`язкове поле',
           invalidEmail: 'Некоректний формат eлектронної пошти',
           shortPass: 'Занадто короткий пароль',
@@ -186,6 +186,10 @@ i18n.use(initReactI18next).init({
           october: 'Жовтень',
           november: 'Листопад',
           december: 'Грудень',
+        },
+        navi: {
+          home: 'Головна',
+          stat: 'Статистика',
         },
         balance: {
           title: 'Ваш баланс',
