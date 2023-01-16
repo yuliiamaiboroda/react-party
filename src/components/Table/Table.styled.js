@@ -81,7 +81,7 @@ export const Text = styled.p`
   font-family: ${p => p.theme.fonts.heading};
   font-size: ${p => p.theme.fontSizes.s}px;
   font-weight: ${p => p.theme.fontWeights.normal};
-  line-height: ${p => p.theme.lineHeights.body};
+  line-height: 1.5;
   color: ${p => p.theme.colors.text};
 `;
 

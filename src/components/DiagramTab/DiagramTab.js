@@ -13,6 +13,7 @@ import { selectTransactionSummary } from 'redux/transactionSummaryController/tra
 import { getTransactionSummary } from 'redux/transactionSummaryController/transactionSummary-operations';
 import TableSelectMonth from 'components/TableSelect/TableSelectMonth';
 import TableSelectYear from 'components/TableSelect/TableSelectYear';
+import { useTranslation } from 'react-i18next';
 
 const colors = [
   '#FED037',
@@ -32,6 +33,8 @@ const colors = [
 ];
 
 const DiagramTab = () => {
+  const { t } = useTranslation();
+
   const transactionSummary = useSelector(selectTransactionSummary);
   const balanceUserMoney = useSelector(state => state.finance.totalBalance);
 
@@ -51,7 +54,7 @@ const DiagramTab = () => {
   return (
     <>
       <Div>
-        <Title>Statistics</Title>
+        <Title>{t('diagramTab.title')}</Title>
         <Wrapper>
           {transactionSummary && (
             <Chart

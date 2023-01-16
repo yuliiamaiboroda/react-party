@@ -33,8 +33,11 @@ import {
 import { TRANSACTION_TYPE } from 'constants';
 import ModalSelect from 'components/ModalSelect';
 import Loader from 'components/Loader';
+import { useTranslation } from 'react-i18next';
+import { handlerCategories } from 'helpers/multiLanguage';
 
 export default function ModalAddTransaction() {
+  const { t } = useTranslation();
   const transactionCategories = useSelector(selectTransactionCategories);
   const isLoading = useSelector(selectIsLoadingCategories);
   const error = useSelector(selectError);
@@ -43,13 +46,13 @@ export default function ModalAddTransaction() {
 
   const validationSchema = Yup.object({
     isExpense: Yup.bool().required(),
-    categoryId: Yup.string().required('Required field'),
+    categoryId: Yup.string().required(t('addTrans.requiredField')),
     amount: Yup.number('The value must be a number')
       .moreThan(0, 'The number must be greater than 0')
-      .required('Required field'),
+      .required(t('addTrans.requiredField')),
     transactionDate: Yup.date('Wrong date standart')
       .max(formatDate(new Date()), 'Please choose a date no later than today')
-      .required('Required field'),
+      .required(t('addTrans.requiredField')),
     comment: Yup.string().max(
       200,
       'The comment should not exceed 200 characters'
@@ -82,7 +85,7 @@ export default function ModalAddTransaction() {
 
   const options = expenseCategories.map(({ id, name }) => ({
     value: id,
-    label: name,
+    label: t(handlerCategories(name)),
   }));
 
   const incomeCategory = transactionCategories.find(
@@ -117,7 +120,7 @@ export default function ModalAddTransaction() {
           px={[3, 4]}
           width={['100%', 480]}
         >
-          <Title>Add transaction</Title>
+          <Title>{t('addTrans.add')}</Title>
           <Formik
             initialValues={{
               isExpense: true,
@@ -134,12 +137,12 @@ export default function ModalAddTransaction() {
             {formik => (
               <RecordForm>
                 <Toggle>
-                  <Income status={formik.values.isExpense}>Income</Income>
+                  <Income status={formik.values.isExpense}>{t('addTrans.toggInc')}</Income>
                   <Switch>
                     <Checkbox type="checkbox" name="isExpense" />
                     <Slider checked={formik.values.isExpense} />
                   </Switch>
-                  <Expense status={formik.values.isExpense}>Expense</Expense>
+                  <Expense status={formik.values.isExpense}>{t('addTrans.toggExp')}</Expense>
                 </Toggle>
                 {formik.values.isExpense && (
                   <ModalSelect
@@ -195,15 +198,15 @@ export default function ModalAddTransaction() {
                   onChange={formik.handleChange}
                   name="comment"
                   as="textarea"
-                  placeholder="Comment"
+                  placeholder={t('addTrans.placeholderComm')}
                 />
                 <ErrorMessage component={Error} name="comment" />
-                <SubmitButton type="submit">Add</SubmitButton>
+                <SubmitButton type="submit">{t('addTrans.addBtn')}</SubmitButton>
               </RecordForm>
             )}
           </Formik>
           <CancelButton type="button" onClick={closeModal}>
-            Cancel
+          {t('addTrans.cancelBtn')}
           </CancelButton>
         </Box>
       )}

@@ -16,6 +16,7 @@ import {
   Splitter,
 } from './DashBoardPage.styled';
 import Container from 'components/Container';
+import Loader from 'components/Loader';
 
 export default function DashBoardPage() {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ export default function DashBoardPage() {
               </DivContainer>
             </Wrapper>
             <Splitter></Splitter>
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loader/>}>
               <Outlet />
             </Suspense>
           </Div>

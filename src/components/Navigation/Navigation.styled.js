@@ -49,12 +49,14 @@ export const LinkHome = styled(NavLink)`
       position: absolute;
       bottom: -1px;
       left: 23px;
-      content: 'Home';
+      content: '${props => props.content}';
+      // content: 'Home';
       font-size: 18px;
-      font-family: 'Poppins';
+      font-family: ${p => p.theme.fonts.heading};
     }
   }
 `;
+
 
 export const LinkStatistics = styled(NavLink)`
   &.active {
@@ -85,9 +87,10 @@ export const LinkStatistics = styled(NavLink)`
       position: absolute;
       bottom: -1px;
       left: 23px;
-      content: 'Statistics';
+      content: '${props => props.content}';
+      // content: 'Statistics';
       font-size: 18px;
-      font-family: 'Poppins';
+      font-family: ${p => p.theme.fonts.heading};
     }
   }
 `;

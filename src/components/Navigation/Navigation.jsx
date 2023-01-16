@@ -10,21 +10,23 @@ import {
 } from './Navigation.styled';
 import { selectIsLoggedIn } from 'redux/authController/authController-selectors';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 export default function Navigation() {
+  const { t } = useTranslation();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <>
       <Nav>
         <Link>
-          <LinkHome to="/">
+          <LinkHome to="/" content={t('navi.home')} >
             <StyledIconHome />
           </LinkHome>
         </Link>
         <Link>
           {isLoggedIn && (
-            <LinkStatistics to="/diagram">
+            <LinkStatistics to="/diagram" content={t('navi.stat')} >
               <StyledStatisticsIcon />
             </LinkStatistics>
           )}

@@ -10,23 +10,29 @@ import {
   menuList,
   option,
 } from './TableSelect.styled';
-
-const optionsMonth = [
-  { value: 1, label: 'January' },
-  { value: 2, label: 'February' },
-  { value: 3, label: 'March' },
-  { value: 4, label: 'April' },
-  { value: 5, label: 'May' },
-  { value: 6, label: 'June' },
-  { value: 7, label: 'July' },
-  { value: 8, label: 'August' },
-  { value: 9, label: 'September' },
-  { value: 10, label: 'October' },
-  { value: 11, label: 'November' },
-  { value: 12, label: 'December' },
-];
+import { useTranslation } from 'react-i18next';
 
 const TableSelectMonth = ({ onSelect }) => {
+  const { t } = useTranslation();
+  
+  const optionsMonth = [
+    { value: 1, label: t('month.january')},
+    { value: 2, label: t('month.february')},
+    { value: 3, label: t('month.march')},
+    { value: 4, label: t('month.april')},
+    { value: 5, label: t('month.may')},
+    { value: 6, label: t('month.june')},
+    { value: 7, label: t('month.july')},
+    { value: 8, label: t('month.august')},
+    { value: 9, label: t('month.september')},
+    { value: 10, label: t('month.october')},
+    { value: 11, label: t('month.november')},
+    { value: 12, label: t('month.december')},
+  ];
+  
+  // label: t(handlerCategories(name)),
+
+
   return (
     <Select
       options={optionsMonth}
